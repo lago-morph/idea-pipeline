@@ -52,7 +52,7 @@ operationalizes that design decision.
 
 - What exactly is the "LiteLLM skill organizer service" — is this the LiteLLM skill
   gateway as documented in agent-os, a separate standalone service, or a specific
-  LiteLLM configuration? This needs to be confirmed before Phase 6 begins.
+  LiteLLM configuration? This needs to be confirmed before Phase 6 begins.  It is this: https://docs.litellm.ai/docs/skills_gateway
 - What happens to `skill-sharing`'s Iterations 1–4 (not yet built)? Should they be
   built, or does the LiteLLM gateway supersede them?
 - How are skills versioned and promoted across environments (dev → staging → prod)?
