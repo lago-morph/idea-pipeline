@@ -135,7 +135,7 @@ Contents: [§1 Deterministic checks](#1-deterministic-checks-d-01d-29) ·
 - **Failure semantics:** an algorithm reading a phantom field means the data model or the algorithm is wrong — a human picks which at triage. Class REALIZATION_GAP → S4 (missing entity/field in Layer 1 reclassifies CONTRACT_GAP → S3).
 
 ### CHECK D-09 — Reference and tag closure
-- **Hardens:** J.1, J.2, J.3 (their tag-level generalization; substrate for T1/T2/T5 checks)
+- **Hardens:** C.4, J.1, J.2, J.3 (term closure is C.4's instrument; the tag level generalizes J.1–J.3; substrate for T1/T2/T5 checks)
 - **Tier:** D (D+L on untagged specs, via EXT-1/4/5)
 - **Inputs:** all artifacts; A-GL; A-VS register
 - **Procedure:**
@@ -364,7 +364,7 @@ Contents: [§1 Deterministic checks](#1-deterministic-checks-d-01d-29) ·
 - **Failure semantics:** an example the spec's own grammar rejects poisons the strongest teaching instrument the spec has. Class LINT → S6 (sample typo) or REALIZATION_GAP → S4 (grammar wrong — reclassification rule).
 
 ### CHECK D-28 — Compilation order and ToC integrity
-- **Hardens:** I.3
+- **Hardens:** I.3, I.6
 - **Tier:** D
 - **Inputs:** `dist/spec.md`
 - **Procedure:**

@@ -570,8 +570,10 @@ gold specs' own defects demonstrate (§9 maps every audited defect to a rule).
   section, restated as a citation invariant.)
 - **T7 — Freedom hygiene.** Open choices exist only as R-FR entries; each entry has a
   bounding contract citation and a documentation obligation; hedge words ("appropriately",
-  "reasonable", "leniently", "common field names") outside R-FR are defects; and an entry
-  whose latitude can flip a G-AC/G-ST outcome is too wide and must be narrowed.
+  "reasonable", "leniently", "common field names" — canonical, versioned lexicon:
+  HW-LEX v1 in [hardening/checks.md](hardening/checks.md) check D-12) outside R-FR are
+  defects; and an entry whose latitude can flip a G-AC/G-ST outcome is too wide and must
+  be narrowed.
 
 ## 5. Element IDs and citation tags
 
@@ -591,8 +593,11 @@ Four tag forms, all surviving compilation verbatim (they are what the checks gre
 
 Grep surface: `\[(#|realizes:|freedom:|checks:)\s*[A-Z]-[A-Z]{2}-[0-9]{3}` — one regular
 expression covers all four forms, which is what keeps task-03's deterministic tier cheap.
-The gold specs approximate this with section-number cross-references ("Section 4.5",
-"§9.12"); the model makes the practice uniform and element-granular.
+The pattern assumes three-digit element counts and `X-YY`-shaped artifact IDs; if either
+assumption ever breaks, widen it here and in hardening's check D-09 and its FT-1 tooling
+in the same change. The gold specs approximate this tagging with section-number
+cross-references ("Section 4.5", "§9.12"); the model makes the practice uniform and
+element-granular.
 
 ## 6. Compilation scheme
 

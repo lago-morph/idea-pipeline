@@ -119,11 +119,10 @@ Check IDs are tier-prefixed and stable: `D-##` (deterministic), `DL-##` (extract
 hybrid), `L-##` (LLM probe), `M-##` (mutation), `H-##` (human). IDs are assigned once
 and never reused; gaps stay gaps (same policy as artifact-model §5 element IDs).
 
-README §3's items are unnumbered bullets; this framework fixes the canonical numbering
-**positionally** — `<section-letter>.<ordinal within section>`, so "A.3" is the third
-bullet of §3.A. The coverage table (§8) pins every ID to an abbreviated restatement, so
-the numbering survives even if §3's prose is later edited (any reordering of §3 bullets
-must update §8 — see the appendix's amendment A-1 for the durable fix).
+README §3 prints its item IDs inline (`A.1`…`J.5`; added by task-04 per this
+framework's amendment A-1). Item IDs are stable and never renumbered — new items
+append fresh IDs (C.4 and I.6 are the first two) — and the coverage table (§8) pins
+every ID to an abbreviated restatement, so the mapping survives future §3 edits.
 
 ### 3.2 Standard check record
 
@@ -291,7 +290,7 @@ re-verification.
 
 ## 8. Coverage table: README §3 → checks
 
-Canonical item numbering per §3.1 (positional). Every item maps to ≥1 check; every
+Item IDs as printed in README §3 (§3.1). Every item maps to ≥1 check; every
 check appears in this table (bidirectional totality — the task's no-orphan rule).
 Bold check = the item's primary hardening; others corroborate.
 
@@ -312,6 +311,7 @@ Bold check = the item's primary hardening; others corroborate.
 | C.1 | Typed field lists, language-neutral, legend | **D-16** | D |
 | C.2 | Enums enumerate all values with semantics | **D-01** | D+L |
 | C.3 | Field constraints inline with the field | **DL-06**, D-16, L-01 | D+L, D, L |
+| C.4 | Every normative term has one authoritative definition | **D-09** | D+L |
 | D.1 | Interfaces: exact names, typed params, returns | **D-17**, L-07 | D, L |
 | D.2 | Tool/endpoint parameters/returns/errors blocks | **D-18** | D+L |
 | D.3 | Wire surfaces: routes, methods, statuses, bodies | **D-19** | D+L |
@@ -322,24 +322,25 @@ Bold check = the item's primary hardening; others corroborate.
 | F.1 | Named error taxonomy | **D-03**, D-18 | D+L |
 | F.2 | Retryable vs. terminal per class, in a table | **D-04** | D+L |
 | F.3 | Blast radius per failure | **D-04**, D-03, L-02 | D+L, L |
-| F.4 | Boundary cases named, pathological input | **DL-07**, L-01 | D+L, L |
+| F.4 | Boundary cases with pathological input or explicit N/A | **DL-07**, L-01 | D+L, L |
 | F.5 | Timeouts scoped, defaults, kill sequences | **DL-08** | D+L |
 | G.1 | Goals as named principles | **D-15**, L-04, H-01 | D, L, H |
 | G.2 | Dedicated non-goals section | **D-15**, L-04 | D, L |
 | G.3 | Exclusions name extension points | **D-15** | D |
-| G.4 | Boundary notes for scope-confusion risks | **L-02**, L-04 | L |
+| G.4 | Boundary notes where ignorant readers diverge | **L-02**, L-04 | L |
 | H.1 | Every "up to you" explicit and bounded | **D-10**, D-11, D-12, D-20, L-07, L-09 | D, L |
 | H.2 | External docs named, scoped, conflict-ruled | **D-13** | D |
 | H.3 | Reference implementations inspiration-only | **D-14** | D |
 | I.1 | Worked I/O pairs per format surface | **D-26** | D |
 | I.2 | Complete realistic copy-pasteable sample input | **D-26**, D-27 | D |
-| I.3 | Linked ToC; types before behavior; conformance last | **D-28** | D |
+| I.3 | Linked ToC | **D-28** | D |
 | I.4 | Rationale quarantined in appendix | **D-29**, L-08 | D, L |
-| I.5 | Critical rules stated redundantly | **D-11**, D-21, L-03, L-06 | D, L |
+| I.5 | Redundancy by derivation (witnesses, derived views) | **D-11**, D-21, L-03, L-06 | D, L |
+| I.6 | Types precede behavior; conformance last | **D-28** | D |
 | J.1 | Every pseudocode helper defined | **D-06**, D-09 | D+L |
 | J.2 | Every prose config field exists in schema | **D-07**, D-09 | D+L |
 | J.3 | Every algorithm-read field exists on its record | **D-08**, D-09 | D+L |
-| J.4 | No internal contradictions | **L-06**, L-02, L-03 | L |
+| J.4 | No conflicting statements; gate/annex never beat body | **L-06**, L-02, L-03 | L |
 | J.5 | Hedge words fixed or converted to freedom | **D-12** | D |
 
 Cross-cutting note: **L-01** (question-count probe) is listed only where it is a
@@ -426,13 +427,16 @@ with ≥ 2 instances; memo states keep/demote per touched item with ledger citat
 
 ## Appendix: suggested §3 amendments
 
-Task-03 may not change §3 wording; hardening surfaced items that are untestable as
-written. Proposed rewordings, for a future README edit (tracked in
-[../tasks/task-04-refactor.md](../tasks/task-04-refactor.md)):
+Task-03 could not change §3 wording; hardening surfaced items that were untestable as
+written and proposed the rewordings below. **All seven were applied by task-04
+(2026-07-05)** — A-1 printed the IDs in §3, A-2 added C.4, A-3 split I.6 out of I.3,
+and A-4…A-7 landed as rewordings (dispositions in
+[../tasks/task-04-refactor.md](../tasks/task-04-refactor.md)). Kept as the rationale
+record:
 
-- **A-1 — Add stable item IDs to §3.** The bullets are unnumbered; this suite's
-  coverage table pins IDs positionally (§3.1). Printing `A.1`…`J.5` in §3 itself makes
-  the mapping robust to future edits.
+- **A-1 — Add stable item IDs to §3.** The bullets were unnumbered; this suite's
+  coverage table originally pinned IDs positionally. Printing `A.1`…`J.5` in §3 itself
+  makes the mapping robust to future edits.
 - **A-2 — Add a glossary item (new C.4).** "Every normative term has exactly one
   authoritative definition (A-GL or C-DM)." §3 has no glossary item, yet A-GL absence
   enabled two audited defects (artifact-model §11 finding 7: unified-llm's undefined

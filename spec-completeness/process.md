@@ -4,7 +4,9 @@
 Companions: [README.md](README.md) defines what a one-shot-complete spec is and the §3
 checklist the output must pass; [artifact-model.md](artifact-model.md) defines what a spec
 is made of — the sixteen artifacts this process produces, their dependency DAG, the
-traceability rules T1–T7, and the element-ID/citation-tag scheme. Compiled 2026-07-05.*
+traceability rules T1–T7, and the element-ID/citation-tag scheme; [hardening/](hardening/)
+(task-03) defines the executable checks whose failures this document routes. Compiled
+2026-07-05.*
 
 This document specifies the process that turns a raw idea — a few pages of intent, like
 the numbered idea files at this repo's root — into a compiled, single-file spec that
@@ -25,9 +27,10 @@ mid-run, four questions must be mechanically answerable:
 
 Task-03's hardened checks execute inside this process: its deterministic and LLM-probe
 checks are the mechanization of the S3 closure computations, the S6 lint suite, and the
-S7 grading procedures. Until `hardening/` merges, the manual procedures written into the
-stage cards apply; once it merges, its check definitions control the *procedure* of each
-check and this document controls the *routing* of each failure.
+S7 grading procedures. Its check definitions ([hardening/checks.md](hardening/checks.md))
+control the *procedure* of each check; this document controls the *routing* of each
+failure; the binding of check IDs to the stage gates below is the hardening README's §7
+execution map.
 
 Contents:
 
@@ -435,75 +438,53 @@ Worked example row:
 ### 4.7 Probe charters and reports
 
 A probe run is a fresh session given exactly a **charter**: probe ID, type, the
-verbatim context slice (file list — nothing else enters the session), the template
-below, and the output schema. The report is stored verbatim under `probes/`, then
-normalized into records by the ingestion rule of the dispatching stage. Charters are
-pinned here (v1); when task-03's hardened probe definitions merge, its templates
-supersede these and this document keeps only the ingestion/routing rules.
+verbatim context slice (file list — nothing else enters the session), the pinned
+prompt template, and the output schema. The report is stored verbatim under `probes/`,
+then normalized into records by the ingestion rule of the dispatching stage. The
+templates, context slices, output schemas, k, and aggregation rules are pinned in the
+hardening suite ([hardening/checks.md](hardening/checks.md) §3), one definition per
+charter — P-ASSUME = check L-04, P-QCOUNT = check L-01, P-IMPL = check L-07 — and this
+section keeps only what the process owns: dispatch rationale and ingestion.
+Replication note (hardening §5.5's finding-vs-verdict rule): these are *finding*
+probes, so inside a loop whose exit already demands consecutive clean runs (S1's one
+clean probe, S3's `D_dry`, S4's one clean probe) each iteration dispatches k = 1 and
+replication is sequential across iterations; a **verdict** probe (e.g. hardening
+L-05's gate-decidability majority) is never run at k = 1.
 
-**P-ASSUME** (S1) — *context slice: `idea-record.md`; on re-probes within S1, also
-the current A-VS draft — declared scope is visible, so settled dispositions are not
-re-raised (the same rationale as R-FR's inclusion in P-QCOUNT below).*
+**P-ASSUME** (S1 → hardening L-04). Slice rationale: re-probes within S1 also see the
+current A-VS draft — declared scope is visible, so settled dispositions are not
+re-raised (the same rationale as R-FR's inclusion in P-QCOUNT below). Ingestion: every
+report row enters the S1 disposition worklist; the OWNER marks each IN (→ scope/goal
+content) or OUT (→ non-goal with extension-point note in A-VS); UNKNOWN becomes an
+INTENT question.
 
-> Here is an idea for a system. List everything you would assume is **included in
-> scope** if you were asked to build it — features, users, integrations, data handled,
-> qualities (performance, security, persistence), and operational surface (deployment,
-> configuration, monitoring). One assumption per row, categorized
-> {feature, user, integration, data, quality, operational}. Be exhaustive, and include
-> the assumptions you consider too obvious to state. Do not design the system, and do
-> not rank or filter — completeness is the deliverable.
+**P-QCOUNT** (S3 → hardening L-01). Slice rationale — one deliberate deviation from
+the task-02 design sketch, which said "Layer 0–1 drafts only": **R-FR is included.**
+It is the ledger of deliberate openness — T2 counts an R-FR entry as contract
+closure — and a probe blind to it re-raises every settled deferral as noise, poisoning
+the burn-down metric. The probe still sees no other Layer-2 artifact (none exists yet;
+S4 has not run). Ingestion (S3 activity 6): dedupe per §4.2, mint Q records with
+`raised-by: PROBE`, triage. The report's `forced-guess` column is the severity-grading
+evidence.
 
-Output rows: `assumption`, `category`. Ingestion: every row enters the S1 disposition
-worklist; the OWNER marks each IN (→ scope/goal content) or OUT (→ non-goal with
-extension-point note in A-VS); UNKNOWN becomes an INTENT question.
+**P-IMPL** (S4 → hardening L-07). Module selection rule, deterministic (owned here,
+applied by L-07): probe the R-AS component with the highest count of distinct C-BC
+citations (`[realizes:]` degree); tie-break to the component on the primary C-BC flow,
+then lexical order. Iteration *j* probes the *j*-th ranked component (wrap around) so
+successive probes broaden coverage. Ingestion (S4 activity 5): each invention-log row
+becomes a Q record, triaged normally; a BLOCKER invention blocks S4 exit.
 
-**P-QCOUNT** (S3) — *context slice: current drafts of A-VS, A-GL, C-DM, C-BC, C-FM,
-C-QC, and R-FR.* One deliberate deviation from the task-02 design sketch, which said
-"Layer 0–1 drafts only": **R-FR is included.** It is the ledger of deliberate openness —
-T2 counts an R-FR entry as contract closure — and a probe blind to it re-raises every
-settled deferral as noise, poisoning the burn-down metric. The probe still sees no
-other Layer-2 artifact (none exists yet; S4 has not run).
-
-> You must implement the system described by the attached documents, alone, with no
-> ability to ask anyone anything. Read them, then list **every question you would need
-> answered** before you could implement with confidence that the result matches the
-> authors' intent. For each question give: (1) the question; (2) the passage or element
-> ID it concerns (quote if no ID); (3) why the documents as written cannot answer it;
-> (4) what you would do if forced to guess. Do not propose fixes, do not summarize the
-> documents, and do not stop early — an empty answer is only acceptable if you could
-> genuinely start implementing now.
-
-Output rows: `question`, `locus`, `why-unanswerable`, `forced-guess`. Ingestion (S3
-activity 6): dedupe per §4.2, mint Q records with `raised-by: PROBE`, triage. The
-`forced-guess` column is the severity-grading evidence.
-
-**P-IMPL** (S4) — *context slice: all Layer 0–2 artifact drafts (A-VS, A-GL, C-*,
-R-*).* Module selection rule, deterministic: probe the R-AS component with the highest
-count of distinct C-BC citations (`[realizes:]` degree); tie-break to the component on
-the primary C-BC flow, then lexical order. Iteration *j* probes the *j*-th ranked
-component (wrap around) so successive probes broaden coverage.
-
-> Implement the module named below, in a language of your choice, using only the
-> attached documents. Complete the implementation even where the documents are silent —
-> but keep an **invention log**: every decision you had to make that the documents did
-> not determine. For each: (1) the decision point; (2) the choice you made; (3) an
-> alternative another implementer might plausibly choose; (4) the observable
-> consequence if they did. Deliver the module and the log. The log is the deliverable
-> that matters; the code will be discarded.
-
-Output: code (archived, discarded) + invention-log rows. Ingestion (S4 activity 5):
-each invention becomes a Q record, triaged normally; a BLOCKER invention blocks S4 exit.
-
-**BUILDER** (S7) — a role, not a probe type, but chartered the same way. *Context
+**BUILDER** (S7) — a role, not a probe type, but chartered the same way. Its charter
+is process-owned (not superseded); its invention log uses L-07's schema. *Context
 slice: `dist/spec.md` only.*
 
 > Build the system specified in the attached document, in one pass. The document is
 > the sole authority; you cannot ask questions. Where the document declares a choice
 > implementation-defined, make it and document it as the document requires. Keep the
-> same invention log as above for any decision the document did not determine. When
-> your build is complete, execute the document's smoke test (its G-ST section) against
-> your build and report its output verbatim. Deliver: the implementation, the invention
-> log, and the smoke-test transcript.
+> same invention log as the implementation probe for any decision the document did not
+> determine. When your build is complete, execute the document's smoke test (its G-ST
+> section) against your build and report its output verbatim. Deliver: the
+> implementation, the invention log, and the smoke-test transcript.
 
 ### 4.8 Divergence record
 
@@ -934,8 +915,8 @@ candidate exists; otherwise no touch).
 
 **Exit criteria.**
 - S5-X1: `gate_coverage = 1.0` — every normative element is cited by ≥1 gate item (T5a).
-- S5-X2: `checkable_rate = 1.0` — no box needs judgment to evaluate (T5b; AUTHOR-judged
-  in v1, hardened by task-03's checks when they land).
+- S5-X2: `checkable_rate = 1.0` — no box needs judgment to evaluate (T5b; decided by
+  hardening check L-05, with D-23 as the cheap lexical screen).
 - S5-X3: Every G-ST ASSERT carries a `[checks:]` citation; every R-FR documentation
   obligation has its box.
 - S5-X4: No open BLOCKER or MAJOR question targets a gate artifact.
@@ -981,19 +962,21 @@ deterministic hygiene suite. Zero tolerance: lint findings are either fixed
    (rejected alternatives, trade-offs, "why not X") into the quarantined annex. Sweep
    the normative artifacts for inline rationale and move it here (T4 hygiene: annex
    text carries zero force, so rationale left in the body is a latent contradiction).
-4. **Lint** (the deterministic suite; task-03's Tier-D checks when merged, these greps
-   until then):
+4. **Lint** (the deterministic suite — procedures per the hardening README §7 S6 row,
+   including its rule that every D/DL check re-runs over the compiled file):
    - T3 layer purity: no Layer-2 vocabulary (interface names, wire literals, defaults,
-     pseudocode) inside C-artifacts;
+     pseudocode) inside C-artifacts (check D-16);
    - T6 reference closure: every pseudocode helper, config key, record field, normative
-     term, and external name resolves to its owning definition;
-   - T7 hedge words: "appropriately", "reasonable", "leniently", "common field names",
-     and kin, outside R-FR — each hit is fixed or converted to a declared freedom;
-   - tag syntax: every ID/citation matches artifact-model §5's grep surface; IDs unique;
+     term, and external name resolves to its owning definition (checks D-06…D-09);
+   - T7 hedge words: any HW-LEX hit outside R-FR — the canonical, versioned lexicon is
+     check D-12's — is fixed or converted to a declared freedom (check D-12);
+   - tag syntax: every ID/citation matches artifact-model §5's grep surface; IDs unique
+     (check D-09);
    - question hygiene: every question record of **any** severity is terminal (CLOSED,
      REJECTED, or SPLIT) — every MINOR is resolved, deferred to R-FR, or REJECTED with
-     a logged reason by owner consent, and no record idles at APPLIED;
-   - X-DR force check: no normative keywords in annex text.
+     a logged reason by owner consent, and no record idles at APPLIED (process-owned;
+     a queue query, not a text check);
+   - X-DR force check: no normative keywords in annex text (check D-29).
 5. Mass check (artifact-model §6.4): the 1,400–2,200-line envelope is calibrated to
    system-scale gold specs; for skill- or tool-scale targets the lower bound does not
    bind — the signal to heed is *proportion* (a C-FM or G-AC thin relative to the body
@@ -1244,6 +1227,12 @@ stage cards, the ledger, and the pressure-test report — one vocabulary end to 
 | `owner_touches(stage)` | checkpoints that actually consumed owner time | stage exit |
 | `iterations(stage)` | completed iterations (S7: rounds) | stage exit |
 | `wall_clock(stage)` | elapsed working time | stage exit |
+
+Check-level metrics the hardening suite introduces (`divergence_rate`, `trace_match`,
+`kill_rate`, the closure sub-ratios, …) are defined once in each check's block in
+[hardening/checks.md](hardening/checks.md); this table remains the registry for
+process-level metrics only, and where both name a metric (`enum_closure`,
+`gate_coverage`, …) the formula here is authoritative and the check cites it.
 
 ### 9.3 Abort mechanics (the burn-down contract)
 
