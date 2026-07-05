@@ -1,6 +1,8 @@
 # Task 04 — Post-Task-03 Refactor: Reconcile the Four Documents
 
-**Status:** ready · **Depends on:** task-03 (hardening/) merged · **Feeds:** process v2, README §3 v2
+**Status:** done (executed 2026-07-05, immediately after task-03's merge — see the
+resolution log below) · **Depends on:** task-03 (hardening/) merged · **Feeds:**
+process v2, README §3 v2
 
 ## Why this task exists
 
@@ -77,15 +79,45 @@ value; each names the exact edit site.
    them hypothetically. (The §-level cross-reference paragraph was already added by
    task-03; this is just the stale bullet.)
 
+## Resolution log (2026-07-05)
+
+All nine queue items **applied**; none rejected. Dispositions:
+
+1. **Applied.** process §4.7 now carries only dispatch rationale + ingestion per
+   charter; templates, slices, schemas, k, and aggregation point at hardening
+   L-04/L-01/L-07. The BUILDER charter stays process-owned; its template's "same
+   invention log as above" became "as the implementation probe" (the P-IMPL template
+   it pointed at no longer precedes it — meaning unchanged). Stale preamble sentence
+   replaced; `hardening/` added to the header companions line.
+2. **Applied.** S6 lint bullets annotated with their check IDs (D-16, D-06…D-09,
+   D-12, D-09, D-29; question hygiene marked process-owned — a queue query, not a
+   text check); S5-X2 cites L-05 with the D-23 screen.
+3. **Applied** (amendment A-1). IDs `A.1`…`J.5` printed in README §3.
+4. **Applied, all six** (A-2…A-7). New C.4 (→ check D-09) and I.6 (split from I.3,
+   → D-28); J.4, F.4, I.5, G.4 reworded as proposed. Hardening coverage table and the
+   two Hardens fields updated; the item count is now 46. Note on authority: the six
+   semantic amendments were owner decisions per this file — the owner's instruction
+   to execute this task was taken as the ratification batch, and each lands as a
+   separable hunk in the PR so per-item veto stays cheap.
+5. **Applied.** Finding-vs-verdict replication paragraph added to §4.7's intro.
+6. **Applied.** README §3.J.5, process S6 lint, and artifact-model T7 all name
+   HW-LEX v1 (hardening check D-12) as the canonical lexicon.
+7. **Applied** as the delegation option: one paragraph after the process §9.2 table —
+   check-level metrics are defined in their check blocks; shared names keep §9.2's
+   formulas authoritative.
+8. **Applied.** Headroom note added at artifact-model §5's grep surface.
+9. **Applied.** README §4.3's spec-linter bullet cites D-06…D-12 and the §R
+   regression suite.
+
 ## Task acceptance checklist
 
-- [ ] Every queue item either applied (with the edit) or explicitly rejected (with a
+- [x] Every queue item either applied (with the edit) or explicitly rejected (with a
       one-line reason recorded in this file)
-- [ ] No duplicated normative text remains between process.md §4.7 and
+- [x] No duplicated normative text remains between process.md §4.7 and
       hardening/checks.md §3 (templates live in exactly one place)
-- [ ] README §3, process.md, artifact-model.md, and hardening/ all grep-consistent on:
+- [x] README §3, process.md, artifact-model.md, and hardening/ all grep-consistent on:
       item IDs, check IDs, metric names, HW-LEX/JW-LEX references
-- [ ] Docs re-read once end-to-end for cross-references after the edits
+- [x] Docs re-read once end-to-end for cross-references after the edits
 
 ## Out of scope
 

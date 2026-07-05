@@ -39,7 +39,7 @@ routing table over five build-defect classes, numeric loop/abort/freeze criteria
 pressure-test protocol for evaluating the process itself against this repo's numbered
 idea files. Its S3 question loop and S7 build-and-grade loop operationalize §4.2's
 question-count probe and ablation-grading ideas respectively, and its stage gates
-(S3 closure, S6 lint, S7 grading) are where task-03's hardened checks will execute.
+(S3 closure, S6 lint, S7 grading) are where task-03's hardened checks execute.
 
 A third companion, [`hardening/`](hardening/), rebuilds the §3 checklist below as
 executable checks (task-03): every item A–J maps to one or more (claim, probe,
@@ -218,71 +218,77 @@ checklist section J.
 ## 3. The spec-completeness checklist
 
 Score a spec before pointing a one-shot harness at it. Items are phrased to be
-auditable (yes/no), and ordered roughly by hypothesized impact (§4.1).
+auditable (yes/no), and ordered roughly by hypothesized impact (§4.1). Item IDs are
+stable — new items append fresh IDs, nothing renumbers — and every item maps to
+executable checks in [`hardening/`](hardening/) (its README §8 coverage table).
+Wording amendments applied by task-04 are recorded in the hardening README's appendix
+and [`tasks/task-04-refactor.md`](tasks/task-04-refactor.md).
 
 ### A. Acceptance (the oracle)
-- [ ] A Definition-of-Done section exists, framed as "done when every box is checked"
-- [ ] Every DoD item is mechanically checkable (a test could assert it) — no "mirrors the structure of X" items
-- [ ] An executable end-to-end smoke test with concrete ASSERTs and expected values is included
-- [ ] Cross-cutting variation (providers, platforms, modes) has a parity matrix — every cell must pass
-- [ ] Optional features are tagged so conformance splits into core vs. extension profiles
+- [ ] **A.1** A Definition-of-Done section exists, framed as "done when every box is checked"
+- [ ] **A.2** Every DoD item is mechanically checkable (a test could assert it) — no "mirrors the structure of X" items
+- [ ] **A.3** An executable end-to-end smoke test with concrete ASSERTs and expected values is included
+- [ ] **A.4** Cross-cutting variation (providers, platforms, modes) has a parity matrix — every cell must pass
+- [ ] **A.5** Optional features are tagged so conformance splits into core vs. extension profiles
 
 ### B. Behavior (determinism)
-- [ ] Every core loop/algorithm appears as step-ordered language-agnostic pseudocode
-- [ ] Stateful lifecycles have an explicit state machine with a complete transition table
-- [ ] Every priority/precedence rule is a total ordering with a deterministic tie-break
-- [ ] Numeric behavior (backoff, limits, thresholds) is an exact formula, not adjectives
-- [ ] Ordering guarantees and idempotency rules are stated ("X MUST run before Y")
-- [ ] Concurrency: both the guarantee AND the permitted mechanisms are specified, including cancellation and result ordering
-- [ ] Invariants are stated explicitly (ideally as a numbered invariants list)
+- [ ] **B.1** Every core loop/algorithm appears as step-ordered language-agnostic pseudocode
+- [ ] **B.2** Stateful lifecycles have an explicit state machine with a complete transition table
+- [ ] **B.3** Every priority/precedence rule is a total ordering with a deterministic tie-break
+- [ ] **B.4** Numeric behavior (backoff, limits, thresholds) is an exact formula, not adjectives
+- [ ] **B.5** Ordering guarantees and idempotency rules are stated ("X MUST run before Y")
+- [ ] **B.6** Concurrency: both the guarantee AND the permitted mechanisms are specified, including cancellation and result ordering
+- [ ] **B.7** Invariants are stated explicitly (ideally as a numbered invariants list)
 
 ### C. Data model
-- [ ] Every entity is a typed field list in language-neutral notation, with a notation legend
-- [ ] Every enum enumerates ALL values, each with semantics
-- [ ] Field constraints (nullability, ranges, formats, derivations) are inline with the field
+- [ ] **C.1** Every entity is a typed field list in language-neutral notation, with a notation legend
+- [ ] **C.2** Every enum enumerates ALL values, each with semantics
+- [ ] **C.3** Field constraints (nullability, ranges, formats, derivations) are inline with the field
+- [ ] **C.4** Every normative term has exactly one authoritative definition (glossary/conventions section)
 
 ### D. Interfaces
-- [ ] Public interfaces give exact names, typed parameters, return types
-- [ ] Every tool/endpoint has a parameters / returns / errors block
-- [ ] Any wire surface (HTTP etc.) gives exact routes, methods, status codes, and full example bodies
+- [ ] **D.1** Public interfaces give exact names, typed parameters, return types
+- [ ] **D.2** Every tool/endpoint has a parameters / returns / errors block
+- [ ] **D.3** Any wire surface (HTTP etc.) gives exact routes, methods, status codes, and full example bodies
 
 ### E. Configuration
-- [ ] Every knob has an explicit default at its point of definition
-- [ ] Contextual defaults state their resolution chain
-- [ ] Deliberately open defaults are marked `implementation-defined` AND require the implementation to document its choice
-- [ ] A consolidated config cheat-sheet restates all fields + defaults in one place
+- [ ] **E.1** Every knob has an explicit default at its point of definition
+- [ ] **E.2** Contextual defaults state their resolution chain
+- [ ] **E.3** Deliberately open defaults are marked `implementation-defined` AND require the implementation to document its choice
+- [ ] **E.4** A consolidated config cheat-sheet restates all fields + defaults in one place
 
 ### F. Errors and edge cases
-- [ ] A named error taxonomy exists (hierarchy or category table)
-- [ ] Every error class is classified retryable vs. terminal, in a table
-- [ ] Every failure states its blast radius (what halts vs. what degrades)
-- [ ] Boundary cases are named concretely, ideally with the motivating pathological input
-- [ ] Timeouts are scoped (connect vs. request vs. stream/stall) with defaults and kill sequences
+- [ ] **F.1** A named error taxonomy exists (hierarchy or category table)
+- [ ] **F.2** Every error class is classified retryable vs. terminal, in a table
+- [ ] **F.3** Every failure states its blast radius (what halts vs. what degrades)
+- [ ] **F.4** Boundary cases are named concretely with the motivating pathological input, or carry an explicit N/A per boundary class
+- [ ] **F.5** Timeouts are scoped (connect vs. request vs. stream/stall) with defaults and kill sequences
 
 ### G. Scope
-- [ ] Goals stated as named design principles
-- [ ] A dedicated Non-Goals/Out-of-Scope section exists
-- [ ] Each exclusion names the extension point where it would attach
-- [ ] Known scope-confusion risks get explicit boundary notes
+- [ ] **G.1** Goals stated as named design principles
+- [ ] **G.2** A dedicated Non-Goals/Out-of-Scope section exists
+- [ ] **G.3** Each exclusion names the extension point where it would attach
+- [ ] **G.4** Scope questions on which independent ignorant readers diverge get explicit boundary notes
 
 ### H. Freedom management
-- [ ] Every "up to you" is explicit, and bounded by an interface, output contract, or invariant
-- [ ] External documents this spec depends on are named, scoped (which types/sections), and given a conflict-resolution rule ("on conflict, X controls")
-- [ ] Reference implementations are marked inspiration-only, not dependencies
+- [ ] **H.1** Every "up to you" is explicit, and bounded by an interface, output contract, or invariant
+- [ ] **H.2** External documents this spec depends on are named, scoped (which types/sections), and given a conflict-resolution rule ("on conflict, X controls")
+- [ ] **H.3** Reference implementations are marked inspiration-only, not dependencies
 
 ### I. Examples and ergonomics
-- [ ] Worked input→output pairs exist for every format/parsing surface
-- [ ] At least one complete, realistic sample input (full config file, full workflow file) is copy-pasteable
-- [ ] Linked ToC; types before behavior; conformance last
-- [ ] Rationale ("why") lives in an appendix, out of the normative body
-- [ ] Critical rules stated redundantly (prose + pseudocode, or body + appendix consolidation)
+- [ ] **I.1** Worked input→output pairs exist for every format/parsing surface
+- [ ] **I.2** At least one complete, realistic sample input (full config file, full workflow file) is copy-pasteable
+- [ ] **I.3** A linked ToC exists
+- [ ] **I.4** Rationale ("why") lives in an appendix, out of the normative body
+- [ ] **I.5** Critical rules are stated redundantly by derivation: every behavioral contract rule has a reference-algorithm witness (prose + pseudocode), and every consolidated view is derived, never hand-maintained
+- [ ] **I.6** Section ordering: types precede the behavior that consumes them; conformance comes last
 
 ### J. Lint pass (the defects even gold specs have)
-- [ ] Every function/helper referenced in pseudocode is defined somewhere in the spec
-- [ ] Every config field referenced in prose exists in the config schema
-- [ ] Every field referenced by an algorithm exists on the record it's read from
-- [ ] No internal contradictions (e.g., "byte-for-byte" in one section vs. "behavioral alignment" in another)
-- [ ] Grep the spec for hedge words — "appropriately", "reasonable", "leniently", "common field names" — each hit is either fixed or converted into a declared `implementation-defined` freedom
+- [ ] **J.1** Every function/helper referenced in pseudocode is defined somewhere in the spec
+- [ ] **J.2** Every config field referenced in prose exists in the config schema
+- [ ] **J.3** Every field referenced by an algorithm exists on the record it's read from
+- [ ] **J.4** No two normative statements about the same element assign it conflicting values, and neither gate nor annex contradicts the body (artifact-model T4)
+- [ ] **J.5** Grep the spec for hedge words ("appropriately", "leniently", … — canonical lexicon: HW-LEX v1, hardening checks.md D-12) — each hit is either fixed or converted into a declared `implementation-defined` freedom
 
 ---
 
@@ -368,9 +374,9 @@ expensive builds probably won't either.
 - **Readiness gate:** score any new spec against §3 before dispatching a
   one-shot build; treat sections A–C as blocking, D–J as advisory until
   ablation data says otherwise.
-- **Spec linter:** section J is mechanizable today (undefined pseudocode
-  helpers, dangling config references, hedge-word grep) — a cheap agent pass
-  that would have caught real defects in all four gold specs.
+- **Spec linter:** section J is mechanized by [`hardening/`](hardening/)
+  (checks D-06…D-12; hedge lexicon HW-LEX v1) — and its §R regression suite
+  pins the pass to the real defects it catches in all four gold specs.
 - **Authoring template:** the §2.1 K-ordering (goals → non-goals → data model
   → behavior → interfaces → config → errors → examples → DoD) is a fill-in
   skeleton for new specs.
