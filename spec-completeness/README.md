@@ -31,6 +31,16 @@ Every §2.1 attribute and §3 checklist section below has a designated home ther
 artifact IDs (`A-VS`, `C-DM`, `R-FR`, `G-AC`, …) are the working vocabulary for
 task-02 (authoring process) and task-03 (hardened checks).
 
+A second companion, [`process.md`](process.md), supplies the authoring process (task-02):
+an eight-stage, loop-structured path (S0 Capture → S7 Probe builds) from a raw idea to a
+compiled spec that passes §3, with four roles (OWNER, AUTHOR, PROBE, BUILDER), field-level
+schemas for its question/decision/defect records, per-stage entry/exit gates, a defect
+routing table over five build-defect classes, numeric loop/abort/freeze criteria, and a
+pressure-test protocol for evaluating the process itself against this repo's numbered
+idea files. Its S3 question loop and S7 build-and-grade loop operationalize §4.2's
+question-count probe and ablation-grading ideas respectively, and its stage gates
+(S3 closure, S6 lint, S7 grading) are where task-03's hardened checks will execute.
+
 ---
 
 ## 1. Method
