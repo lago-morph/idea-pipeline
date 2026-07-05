@@ -22,6 +22,15 @@ This document has four parts:
 3. [Checklist](#3-the-spec-completeness-checklist) — the operational deliverable
 4. [Measuring influence](#4-which-attributes-most-strongly-influence-success) — hypothesis ranking + an experiment protocol for the causal question
 
+A companion document, [`artifact-model.md`](artifact-model.md), takes the structural
+next step (task-01): it names the internal anatomy these findings describe as a set of
+sixteen artifacts with strict WHAT/HOW layering, a dependency graph, traceability
+rules, and a compilation scheme — validated by decomposing all four gold specs and by
+re-expressing every defect in the profiles' ambiguity audits as a model violation.
+Every §2.1 attribute and §3 checklist section below has a designated home there; its
+artifact IDs (`A-VS`, `C-DM`, `R-FR`, `G-AC`, …) are the working vocabulary for
+task-02 (authoring process) and task-03 (hardened checks).
+
 ---
 
 ## 1. Method
