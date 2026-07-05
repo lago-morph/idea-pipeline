@@ -11,6 +11,7 @@ produce good work.
 | [task-01-artifact-model.md](task-01-artifact-model.md) | `artifact-model.md` — RUP-like artifact decomposition of a one-shot spec, with WHAT/HOW layering, dependency graph, traceability rules, and validation by decomposing the four gold specs | — |
 | [task-02-idea-to-spec-process.md](task-02-idea-to-spec-process.md) | `process.md` — explicit staged process from idea to checklist-passing spec, with roles, question-queue schemas, stage entry/exit criteria, defect routing, and a pressure-test protocol | task-01 |
 | [task-03-hardened-checks.md](task-03-hardened-checks.md) | `hardening/` — the §3 checklist rebuilt as executable (claim, probe, pass-criterion) checks, tiered deterministic → constrained-LLM → human | task-01 (soft) |
+| [task-04-refactor.md](task-04-refactor.md) | Cross-document reconciliation pass: apply the supersessions and pointer updates tasks 01–03 left behind (process §4.7 charter trim, §3 item IDs, lexicon/metric unification) | task-03 |
 
 Recommended order: 01 → 02 → 03, but 02 and 03 can run in parallel after 01
 merges — both carry provisional-vocabulary fallbacks if they must start
