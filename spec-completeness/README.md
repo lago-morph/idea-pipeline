@@ -41,6 +41,19 @@ idea files. Its S3 question loop and S7 build-and-grade loop operationalize §4.
 question-count probe and ablation-grading ideas respectively, and its stage gates
 (S3 closure, S6 lint, S7 grading) are where task-03's hardened checks will execute.
 
+A third companion, [`hardening/`](hardening/), rebuilds the §3 checklist below as
+executable checks (task-03): every item A–J maps to one or more (claim, probe,
+pass-criterion) definitions — deterministic closure/lint computations over the
+artifact-model tag grammar wherever possible, constrained-context ephemeral LLM probes
+where reading is unavoidable, mutation testing of the gate artifacts, and exactly one
+human check (owner behavior acceptance). [`hardening/README.md`](hardening/README.md)
+holds the tier framework, the escalation ladder, the item→check coverage table, and the
+calibration hook that ties check metrics back to §4.2's ablation outcomes;
+[`hardening/checks.md`](hardening/checks.md) holds the check definitions plus a
+regression suite in which every residual defect from the four profiles' ambiguity
+audits (§2.3) reappears as an expected check firing. Check procedures live there;
+failure routing stays with `process.md` §8.
+
 ---
 
 ## 1. Method
