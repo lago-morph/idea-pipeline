@@ -82,7 +82,8 @@ flowchart TD
 | Shared contract | Domain model; cross-cutting behavior (state machines, invariants, formulas); failure taxonomy; quality constraints | `shared/domain-model.md`, `shared/behavior.md`, `shared/failures.md`, `shared/quality.md` |
 | Realization | Architecture sketch; interface surface; reference algorithms; configuration & defaults | `shared/architecture.md`, `shared/interfaces.md`, `shared/algorithms.md`, `shared/configuration.md` |
 | Gate | Assembled acceptance checklist; conformance profiles (conditional); smoke test | `gate/checklist.md`, `gate/profiles.md`, `gate/smoke-test.md` |
-| Records | Question queue, decision log, defect queue, metrics — the process side ([process.md](process.md) §4) | `records/*.md` |
+| Shared examples | Complete inputs for format surfaces that span use cases (per-flow pairs live in each use case) | `shared/examples.md` |
+| Records | Question queue, decision log, defect queue, duplication register, metrics — the process side ([process.md](process.md) §4) | `records/*.md` |
 
 The split rule between use cases and shared sections is ownership by reach:
 **information used by exactly one use case lives in that use case; information used
@@ -115,7 +116,7 @@ maturity level L1 (§4). Sections, in order:
    references into the domain model, with any per-use-case constraints stated here.
 7. **Acceptance criteria.** Numbered (`A1, A2, …`), each mechanically checkable — a
    test could assert it. These are assembled into the system checklist at gate time
-   (§5, G-AC), and phrased so that two implementations differing only in left-open
+   (§5, Acceptance Checklist), and phrased so that two implementations differing only in left-open
    choices (ADR-0003) pass or fail identically.
 8. **Open items.** Question records targeting this use case (IDs only — the queue is
    the source of truth).
@@ -176,11 +177,15 @@ level. Until they exist, the table above is the checklist.
 
 ## 5. Shared sections
 
-Shared sections keep their IDs from the old model where the artifact survives
-(element IDs inside them remain valid). Each entry gives contents, boundary, and the
-consistency link tying it to use cases.
+Each entry below names the section, the workspace file that holds it (the same
+names [process.md](process.md) uses in its stage cards and production map — the two
+documents describe the same pieces), and, in parentheses, its **tag prefix**: the
+legacy artifact ID that survives inside element tags (`[#C-DM-004]`, §7) and in
+`hardening/` until round two. Prose uses the plain names; prefixes exist for the
+machine layer. Element IDs inside surviving sections remain valid. Each entry gives
+contents, boundary, and the consistency link tying it to use cases.
 
-**`A-VS` — Vision & Scope** *(front matter)*. Problem statement; goals as named
+**Vision & Scope** (`shared/vision-scope.md`; tag prefix `A-VS`). Problem statement; goals as named
 principles; non-goals, each mapped to the extension point where it would attach;
 boundary notes; the external-dependency register (scope of reliance, version pin or
 discovery procedure, conflict-resolution rule); reference implementations marked
@@ -190,20 +195,20 @@ which documentation types this project includes or explicitly defers, with reaso
 *Link:* every use case in the index serves a stated goal; a use case serving no goal
 is scope creep; a goal served by no use case is unrealized intent (checked under C7).
 
-**`A-GL` — Glossary & Conventions** *(front matter)*. Normative-keyword convention;
+**Glossary & Conventions** (`shared/glossary.md`; `A-GL`). Normative-keyword convention;
 type-notation legend; one authoritative definition per term.
 *Link:* every term used normatively in a use case or shared section resolves here or
 in the domain model (C1).
 
-**`C-DM` — Domain Model**. Every entity as a typed field list; every enum enumerated
+**Domain Model** (`shared/domain-model.md`; `C-DM`). Every entity as a typed field list; every enum enumerated
 completely, each value with semantics; field constraints inline.
-*Boundary:* abstract — no wire formats, no defaults (those are R-CD's), no interface
-names.
+*Boundary:* abstract — no wire formats, no defaults (those live in Configuration & Defaults), no
+interface names.
 *Link:* use case Data sections reference entities/fields/enums by name; every
 reference resolves (C1); every entity is referenced by ≥1 use case or explicitly
 marked `internal` with the mechanism that needs it (C5).
 
-**`C-BC` — Cross-cutting Behavior**. Behavior that spans use cases: shared state
+**Cross-cutting Behavior** (`shared/behavior.md`; `C-BC`). Behavior that spans use cases: shared state
 machines with **total** transition tables (state machines stay exactly as rigorous as
 before — they are precise *and* readable); system-wide ordering and idempotency
 guarantees; precedence rules as total orderings with deterministic tie-breaks;
@@ -214,62 +219,74 @@ case's scenario or extensions, not here.
 transition; the named states/transitions must exist, and every machine transition is
 reachable from ≥1 use case or marked internal (C3).
 
-**`C-FM` — Failure Taxonomy**. Named failure classes; retryable-vs-terminal
+**Failure Taxonomy** (`shared/failures.md`; `C-FM`). Named failure classes; retryable-vs-terminal
 classification; per-class blast radius; timeout semantics.
 *Boundary:* failure *classes* are shared; where a failure lands in a specific flow is
 the owning use case's extension.
 *Link:* extensions cite classes by ID; every class is cited by ≥1 extension or marked
 internal (C4).
 
-**`C-QC` — Quality Constraints**. Concurrency guarantees (what is serialized or
+**Quality Constraints** (`shared/quality.md`; `C-QC`). Concurrency guarantees (what is serialized or
 atomic, cancellation semantics, result ordering), safety invariants with validation
 predicates, portability and resource constraints.
 *Link:* realization elements and use case guarantees cite the constraints they
 discharge (C5).
 
-**`R-AS` — Architecture Sketch**. Component decomposition with one-line
-responsibilities; interaction diagram; porting seams. Advisory except through its
-citations.
+**Architecture Sketch** (`shared/architecture.md`; `R-AS`). The implementer's map:
+a suggested decomposition into components with one-line responsibilities, a small
+interaction diagram, a note of which component discharges which obligation, and the
+porting seams — which parts can be swapped independently, citing the quality
+constraints they serve.
+*Why advisory:* the gate observes the system only through its public surface, so
+internal structure is precisely what acceptance criteria cannot distinguish — an
+implementation organized differently that passes the full gate conforms. Structural
+requirements the owner actually cares about (library vs. service, what must be
+deployable or replaceable separately) are observable at the boundary and belong in
+Quality Constraints, which bind. So the sketch's *normative* force is exhausted by
+the obligations its components cite — while its practical force is real: the
+delivery build follows it, repairs live inside it, and all four gold specs carried
+such a section as orientation and porting advice.
 
-**`R-IS` — Interface Surface**. Exact names, typed parameters, return types;
+**Interface Surface** (`shared/interfaces.md`; `R-IS`). Exact names, typed parameters, return types;
 per-tool/endpoint `parameters / returns / errors` blocks; concrete grammars; wire
 formats; built-in catalogues.
 *Link:* from L2, every system-side scenario step maps to the interface elements that
 carry it; every interface element serves ≥1 step or shared obligation — an element
 serving none is over-specification (C5).
 
-**`R-RA` — Reference Algorithms**. Step-numbered, language-agnostic pseudocode for
+**Reference Algorithms** (`shared/algorithms.md`; `R-RA`). Step-numbered, language-agnostic pseudocode for
 deterministic procedures — witnesses, not mandates; implementations may substitute
-anything observably identical. Pseudocode may call only helpers defined in R-RA/R-IS
-or obligations stated in C-BC or a use case (C1).
+anything observably identical. Pseudocode may call only helpers defined here or in the
+Interface Surface, or obligations stated in Cross-cutting Behavior or a use case
+(C1).
 
-**`R-CD` — Configuration & Defaults**. Every knob defaulted at its point of
+**Configuration & Defaults** (`shared/configuration.md`; `R-CD`). Every knob defaulted at its point of
 definition; resolution chains as total orders. The consolidated cheat-sheet is a
 derived view (§8).
 *Link:* every knob is a domain-model field; every knob a use case touches has a
 default by that use case's L2 (C5). A deliberately open default is a **left-open
 decision**, cited inline (`[left-open: DEC-NNN]`), not a register entry (ADR-0003).
 
-**`G-AC` — Acceptance Checklist** *(assembled)*. The system checklist is assembled
+**Acceptance Checklist** (`gate/checklist.md`; `G-AC`; assembled). The system checklist is assembled
 from every use case's acceptance criteria plus criteria for shared normative elements
 (invariants, machines, quality constraints). Assembly is generation with attribution —
 each item keeps a citation to its source. One item per left-open decision: "the
 implementation documents its choice per DEC-NNN."
 *Boundary:* mechanically checkable items only; the gate never creates obligations.
 
-**`G-CM` — Conformance Profiles** *(conditional)*. Required exactly when the spec
+**Conformance Profiles** (`gate/profiles.md`; `G-CM`; conditional). Required exactly when the spec
 declares a variation axis (providers, platforms, optional features); waived
 consciously otherwise, with the waiver in the ledger.
 
-**`G-ST` — Smoke Test**. Executable end-to-end script with concrete ASSERTs and
+**Smoke Test** (`gate/smoke-test.md`; `G-ST`). Executable end-to-end script with concrete ASSERTs and
 expected values, covering the **primary use case** — the one that realizes the idea's
 success statement. Vectors promote from use case Examples sections.
 
-**`X-DR` — Rationale Annex** *(compiled)*. Generated from the decision log at
+**Rationale Annex** (compiled into `dist/spec.md` appendices from the decision log; `X-DR`). Generated from the decision log at
 assembly: the why behind decisions, rejected alternatives, left-open reasoning. Zero
 normative force (C8).
 
-**`X-WE` — Shared Examples**. Complete, realistic, copy-pasteable inputs for format
+**Shared Examples** (`shared/examples.md`; `X-WE`). Complete, realistic, copy-pasteable inputs for format
 surfaces that span use cases (a full config file, a full input document). Per-flow
 input→output pairs live in the owning use case's Examples section instead.
 

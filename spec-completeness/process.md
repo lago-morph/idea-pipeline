@@ -161,6 +161,7 @@ One directory per spec run, mirroring [artifact-model §2](artifact-model.md#2-t
     vision-scope.md  glossary.md
     domain-model.md  behavior.md  failures.md  quality.md
     architecture.md  interfaces.md  algorithms.md  configuration.md
+    examples.md
   gate/
     checklist.md  profiles.md  smoke-test.md
   probes/
@@ -170,8 +171,11 @@ One directory per spec run, mirroring [artifact-model §2](artifact-model.md#2-t
     spec.md                 # compiled single file (regenerated, never edited)
 ```
 
-The living implementation lives in the project's own repository, recorded in the
-ledger — not inside the spec workspace.
+Every `shared/` and `gate/` file is one artifact-model §5 section, one to one —
+the two documents name the same pieces; §5 also lists each file's tag prefix
+(`C-DM`, `R-IS`, …) used by the machine layer. The living implementation lives in
+the project's own repository, recorded in the ledger — not inside the spec
+workspace.
 
 ### 3.2 The run ledger
 
@@ -686,7 +690,7 @@ element serving something (C5). Then prove implementability with an ignorant pro
 3. Annotate each use case's steps with their step→surface mapping (the L2
    annotation).
 4. Fill Examples sections: ≥1 input→output pair per format boundary per use case;
-   shared format inputs in `shared/` examples where they span use cases.
+   shared format inputs in `shared/examples.md` where they span use cases.
 5. **Coverage computation** (CHECK): `step_map_coverage`, `element_serving_rate`,
    `defaults_closure` (§9.2); violations mint questions.
 6. **Probe.** Dispatch P-IMPL (§4.6); every invention becomes a question —
@@ -694,7 +698,7 @@ element serving something (C5). Then prove implementability with an ignorant pro
 7. Account; update `uc-levels`.
 
 **Outputs.** `shared/architecture.md`, `interfaces.md`, `algorithms.md`,
-`configuration.md` (→ CONTROLLED); use cases at L2.
+`configuration.md`, `examples.md` (→ CONTROLLED); use cases at L2.
 
 **Exit criteria.**
 - S4-X1: `step_map_coverage = 1.0` and `element_serving_rate = 1.0` (C5 both ways).
@@ -923,13 +927,13 @@ CONTROLLED. After that, changes arrive only via routed records.
 | File(s) | Produced by | Revised by (routes) |
 |---|---|---|
 | `idea-record.md` | S0 | new run only |
-| `shared/vision-scope.md`, `use-cases/index.md` | S1 | scope-level INTENT_GAP via S1 |
-| `shared/glossary.md` | S2 (conventions; glossary half grows until S4 exit) | LINT via S6; term additions ride their introducing decisions |
+| `shared/vision-scope.md` (A-VS), `use-cases/index.md` | S1 | scope-level INTENT_GAP via S1 |
+| `shared/glossary.md` (A-GL) | S2 (conventions; glossary half grows until S4 exit) | LINT via S6; term additions ride their introducing decisions |
 | `use-cases/UC-*.md` | S3 to L1; annotated to L2 in S4; gated to L3 in S5 | INTENT_GAP / CONTRACT_GAP via S3; REALIZATION_GAP (mapping) via S4; GATE_GAP (criteria) via S5 |
-| `shared/domain-model.md`, `behavior.md`, `failures.md`, `quality.md` | S3 | INTENT_GAP / CONTRACT_GAP via S3 |
-| `shared/architecture.md`, `interfaces.md`, `algorithms.md`, `configuration.md` | S4 | REALIZATION_GAP via S4 |
-| `gate/checklist.md`, `profiles.md`, `smoke-test.md` | S5 | GATE_GAP via S5 (assembly re-run) |
-| `dist/spec.md`, rationale annex, docs feedstock | S6 (regenerated every compile) | LINT via S6 |
+| `shared/domain-model.md` (C-DM), `behavior.md` (C-BC), `failures.md` (C-FM), `quality.md` (C-QC) | S3 | INTENT_GAP / CONTRACT_GAP via S3 |
+| `shared/architecture.md` (R-AS), `interfaces.md` (R-IS), `algorithms.md` (R-RA), `configuration.md` (R-CD), `examples.md` (X-WE) | S4 | REALIZATION_GAP via S4 |
+| `gate/checklist.md` (G-AC), `profiles.md` (G-CM), `smoke-test.md` (G-ST) | S5 | GATE_GAP via S5 (assembly re-run) |
+| `dist/spec.md`, rationale annex (X-DR), docs feedstock | S6 (regenerated every compile) | LINT via S6 |
 | living implementation + documentation | S7 (delivery build) | S8 (repair or rebuild) |
 
 Left-open decisions are minted wherever their question was triaged (usually S3);
