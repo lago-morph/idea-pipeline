@@ -2,11 +2,12 @@
 
 *Task-03 deliverable for [issue #22](https://github.com/lago-morph/idea-pipeline/issues/22).
 Companions: [../README.md](../README.md) §3 is the checklist being hardened;
-[../artifact-model.md](../artifact-model.md) supplies the artifact IDs, traceability rules
-T1–T7, and the §5 tag grammar the deterministic tier greps; [../process.md](../process.md)
-supplies the stages these checks execute in, the defect classes their failures route to,
-and the record schemas their findings land in. All check definitions live in
-[checks.md](checks.md). Compiled 2026-07-05.*
+[../artifact-model.md](../artifact-model.md) supplies the spec model — use case
+documents, shared sections, consistency rules C1–C10, and the §7 tag grammar the
+deterministic tier greps; [../process.md](../process.md) supplies the stages these
+checks execute in (S0–S8), the defect classes their failures route to, and the record
+schemas their findings land in. All check definitions live in [checks.md](checks.md).
+Compiled 2026-07-05; realigned 2026-07-06 to ADRs 0001–0005 (round two).*
 
 The README §3 checklist asks *whether things were done* — a DoD exists, defaults are
 present. Existence checks are Goodhart-able: a bad DoD satisfies "a DoD exists." This
@@ -40,8 +41,8 @@ Three tiers, strictly ordered by preference:
 extracts (inventories, §4). Same input → same output; no model anywhere in the loop.
 Implementable as regex/parse/set-arithmetic per the check's procedure sketch. Tier D is
 possible far more often than it first appears because the artifact model gives specs a
-grep surface: element IDs, `[realizes:]`/`[freedom:]`/`[checks:]` tags (artifact-model
-§5), per-artifact files, and total record schemas.
+grep surface: element IDs, `[realizes:]`/`[uses:]`/`[machine:]`/`[checks:]`/`[left-open:]`
+tags (artifact-model §7), per-section files, and total record schemas.
 
 **Tier L — LLM checks in constrained-context ephemeral sessions.** A fresh session per
 check run, zero author context, a pinned prompt template versioned in this directory,
@@ -109,7 +110,7 @@ Why not lower:        (Tier L/M/H only) one sentence per ladder audit
 Field-level rules: `Hardens` must name ≥1 §3 item (a check with no mapped item is a
 suite defect — §8's table is bidirectionally total); `Metric` states the formula in
 process.md §9.2's style and reuses its metric names verbatim where they exist
-(`enum_closure`, `t1_orphans`, `gate_coverage`, …); `Procedure` may say "TBD" nowhere.
+(`enum_closure`, `step_map_coverage`, `gate_coverage`, …); `Procedure` may say "TBD" nowhere.
 
 ## 3. Conventions
 
@@ -117,7 +118,7 @@ process.md §9.2's style and reuses its metric names verbatim where they exist
 
 Check IDs are tier-prefixed and stable: `D-##` (deterministic), `DL-##` (extraction
 hybrid), `L-##` (LLM probe), `M-##` (mutation), `H-##` (human). IDs are assigned once
-and never reused; gaps stay gaps (same policy as artifact-model §5 element IDs).
+and never reused; gaps stay gaps (same policy as artifact-model §7 element IDs).
 
 README §3 prints its item IDs inline (`A.1`…`J.5`; added by task-04 per this
 framework's amendment A-1). Item IDs are stable and never renumbered — new items
@@ -132,7 +133,7 @@ Every check emits one machine-parseable record per run (JSON line):
 { "check": "D-07", "spec": "<run-id or spec path>", "version": "<spec-version>",
   "verdict": "PASS" | "FAIL" | "INDETERMINATE",
   "metric": {"name": "config_ref_closure", "value": 0.96, "threshold": 1.0},
-  "evidence": [ {"file": "artifacts/C-BC.md", "line": 214, "element": "C-BC-031",
+  "evidence": [ {"file": "shared/behavior.md", "line": 214, "element": "C-BC-031",
                  "note": "references config key `assignee`; no C-DM field, no R-CD default"} ],
   "route": {"class": "CONTRACT_GAP", "stage": "S3"} | null }
 ```
@@ -159,8 +160,8 @@ Class assignment follows process §8.1's signatures; each check block names its
 D-07 dangling config key defaults to LINT-shaped routing but is CONTRACT_GAP whenever
 the minimal fix would change what a conforming implementation is (symphony's
 "configured assignee" is the type case). Checks whose failures are *triage-shaped* say
-so: a T1 orphan (D-10) means "missing requirement **or** over-specification — a human
-decides which" (artifact-model T1); the check detects, the routed stage dispositions.
+so: a C5 orphan (D-10) means "missing requirement **or** over-specification — a human
+decides which" (artifact-model C5); the check detects, the routed stage dispositions.
 
 ### 3.4 Severity of check findings
 
@@ -182,7 +183,7 @@ framework fixes one acquisition rule:
 **Inventory acquisition rule.** Every inventory named by a check has a JSON schema
 (defined in the check block). It is produced by the cheapest path available:
 
-- **Tagged spec** (authored per artifact-model §5, i.e. any process.md run): extraction
+- **Tagged spec** (authored per artifact-model §7, i.e. any process.md run): extraction
   is **Tier D** — grep element IDs and tags, parse the per-artifact record schemas. The
   check runs as pure Tier D end to end.
 - **Untagged spec** (the four gold specs; any external spec being graded): extraction is
@@ -207,7 +208,7 @@ untagged path against the gold specs.
 ## 5. Tier-L constraint rules
 
 Codified once here; every `L-*`/`M-*` check inherits them. These are process.md's P4
-regime (PROBE role, §2, §4.7) made check-shaped:
+regime (PROBE role, §2, §4.6) made check-shaped:
 
 1. **Ephemeral session, zero author context.** One fresh session per run; a session
    that has seen an earlier draft, the question queue, or this framework is
@@ -242,15 +243,15 @@ regime (PROBE role, §2, §4.7) made check-shaped:
    the consuming stage's ingestion rule, never edited.
 
 Where a check hardens a probe process.md already charters (P-ASSUME, P-QCOUNT, P-IMPL,
-BUILDER), the checks.md template is the **v2 of that charter** and supersedes the §4.7
-v1 text, exactly as process.md's own supersession note provides; ingestion and routing
+BUILDER, REPAIRER), the checks.md template is the **v2 of that charter** and supersedes
+the process §4.6 v1 text, exactly as process.md's own supersession note provides; ingestion and routing
 stay with process.md. The v2 templates keep the v1 prompt text and add the output
 schema, k rules, and stability machinery around it.
 
 ## 6. Constants
 
 Hardening-specific constants, one place, stated and justified (process P6). Process.md
-§9.1's constants (`D_dry`, `k_iter`, `k_freeze`, …) are consumed as-is and not restated.
+§9.1's constants (`D_dry`, `k_diag`, `M_abort`, …) are consumed as-is and not restated.
 
 | Constant | Value | Used by | Justification |
 |---|---|---|---|
@@ -258,11 +259,11 @@ Hardening-specific constants, one place, stated and justified (process P6). Proc
 | `k_extract` | 3 | §4 L-extraction | Two agreeing extractions could share a blind spot; three give a majority *and* a pairwise agreement statistic. |
 | `S_extract` | 0.90 pairwise agreement (min over pairs) | §4 stability gate | Inventories are enumerations of things literally written in the text; readers should agree almost perfectly. Persistent <0.9 disagreement means the text under-determines its own inventory — a finding, not noise. |
 | `A_min` | 2/3 | Tier-L verdict aggregation | With k=3, 2/3 is the smallest decisive majority; unanimous-only would let one noisy run block every verdict. |
-| `N_scenario` | ≥1 per C-BC operation + ≥1 per C-FM failure class, cap 40 | L-02 | Ties probe cost to spec size with a budget ceiling; below 1-per-operation, divergence has blind spots exactly where contracts live. |
-| `N_trace` | ≥1 vector per R-RA algorithm, ≥2 for algorithms with branching on enum values | L-03 | One vector proves executability; branchy algorithms need a second vector through the other arm or the trace never leaves the happy path. |
+| `N_scenario` | ≥1 per use case scenario + ≥1 per shared-behavior operation + ≥1 per failure class, cap 40 | L-02 | Ties probe cost to spec size with a budget ceiling; below 1-per-operation, divergence has blind spots exactly where contracts live. |
+| `N_trace` | ≥1 vector per reference algorithm, ≥2 for algorithms with branching on enum values | L-03 | One vector proves executability; branchy algorithms need a second vector through the other arm or the trace never leaves the happy path. |
 | `N_mut` | ≥2 mutants per taxonomy class (≥12 total) | M-01, M-02 | One mutant per class measures luck; two distinguish "gate covers the class" from "gate caught that instance." |
-| `kill_min` | 1.0 at freeze-grade; 0.90 advisory during iteration | M-01, M-02 | A surviving mutant is a named hole in the gate (GATE_GAP) — freeze with a known hole is freeze-in-name-only; during iteration 0.9 keeps the signal without blocking every round on the tail. |
-| `HW-LEX` | v1 hedge lexicon, defined in checks.md D-12 | D-12 | One canonical, versioned list so process T7/S6 and README §3.J.5 stop each carrying their own "and kin." |
+| `kill_min` | 1.0 at delivery-grade; 0.90 advisory during iteration | M-01, M-02 | A surviving mutant is a named hole in the gate (GATE_GAP) — delivering with a known hole is delivery-in-name-only; during iteration 0.9 keeps the signal without blocking every round on the tail. |
+| `HW-LEX` | v1 hedge lexicon, defined in checks.md D-12 | D-12 | One canonical, versioned list so process C6/S6 and README §3.J.5 stop each carrying their own "and kin." |
 
 ## 7. Execution map: checks × process stages
 
@@ -273,12 +274,13 @@ decides it; the §8.1 routing table consumes the failure.
 
 | Process gate | Checks run | Stage criteria they mechanize |
 |---|---|---|
-| S1 exit | D-13, D-15 · L-04 | S1-X1 (assumption probe clean), S1-X2 (A-VS complete per artifact-model §2.2) |
-| S3 activity 4 + exit | D-01, D-02, D-03, D-04, D-16, D-20 · DL-01 (precedence half), DL-02, DL-03, DL-04, DL-05 (predicate half), DL-07, DL-08 · L-01 | S3-X1 (dry, via L-01 under `D_dry`), S3-X2 (`enum_closure`, `transition_closure`, `failure_closure`), S3-X4 (register fields) |
-| S4 activity 4 + exit | D-05, D-06, D-08, D-10, D-11, D-17, D-18, D-19, D-26, D-27 · DL-01 (resolution-chain half), DL-06 · L-07 | S4-X1 (`t1_orphans`, `t2_dangling`), S4-X2 (`defaults_closure`), S4-X3 (implementation probe clean), S4-X5 (helper closure), S4-X6 (X-WE coverage) |
-| S5 exit | D-22, D-23, D-24, D-25 · DL-05 (gate-linkage half) · L-05 | S5-X1 (`gate_coverage`), S5-X2 (`checkable_rate`), S5-X3 (ASSERT citations, R-FR boxes), S5-X5 (public-surface-only) |
-| S6 lint | D-07, D-09, D-12, D-14, D-21, D-28, D-29 · L-08 (the activity-3 rationale sweep) — **plus a re-run of every D/DL check over the compiled `dist/spec.md`** | S6-X1 (`lint_errors = 0`), S6-X3 (derived views), S6-X5 (annex force); tags survive compilation (artifact-model §6.2), so the re-run certifies the exact text builders will see |
-| S7 rounds | L-02, L-03, L-06, L-09 · M-01 on freeze-candidate rounds (M-02 optional, budget permitting) · H-01 at the round's owner review | S7 grading and divergence analysis; freeze evidence beyond `pass_rate` (a gate that mutants walk through makes `pass_rate = 1.0` vacuous) |
+| S1 exit | D-13, D-15, D-30 · L-04 | S1-X1 (assumption probe clean), S1-X2 (vision & scope complete, deliverables selection — with D-34's selection half), S1-X3 (index approved, goals↔use cases) |
+| S3 activity 4 + exit | D-01, D-02, D-03, D-04, D-16, D-20, D-31, D-32 · DL-01 (precedence half), DL-02, DL-03, DL-04, DL-05 (predicate half), DL-06, DL-07, DL-08 · L-01 | S3-X1 (dry, via L-01 under `D_dry`), S3-X2 (`enum_closure`, `transition_closure`, `extension_coverage`), S3-X3 (use cases at L1, via D-31), S3-X4 (left-open fields, via D-20) |
+| S4 activity 5 + exit | D-05, D-06, D-08, D-10, D-11, D-17, D-18, D-19, D-26, D-27, D-31 · DL-01 (resolution-chain half) · L-07 | S4-X1 (`step_map_coverage`, `element_serving_rate`), S4-X2 (`defaults_closure`), S4-X3 (implementation probe clean), S4-X4 (use cases at L2), S4-X5 (helper closure), S4-X6 (example coverage) |
+| S5 exit | D-22, D-23, D-24, D-25, D-31 · DL-05 (gate-linkage half) · L-05 | S5-X1 (`gate_coverage`), S5-X2 (`checkable_rate`), S5-X3 (ASSERT citations, left-open documentation items), S5-X4 (use cases at L3), S5-X5 (public-surface-only) |
+| S6 lint | D-07, D-09, D-12, D-14, D-21, D-28, D-29, D-33, D-34 (feedstock half) · L-08 (the activity-3 rationale sweep) — **plus a re-run of every D/DL check over the compiled `dist/spec.md`** | S6-X1 (`lint_errors = 0`), S6-X3 (derived views), C8's annex/docs force; tags survive compilation (artifact-model §8), so the re-run certifies the exact text implementers will see |
+| S7 rounds | L-02, L-03, L-06, L-09 · M-01 on delivery-candidate rounds (M-02 optional, budget permitting) · H-01 at the round's owner review | S7 grading and divergence analysis; delivery evidence beyond `pass_rate` (a gate that mutants walk through makes `pass_rate = 1.0` vacuous) |
+| S8 changes | full gate re-run (D-22/D-24 walk + smoke execution) on the repaired implementation; scoped re-runs per touched elements; L-09 when a left-open ruling is implicated by feedback | S8 activity 6 (correspondence proof); §10's re-verification table |
 | Standalone grading (external or gold spec) | full suite via the §4 untagged extraction path | README §4.3's readiness gate, executed |
 
 Two standing rules. **(1) Producing-stage-first:** each D/DL check first runs at the
@@ -317,7 +319,7 @@ Bold check = the item's primary hardening; others corroborate.
 | D.3 | Wire surfaces: routes, methods, statuses, bodies | **D-19** | D+L |
 | E.1 | Every knob defaulted at point of definition | **D-05** | D+L |
 | E.2 | Contextual defaults state resolution chains | **DL-01** | D+L |
-| E.3 | Open defaults marked implementation-defined + doc duty | **D-20**, L-09 | D, L |
+| E.3 | Open defaults cite an owner-ruled left-open decision + doc duty | **D-20**, L-09 | D, L |
 | E.4 | Consolidated config cheat-sheet | **D-21** | D |
 | F.1 | Named error taxonomy | **D-03**, D-18 | D+L |
 | F.2 | Retryable vs. terminal per class, in a table | **D-04** | D+L |
@@ -328,25 +330,34 @@ Bold check = the item's primary hardening; others corroborate.
 | G.2 | Dedicated non-goals section | **D-15**, L-04 | D, L |
 | G.3 | Exclusions name extension points | **D-15** | D |
 | G.4 | Boundary notes where ignorant readers diverge | **L-02**, L-04 | L |
-| H.1 | Every "up to you" explicit and bounded | **D-10**, D-11, D-12, D-20, L-07, L-09 | D, L |
+| H.1 | Every "up to you" an owner-ruled left-open decision | **D-20**, D-10, D-11, D-12, L-07, L-09 | D, L |
 | H.2 | External docs named, scoped, conflict-ruled | **D-13** | D |
 | H.3 | Reference implementations inspiration-only | **D-14** | D |
 | I.1 | Worked I/O pairs per format surface | **D-26** | D |
 | I.2 | Complete realistic copy-pasteable sample input | **D-26**, D-27 | D |
 | I.3 | Linked ToC | **D-28** | D |
 | I.4 | Rationale quarantined in appendix | **D-29**, L-08 | D, L |
-| I.5 | Redundancy by derivation (witnesses, derived views) | **D-11**, D-21, L-03, L-06 | D, L |
+| I.5 | Redundancy with drift protection (witnesses, derived views, duplication register) | **D-11**, D-21, D-33, L-03, L-06 | D, L |
 | I.6 | Types precede behavior; conformance last | **D-28** | D |
 | J.1 | Every pseudocode helper defined | **D-06**, D-09 | D+L |
 | J.2 | Every prose config field exists in schema | **D-07**, D-09 | D+L |
 | J.3 | Every algorithm-read field exists on its record | **D-08**, D-09 | D+L |
-| J.4 | No conflicting statements; gate/annex never beat body | **L-06**, L-02, L-03 | L |
-| J.5 | Hedge words fixed or converted to freedom | **D-12** | D |
+| J.4 | No conflicting statements; gate/annex/docs never beat body (C8) | **L-06**, L-02, L-03 | L |
+| J.5 | Hedge words fixed or converted to a left-open decision | **D-12** | D |
+| K.1 | Use case index exists, owner-approved | **D-30** | D |
+| K.2 | Every goal has a traditional-form use case document | **D-30**, D-16 | D |
+| K.3 | Every step's extensions resolved (inline / class / N/A) | **D-03**, D-32 | D+L |
+| K.4 | Honest maturity level per use case | **D-31** | D |
+| K.5 | Goals ↔ use cases, both directions | **D-30**, D-22 | D |
+| K.6 | Primary use case designated; smoke test executes it | **D-30**, D-24 | D |
+| L.1 | Deliverables selection recorded (include / defer + reason) | **D-34** | D |
+| L.2 | Decision log exported as docs feedstock (alternatives, left-open) | **D-34** | D |
+| L.3 | Docs zero-force; restatements have covering checks | **D-29**, D-33 | D |
 
 Cross-cutting note: **L-01** (question-count probe) is listed only where it is a
 primary instrument (C.3, F.4), but it backstops *every* section — any hardening gap in
 any item surfaces as implementer questions, which is why the process runs it to dryness
-before anything freezes. Tier column reads "D+L" where the §4 acquisition rule makes
+before anything is delivered. Tier column reads "D+L" where the §4 acquisition rule makes
 the check pure-D on tagged specs and hybrid on untagged ones.
 
 ## 9. The calibration hook
@@ -364,9 +375,9 @@ protocol is the experiment; this is the plumbing that connects it to the suite:
    project will have, report separation with the raw rows; do not dress it as
    significance.
 3. **Weight classes.** Every §3 item carries a weight: **W0 blocking** (a FAIL blocks
-   dispatch/freeze), **W1 default** (FAIL routes a defect but an owner may waive with a
+   dispatch/delivery), **W1 default** (FAIL routes a defect but an owner may waive with a
    ledger entry), **W2 advisory** (finding only). Initial assignment per README §4.3:
-   sections A–C start W0; D–J start W1; nothing starts W2.
+   sections A–C and K start W0; D–J and L start W1; nothing starts W2.
 4. **Re-weighting rule.** After `N_cal = 5` graded instances touch a metric: an item
    whose checks' failures show no outcome separation is **demoted one class**; a W1/W2
    item with strong separation is promoted one. Demotions and promotions each cite
@@ -384,9 +395,9 @@ was this task; *implementing* is these. Each loads this README + the named check
 sections as context.
 
 **FT-1 — Implement the Tier-D lint suite (tagged path).** A CLI that takes a process
-workspace (or `dist/spec.md`) authored with artifact-model §5 tags and runs every `D-*`
+workspace (or `dist/spec.md`) authored with artifact-model §7 tags and runs every `D-*`
 check, emitting §3.2 standard records (JSON lines) plus a human summary. Context:
-checks.md §1; artifact-model §5's grep surface. Acceptance: zero false fires on a
+checks.md §1; artifact-model §7's grep surface. Acceptance: zero false fires on a
 small synthetic clean fixture (build one — it becomes the suite's own regression
 anchor); every seeded violation in a deliberately-broken twin fixture fires exactly the
 predicted check.
@@ -460,3 +471,18 @@ record:
   independent ignorant readers diverge carry boundary notes" — L-02/L-04's measurement,
   process P4's rationale.
 
+
+
+### Round-two amendments (2026-07-06, ADRs 0001–0005)
+
+Applied with the use-case reshape; dispositions in `docs/adr/`:
+
+- **A-8** — E.3, H.1, J.5 reworded: `implementation-defined` freedoms became
+  owner-ruled **left-open decisions** (ADR-0003); D-20 and L-09 rewritten in place,
+  IDs kept.
+- **A-9** — I.5 reworded: hand-maintained redundancy is legal when the duplication
+  register carries a covering check (ADR-0002); D-33 added.
+- **A-10** — J.4 extended to documentation text (C8).
+- **A-11** — Section **K. Use cases** added (ADR-0001); D-30, D-31, D-32 added.
+- **A-12** — Section **L. Documentation** added (ADR-0005); D-34 added; D-29's scope
+  extended to documentation.

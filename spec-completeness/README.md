@@ -22,37 +22,35 @@ This document has four parts:
 3. [Checklist](#3-the-spec-completeness-checklist) — the operational deliverable
 4. [Measuring influence](#4-which-attributes-most-strongly-influence-success) — hypothesis ranking + an experiment protocol for the causal question
 
-A companion document, [`artifact-model.md`](artifact-model.md), takes the structural
-next step (task-01): it names the internal anatomy these findings describe as a set of
-sixteen artifacts with strict WHAT/HOW layering, a dependency graph, traceability
-rules, and a compilation scheme — validated by decomposing all four gold specs and by
-re-expressing every defect in the profiles' ambiguity audits as a model violation.
-Every §2.1 attribute and §3 checklist section below has a designated home there; its
-artifact IDs (`A-VS`, `C-DM`, `R-FR`, `G-AC`, …) are the working vocabulary for
-task-02 (authoring process) and task-03 (hardened checks).
+A companion document, [`artifact-model.md`](artifact-model.md), defines the spec
+model these findings feed (reshaped 2026-07-06 per
+[ADRs 0001–0005](../docs/adr/README.md)): **use case documents are the driving
+artifact** — one per user goal, in traditional human-reviewable form, with maturity
+levels L0–L3 — while shared sections (domain model, cross-cutting behavior, failure
+taxonomy, quality constraints, realization, gate) keep every structural rigor this
+document's findings identify. Consistency rules C1–C10 make the joins lintable, and
+the compilation scheme still produces the single-file shape the gold examples use.
 
-A second companion, [`process.md`](process.md), supplies the authoring process (task-02):
-an eight-stage, loop-structured path (S0 Capture → S7 Probe builds) from a raw idea to a
-compiled spec that passes §3, with four roles (OWNER, AUTHOR, PROBE, BUILDER), field-level
-schemas for its question/decision/defect records, per-stage entry/exit gates, a defect
-routing table over five build-defect classes, numeric loop/abort/freeze criteria, and a
-pressure-test protocol for evaluating the process itself against this repo's numbered
-idea files. Its S3 question loop and S7 build-and-grade loop operationalize §4.2's
-question-count probe and ablation-grading ideas respectively, and its stage gates
-(S3 closure, S6 lint, S7 grading) are where task-03's hardened checks execute.
+A second companion, [`process.md`](process.md), supplies the whole-life process:
+authoring stages S0–S6 (scope and use-case discovery, then loops that drive use cases
+to L1/L2/L3 with owner checkpoints on the use case documents themselves), S7
+verification & delivery (the delivery build is kept and becomes the living
+implementation; disposable parallel builds remain available as a diagnostic), and S8
+standing maintenance (repair vs. rebuild is a tactical per-change call; the full gate
+re-run is the correspondence proof). Its records — questions, decisions including
+owner-ruled left-open decisions, defects, metrics — are where every open item lives.
 
 A third companion, [`hardening/`](hardening/), rebuilds the §3 checklist below as
-executable checks (task-03): every item A–J maps to one or more (claim, probe,
-pass-criterion) definitions — deterministic closure/lint computations over the
-artifact-model tag grammar wherever possible, constrained-context ephemeral LLM probes
-where reading is unavoidable, mutation testing of the gate artifacts, and exactly one
-human check (owner behavior acceptance). [`hardening/README.md`](hardening/README.md)
-holds the tier framework, the escalation ladder, the item→check coverage table, and the
-calibration hook that ties check metrics back to §4.2's ablation outcomes;
-[`hardening/checks.md`](hardening/checks.md) holds the check definitions plus a
-regression suite in which every residual defect from the four profiles' ambiguity
-audits (§2.3) reappears as an expected check firing. Check procedures live there;
-failure routing stays with `process.md` §8.
+executable checks: every item A–L maps to one or more (claim, probe, pass-criterion)
+definitions — deterministic closure/lint computations over the artifact-model §7 tag
+grammar wherever possible, constrained-context ephemeral LLM probes where reading is
+unavoidable, mutation testing of the gate artifacts, and exactly one human check
+(owner behavior acceptance). [`hardening/README.md`](hardening/README.md) holds the
+tier framework, the escalation ladder, the item→check coverage table, and the
+calibration hook; [`hardening/checks.md`](hardening/checks.md) holds the check
+definitions plus a regression suite in which every residual defect from the four
+profiles' ambiguity audits (§2.3) reappears as an expected check firing. Check
+procedures live there; failure routing stays with `process.md` §8.
 
 ---
 
@@ -217,12 +215,14 @@ checklist section J.
 
 ## 3. The spec-completeness checklist
 
-Score a spec before pointing a one-shot harness at it. Items are phrased to be
-auditable (yes/no), and ordered roughly by hypothesized impact (§4.1). Item IDs are
+Score a spec before pointing an implementer at it (a kept delivery build or a
+disposable diagnostic fleet). Items are phrased to be auditable (yes/no), and ordered
+roughly by hypothesized impact (§4.1). Item IDs are
 stable — new items append fresh IDs, nothing renumbers — and every item maps to
 executable checks in [`hardening/`](hardening/) (its README §8 coverage table).
-Wording amendments applied by task-04 are recorded in the hardening README's appendix
-and [`tasks/task-04-refactor.md`](tasks/task-04-refactor.md).
+Wording amendments applied by task-04, and the round-two amendments of 2026-07-06
+(E.3, H.1, I.5, J.4, J.5 rewordings; new sections K and L — per ADRs 0001–0005), are
+recorded in the hardening README's appendix.
 
 ### A. Acceptance (the oracle)
 - [ ] **A.1** A Definition-of-Done section exists, framed as "done when every box is checked"
@@ -254,7 +254,7 @@ and [`tasks/task-04-refactor.md`](tasks/task-04-refactor.md).
 ### E. Configuration
 - [ ] **E.1** Every knob has an explicit default at its point of definition
 - [ ] **E.2** Contextual defaults state their resolution chain
-- [ ] **E.3** Deliberately open defaults are marked `implementation-defined` AND require the implementation to document its choice
+- [ ] **E.3** Deliberately open defaults cite an owner-ruled left-open decision AND require the implementation to document its choice
 - [ ] **E.4** A consolidated config cheat-sheet restates all fields + defaults in one place
 
 ### F. Errors and edge cases
@@ -271,7 +271,7 @@ and [`tasks/task-04-refactor.md`](tasks/task-04-refactor.md).
 - [ ] **G.4** Scope questions on which independent ignorant readers diverge get explicit boundary notes
 
 ### H. Freedom management
-- [ ] **H.1** Every "up to you" is explicit, and bounded by an interface, output contract, or invariant
+- [ ] **H.1** Every "up to you" is an owner-ruled left-open decision whose record states why the acceptance criteria cannot distinguish compliant choices
 - [ ] **H.2** External documents this spec depends on are named, scoped (which types/sections), and given a conflict-resolution rule ("on conflict, X controls")
 - [ ] **H.3** Reference implementations are marked inspiration-only, not dependencies
 
@@ -280,15 +280,28 @@ and [`tasks/task-04-refactor.md`](tasks/task-04-refactor.md).
 - [ ] **I.2** At least one complete, realistic sample input (full config file, full workflow file) is copy-pasteable
 - [ ] **I.3** A linked ToC exists
 - [ ] **I.4** Rationale ("why") lives in an appendix, out of the normative body
-- [ ] **I.5** Critical rules are stated redundantly by derivation: every behavioral contract rule has a reference-algorithm witness (prose + pseudocode), and every consolidated view is derived, never hand-maintained
+- [ ] **I.5** Critical rules are stated redundantly with drift protection: every shared behavioral rule has a reference-algorithm witness, and every restatement is either a derived view or a duplication-register entry with a covering consistency check
 - [ ] **I.6** Section ordering: types precede the behavior that consumes them; conformance comes last
 
 ### J. Lint pass (the defects even gold specs have)
 - [ ] **J.1** Every function/helper referenced in pseudocode is defined somewhere in the spec
 - [ ] **J.2** Every config field referenced in prose exists in the config schema
 - [ ] **J.3** Every field referenced by an algorithm exists on the record it's read from
-- [ ] **J.4** No two normative statements about the same element assign it conflicting values, and neither gate nor annex contradicts the body (artifact-model T4)
-- [ ] **J.5** Grep the spec for hedge words ("appropriately", "leniently", … — canonical lexicon: HW-LEX v1, hardening checks.md D-12) — each hit is either fixed or converted into a declared `implementation-defined` freedom
+- [ ] **J.4** No two normative statements about the same element assign it conflicting values, and neither gate, annex, nor documentation contradicts the body (consistency rule C8)
+- [ ] **J.5** Grep the spec for hedge words ("appropriately", "leniently", … — canonical lexicon: HW-LEX v1, hardening checks.md D-12) — each hit is either fixed or converted into an owner-ruled left-open decision
+
+### K. Use cases *(added 2026-07-06, ADR-0001)*
+- [ ] **K.1** A use case index exists (actors + goals, one line each) and is owner-approved
+- [ ] **K.2** Every indexed goal has a use case document in the traditional form: narrative, preconditions/guarantees, numbered scenario steps, per-step extensions, data references, acceptance criteria
+- [ ] **K.3** Every scenario step's extensions are resolved: handled inline, citing a failure class, or an explicit N/A with a reason
+- [ ] **K.4** Every use case carries an honestly scored maturity level (L0–L3) supported by that level's checks
+- [ ] **K.5** Every stated goal is served by ≥1 use case, and every use case serves a stated goal
+- [ ] **K.6** A primary use case is designated, and the smoke test executes it end to end
+
+### L. Documentation *(added 2026-07-06, ADR-0005)*
+- [ ] **L.1** The deliverables selection is recorded: each documentation type (tutorial, how-to, reference, explanation) is included or explicitly deferred with a reason
+- [ ] **L.2** The decision log — including alternatives considered and left-open rulings — is exported as documentation feedstock at assembly
+- [ ] **L.3** Documentation carries zero normative force, and any spec content it restates has a covering consistency check
 
 ---
 
@@ -371,12 +384,12 @@ expensive builds probably won't either.
 
 ### 4.3 Using this operationally
 
-- **Readiness gate:** score any new spec against §3 before dispatching a
-  one-shot build; treat sections A–C as blocking, D–J as advisory until
-  ablation data says otherwise.
+- **Readiness gate:** score any new spec against §3 before pointing an
+  implementer at it (delivery build or diagnostic fleet); treat sections A–C
+  and K as blocking, D–J and L as advisory until ablation data says otherwise.
 - **Spec linter:** section J is mechanized by [`hardening/`](hardening/)
   (checks D-06…D-12; hedge lexicon HW-LEX v1) — and its §R regression suite
   pins the pass to the real defects it catches in all four gold specs.
-- **Authoring template:** the §2.1 K-ordering (goals → non-goals → data model
-  → behavior → interfaces → config → errors → examples → DoD) is a fill-in
-  skeleton for new specs.
+- **Authoring template:** artifact-model §8's slot ordering (which preserves
+  the §2.1 K-ordering and adds the use case slot) is the fill-in skeleton;
+  process.md's stage cards are the path through it.
