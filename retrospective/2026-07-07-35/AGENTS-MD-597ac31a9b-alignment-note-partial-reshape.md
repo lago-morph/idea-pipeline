@@ -1,0 +1,9 @@
+# agent instruction
+
+**Mark not-yet-realigned documents with an explicit precedence note.** When a reshape touches a family of interdependent documents in stages, every document that is not yet updated must carry a visible note stating that it is stale relative to the change and naming which document (or ADR) controls on conflict. Remove the note only when that document is realigned.
+
+*Grounded in: the round-one/round-two split where the README checklist and hardening checks lagged the two shape documents.*
+
+# justification
+
+The reshape ran in two review rounds by the owner's choice: round one rewrote the two shape documents (`artifact-model.md`, `process.md`); round two realigned the checklist and the executable checks. Between the two rounds — which were separate merged PRs, days apart in wall-clock and separated by other work — the four documents were mutually inconsistent by design: the shape documents described use cases, while the checklist still described the retired sixteen-artifact model. Without a marker, a reader (human or agent) landing on the stale checklist during that window would take it as current and build on a superseded model. The fix was a one-paragraph **alignment note** at the top of every document, stating exactly which documents were already realigned, which were not, and that "this document and the ADRs control on conflict." The cost is one paragraph per document, deleted when the document is brought current. The cost of omitting it is a reader silently trusting stale normative text — the exact failure the whole reshape existed to prevent — with no signal that the inconsistency is intentional and temporary rather than a defect. Staged reshapes are common precisely because they fit human review; the alignment note is what makes the intermediate state safe to leave lying around.
