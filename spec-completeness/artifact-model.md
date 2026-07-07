@@ -9,10 +9,10 @@
 The original sixteen-artifact model (task-01, issue #22) is in git history; the gold-spec
 decomposition evidence in [`profiles/`](profiles/) still stands (see §10).*
 
-**Alignment note.** [`process.md`](process.md) is aligned with this version.
-[`README.md`](README.md) §3 (the checklist) and [`hardening/`](hardening/) are **not
-yet realigned** — that is review round two. Where they conflict with this document,
-this document and the ADRs control.
+**Alignment note.** All four spec-completeness documents are aligned with this
+version as of 2026-07-06 round two: [`process.md`](process.md) (stages and records),
+[`README.md`](README.md) (findings and the §3 checklist, sections A–L), and
+[`hardening/`](hardening/) (the executable checks).
 
 Contents:
 
@@ -297,8 +297,8 @@ rule C6.
 ## 6. Consistency rules
 
 The linter contract — what "consistent" means, stated as invariants. Deterministic
-procedures for these land in [`hardening/`](hardening/) in round two; the old rules
-T1–T7 map onto these (table below). Humans are not expected to verify these by eye —
+procedures for these are [`hardening/`](hardening/)'s checks (its README §8 maps every
+checklist item to them); the old rules T1–T7 map onto these (table below). Humans are not expected to verify these by eye —
 that is the point of having them.
 
 - **C1 — Reference closure.** Every name used anywhere resolves to exactly one
@@ -346,7 +346,7 @@ that is the point of having them.
   pass (§4). Claiming L1 with unresolved extensions, or L2 with unmapped steps, is a
   defect in the claim, not the content.
 
-Mapping from the old rules, for round two's realignment of `hardening/`:
+Mapping from the old rules (hardening's checks were realigned against this table):
 
 | Old | New home |
 |---|---|
@@ -380,8 +380,8 @@ surface** — the owner reads use cases and the compiled spec; the machine reads
 | `[left-open: DEC-017]` | the site of a deliberately open choice | points at the owner's ruling (C6) |
 
 Grep surface: `\[(#|uses:|machine:|realizes:|checks:|left-open:)` — one expression
-covers all forms. The old `[freedom: …]` tag is retired with R-FR. Hardening's
-tag-syntax check realigns to this grammar in round two.
+covers all forms. The old `[freedom: …]` tag is retired with the freedom register;
+hardening's tag-syntax check (D-09) greps this grammar.
 
 ## 8. Compilation
 

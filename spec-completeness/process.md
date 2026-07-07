@@ -8,9 +8,9 @@ this process produces — use case documents, shared sections, maturity levels L
 and consistency rules C1–C10. The original process (task-02, issue #22) is in git
 history.*
 
-**Alignment note.** [`README.md`](README.md) §3 and [`hardening/`](hardening/) are
-**not yet realigned** — that is review round two. Where they conflict with this
-document, this document and the ADRs control.
+**Alignment note.** All four spec-completeness documents are aligned as of
+2026-07-06 round two; [`hardening/`](hardening/)'s README §7 binds its checks to this
+document's stage gates.
 
 This document specifies the process that turns a raw idea — a few pages of intent,
 like this repo's numbered idea files — into a spec whose use cases a human has
