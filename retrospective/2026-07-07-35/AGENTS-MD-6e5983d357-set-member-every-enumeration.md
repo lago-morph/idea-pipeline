@@ -1,0 +1,9 @@
+# agent instruction
+
+**Every member of a defined set needs a home in every enumeration of it.** When a document defines a set of artifacts, sections, or components, verify that each member appears in *every* place the set is enumerated — the overview table, the directory layout, the production map, the per-stage outputs. A member defined in one enumeration but missing from another is a latent defect, even when every individual list looks internally complete.
+
+*Grounded in: the Shared Examples section that had no file in any workspace layout until the owner questioned the artifact/process disconnect.*
+
+# justification
+
+The rewritten `artifact-model.md` defined a "Shared Examples" section with its own contents, boundary, and consistency link — a full member of the spec-model set. But it had no corresponding file in the shape table, the workspace directory tree, the process production map, or any stage's outputs. Every one of those enumerations looked internally complete, so no single-document review caught it. It surfaced only because the owner asked a broad question — "the artifacts and the process are completely different... what is going on?" — which forced a cross-enumeration join, and the join immediately exposed the orphan. The fix (adding `shared/examples.md` to four enumerations) was trivial; the risk was that it would have shipped as a section a builder is told exists but can never locate. The check is a cheap deterministic sweep: extract the member set from its defining enumeration, then confirm each member's identifier appears in every other enumeration of the same set. Running it costs one scripted pass; skipping it costs a phantom member that reads as real until someone tries to use it. Sets enumerated in multiple places are exactly where this drift hides, because each list is locally consistent and only the cross-product reveals the gap.
