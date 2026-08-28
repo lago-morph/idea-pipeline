@@ -1,5 +1,14 @@
 # Growing specifications you can see — the plan
 
+> **STATUS: UNIMPLEMENTED IDEA.** Captured 2026-08-28. Jonathan reviewed this
+> plan and chose not to pursue it — not because it was judged wrong, but
+> because it was produced before his requirements were understood, and the
+> direction has since shifted to an artifacts-first experiment (see
+> `PERCEIVED-INTENT.md` in this directory). Kept as an interesting idea to
+> mine or resume later. Do not implement anything from this file unless
+> Jonathan directs it. `LINE-OF-INQUIRY.md` records the questioning thread
+> that was open when work stopped, so the thread can be picked back up.
+
 > **What this is:** a plan for arriving at a usable way to grow an idea into a
 > self-consistent specification — use cases, test cases, docs — with an AI
 > partner doing assistance and consistency checking, and a visual dashboard
