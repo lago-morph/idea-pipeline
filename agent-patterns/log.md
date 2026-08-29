@@ -1,5 +1,19 @@
 # log
 
+## 2026-08-29 — Phase 2: triage
+
+- 16 Sonnet subagent batches triaged all 234 cached items (148 Every emails,
+  86 web items); fragments merged into `sources/_triage.md`.
+- Distribution: ~50 high, ~60 medium, ~70 low, ~55 none (mostly Every
+  marketing/onboarding sends).
+- Selection for Phase 3 (80/20 consolidation, since highs alone exceed the
+  spec's ~15–30 estimate): all highs, with the 16 Willison AEP chapters
+  distilling into the single `willison-2026-aep` note, Claude Code doc pages
+  into `claude-code-docs`, Codex doc pages into `codex-docs` (matching SPEC §10
+  bib ids); plus unique-angle mediums `beyondhumanreadable-2026`,
+  `osmani-2026-agentic-autonomy-levels`, `every-2026-04-27-most-expensive-model`.
+  ≈ 45 source notes via 11 Opus distill subagents.
+
 ## 2026-08-29 — Phase 1: acquire
 
 - Split `.cache/every.mbox` → 148 per-message text files in `.cache/every/`.
