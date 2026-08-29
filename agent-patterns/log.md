@@ -1,5 +1,20 @@
 # log
 
+## 2026-08-29 — Phase 3: distill
+
+- 11 Opus subagents wrote 49 source notes in `sources/` (20 Every essays,
+  15 Osmani posts, Willison AEP consolidated, Claude Code + Codex docs
+  consolidated, agents.md spec, Anthropic ccbp + bea, OpenHands, Tornhill,
+  HumanLayer ACE, Karpathy llm-wiki, 3 arXiv items and 2 more).
+- arXiv notes are abstract-only and say so; paywalled Every content marked
+  in-note; `claude-code-docs`, `codex-docs`, `willison-2026-aep` have no
+  direct `_triage.md` rows (their component pages were triaged individually).
+- `note-exists?` flipped to yes on 46 triage rows.
+- ~90 candidate pattern slugs collected from distiller digests; heavy
+  convergence on review-agent-diffs, small-reviewable-steps, spec-first,
+  plan-before-code, agents-md-hygiene, skill-authoring, capture-lessons,
+  context management, and verification-evidence themes → Phase 4 clustering.
+
 ## 2026-08-29 — Phase 2: triage
 
 - 16 Sonnet subagent batches triaged all 234 cached items (148 Every emails,
