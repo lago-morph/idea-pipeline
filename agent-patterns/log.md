@@ -1,5 +1,26 @@
 # log
 
+## 2026-08-29 — Phase 4: synthesize → Checkpoint B
+
+- Clustered ~90 candidate slugs into 30 patterns + 6 anti-patterns (5 Opus
+  writer subagents; plan preserved in session scratchpad). Over the spec's
+  15–25 aim on purpose: distinct, well-evidenced patterns beat forced merges;
+  prune candidates welcome at Checkpoint B.
+- Status: 31 adopted / 5 candidate (single-source pages stay candidate per the
+  ≥2-evidence rule: run-tests-first, hoard-working-code, red-green-tdd,
+  jig-for-tuning, over-compressed-context). Durability: 31 structural /
+  3 compensation / 2 unknown. Confidence capped at medium everywhere — "high"
+  requires own experience (§6), which starts accruing in Phase 5.
+- Added category `compounding` (capture-lessons, skill-authoring) to §5.6's
+  initial set.
+- Lint pass: all 36 pages have id==filename, valid frontmatter, existing
+  sources and related links. Generated quickref.md (46 lines, adopted only),
+  index.md (task router + categories), bibliography.md (62 rows), skill folder
+  (SKILL.md, quickref copy, patterns-list.md).
+- STOPPED at Checkpoint B: Jonathan reviews the pattern list and quickref.md
+  on the PR before any merge to main. §11 items still open: three dogfood task
+  descriptions (item 4) and skill-symlink OK (item 5).
+
 ## 2026-08-29 — Phase 3: distill
 
 - 11 Opus subagents wrote 49 source notes in `sources/` (20 Every essays,
