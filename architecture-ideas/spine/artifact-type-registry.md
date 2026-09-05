@@ -34,7 +34,7 @@ One entry per artifact type. An entry says which subjects the type attaches to, 
 
 ## The seed registry
 
-Source: existing means an agent-method type or guide; foreseen means one of the six guides decision-guides.md foresees; notes means the brainstorming notes. First required at is the maturity level at which a subject the rule applies to must have an instance, or an explicit not-applicable record. The maturity ladder is not yet written, so these values assume: M0 vision and use cases ratified; M1 an implementation runs and is checked; M2 data survives closing and a regeneration run passes; M3 delivered by a durable route and used daily; M4 operated or hosted by someone other than the owner; M5 more than one team or a production service (to confirm). Merged areas are named in the purpose column.
+Source: existing means an agent-method type or guide; foreseen means one of the six guides decision-guides.md foresees; notes means the brainstorming notes. First required at is the maturity level at which a subject the rule applies to must have an instance, or an explicit not-applicable record. Levels are those of maturity-ladder.md: M0 Sketch, M1 Prototype, M2 Durable, M3 Shared, M4 Operated, M5 Enterprise. Values were set from the ladder's entry criteria and criteria matrix. The ladder's M3 to M5 columns are not yet validated against any system, so every value at M3 or above is to confirm. Merged areas are named in the purpose column.
 
 | id | attaches to | stage | source | first required at | purpose |
 |---|---|---|---|---|---|
@@ -64,29 +64,29 @@ Source: existing means an agent-method type or guide; foreseen means one of the 
 | not-specified | system, component | logical | notes | M1 | The deliberately open records for a subject, with bounds. May be a generated view over records rather than an authored artifact (to confirm) |
 | non-functional-requirements | system | logical | notes | M2 (to confirm) | Properties the running system must satisfy and the supporting components that satisfy them. Overlaps the system profile (to confirm) |
 | implementation-mechanism | component | mechanism | notes | M1 | Language, stack, and the runtime the component requires. Answered once for the whole system in the implementation record today |
-| concurrency-mechanism | component, interface | mechanism | notes | M2 (to confirm) | Threads, workers, event loop, locking: the mechanism behind an interface's concurrency semantics |
+| concurrency-mechanism | component, interface | mechanism | notes | M3 (to confirm) | Threads, workers, event loop, locking: the mechanism behind an interface's concurrency semantics |
 | failure-restart-retry | component, interface | mechanism | notes | M2 (to confirm) | What happens on failure: restart, retry, timeout, give up. Notes' interface retry and timeout merge here |
-| authn-z | component, interface | mechanism | notes | M4 (to confirm) | Authentication and authorization mechanism, and transport security. Notes' interface security merges here |
-| transport-serdes | interface | mechanism | notes | M2 (to confirm) | Channel, protocol, serialization, error codes for an interface that crosses a process or network boundary |
+| authn-z | component, interface | mechanism | notes | M3 (to confirm) | Authentication and authorization mechanism, and transport security. Notes' interface security merges here |
+| transport-serdes | interface | mechanism | notes | M3 (to confirm) | Channel, protocol, serialization, error codes for an interface that crosses a process or network boundary |
 | configuration-parameters | system, component | mechanism | notes | M2 (to confirm) | Which answers bind at deploy time, how they are supplied, their defaults |
-| dependency-pinning | component | mechanism | notes | M1 | Versions of external dependencies pinned; their interfaces and data models specified |
+| dependency-pinning | component | mechanism | notes | M2 | Versions of external dependencies pinned; their interfaces and data models specified |
 | execution-environment | environment | infrastructure | notes | M1 | The host itself: device, browser, runtime, cluster, and any stand-in used for checks. Notes' digital twins merge here |
 | observability-infrastructure | environment | infrastructure | notes | M4 (to confirm) | Metrics, log aggregation, traces, profiling tooling, for production and development alike |
-| auth-tools | environment | infrastructure | notes | M4 (to confirm) | Identity provider and access tooling, including dev and test user management |
+| auth-tools | environment | infrastructure | notes | M3 (to confirm) | Identity provider and access tooling, including dev and test user management |
 | persistence-infrastructure | data store, environment | infrastructure | notes | M2 (to confirm) | Disk, object store, browser origin: what the persistence mechanism runs on |
 | platform-services | environment | infrastructure | notes | M4 (to confirm) | Database, message queue, and other services used but not owned |
-| ci-cd | environment | infrastructure | notes | M3 (to confirm) | What runs on every change and before delivery, and where |
+| ci-cd | environment | infrastructure | notes | M4 (to confirm) | What runs on every change and before delivery, and where |
 | release-management | system | infrastructure | notes | M3 (to confirm) | Numbering, packaging, where releases live, how one is chosen for deployment |
 | source-control-and-tooling | environment | infrastructure | notes | M1 | Repository layout, branching, review; IDEs, issue tracking, docs, comms. Implementation standards decide the layout today |
-| shared-libraries | component | infrastructure | notes | M4 (to confirm) | Code shared across components or systems, and who owns it |
-| troubleshooting | system, component | operations | notes | M3 (to confirm) | How a problem is diagnosed and remedied by whoever operates the system |
+| shared-libraries | component | infrastructure | notes | M5 (to confirm) | Code shared across components or systems, and who owns it |
+| troubleshooting | system, component | operations | notes | M4 (to confirm) | How a problem is diagnosed and remedied by whoever operates the system |
 | alarming | system | operations | notes | M4 (to confirm) | Which conditions raise an alarm, to whom, how |
-| ha-dr-backup | data store | operations | notes | M2 (to confirm) | Backup and restore as soon as data persists; high availability and disaster recovery by profile |
-| sla-slo | system | operations | notes | M4 (to confirm) | Service levels promised and the objectives measured against them |
+| ha-dr-backup | data store | operations | notes | M4 (to confirm) | Backup and restore exercised with evidence at M4; high availability and disaster recovery at M5 by profile. Getting the data out at M2 is a persistent-storage question |
+| sla-slo | system | operations | notes | M5 (to confirm) | Service levels promised and the objectives measured against them |
 | end-user-management | system | operations | notes | M4 (to confirm) | Onboarding, roles, and removal of end users |
 | security-monitoring | system | operations | notes | M4 (to confirm) | Security monitoring and incident management |
-| configuration-management | environment | operations | notes | M3 (to confirm) | How deploy-time and runtime values are set, tracked, and changed in a running environment |
-| audit-log-management | data store, system | operations | notes | M4 (to confirm) | What is audited, retention, who may read the audit log |
+| configuration-management | environment | operations | notes | M4 (to confirm) | How deploy-time and runtime values are set, tracked, and changed in a running environment |
+| audit-log-management | data store, system | operations | notes | M5 (to confirm) | What is audited, retention, who may read the audit log |
 
 ## Worked entry: persistent storage
 
@@ -97,7 +97,7 @@ The next guide agent-method will need, first required by the Save ideas use case
 | id | persistent-storage |
 | attaches to | data store |
 | stage | mechanism |
-| applicability rule | profile statefulness is anything other than memory only, and maturity M2 or above (to confirm). Otherwise every question is not applicable with the profile value as the reason, which is what implementation records 1 to 3 say today |
+| applicability rule | profile statefulness is local or shared durable, per system-profile.md, and maturity M2 Durable or above, per maturity-ladder.md. With statefulness none, every question is not applicable with that value as the reason. Below M2 the questions are not yet required; implementation records 1 to 3 say memory only, which the profile note calls a maturity fact, not a profile fact |
 | authoring | One decisions note per data store per implementation, linked to this guide. Values, not adjectives. Where the owner says "whatever is conventional", take the default and mark it as a default. The guide asks and lists; it never decides |
 | relating | depends-on: data-model, and the use case that names durable storage. Must be consistent with: data-migration, test-data question 4 on where the set lives once the loader goes, delivery-to-device, and configuration-parameters for any deploy-time answer |
 | consuming | Read questions 1, 3, and 5 before writing any storage code, and the rest before writing the checks. An answer that is deliberately open is license only within its stated bounds |
@@ -129,9 +129,9 @@ Which earlier implementation's data this one must read is asked by data-migratio
 
 ## Open questions
 
-- The maturity level meanings above are assumed; maturity-ladder.md is not written. Every "first required at" value is to confirm against it.
+- Whether the ladder's criteria matrix stays in maturity-ladder.md or is generated from the applicability rules here. The ladder raises the same question. One source of truth is wanted.
 - Whether not-specified is an authored type or a view over records with status deliberately open.
 - Whether the verification rows, test-method, acceptance-criteria, test-data, automated-checks, and quality-standards, stay in the registry or are described under verification.md with the registry holding only their ids.
 - Whether implementation-standards is a type or, as decision-record.md says, a set of records with implementation "all".
 - Whether stage belongs on the entry or on each question. The table puts it on the entry.
-- Which profile characteristic names the applicability rule uses. The worked entry assumes "statefulness".
+- Whether applicability rules name profile characteristics exactly as system-profile.md spells them, so a validator can match them. The worked entry does.

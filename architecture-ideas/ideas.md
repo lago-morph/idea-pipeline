@@ -1,6 +1,6 @@
 # Ideas
 
-Status: draft. Captured 2026-09-05 from discussion. Being decomposed into one file per idea under `ideas/`; see `README.md`. This file stays as the discussion-level source. Process suggestions for filling out the framework in its different modes of use. The data model is a separate piece of work and comes first; these processes are written against the fields they will need from it.
+Status: draft. Captured 2026-09-05 from discussion. Being decomposed into one file per idea under `ideas/`; see `README.md`. This file stays as the discussion-level source. Process suggestions for filling out the framework in its different modes of use. The spine in `spine/` is the data model; these processes are written against the fields they need from it, listed below.
 
 ## Working premise
 

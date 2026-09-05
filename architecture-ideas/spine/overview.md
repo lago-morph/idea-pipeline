@@ -48,7 +48,7 @@ Terms used throughout this directory. Where agent-method has a word for the same
 
 - **spine**: the six structures above.
 - **subject**: a thing in the system an artifact can attach to. System, component, interface, data store, environment.
-- **concern**: a topic that cuts across subjects. Persistence, identity and access, observability, concurrency and failure, configuration, external dependencies, security, lifecycle, runtime environment, communication. A tag, not an organizer.
+- **concern**: a topic that cuts across subjects. Persistence, identity and access, observability, concurrency and failure, configuration, external dependencies, security, lifecycle, runtime environment, communication. A tag, not an organizer. The maturity criteria matrix adds testing and documentation as rows because every level asks something of them, but they are not concern tags on questions.
 - **refinement stage**: logical, mechanism, infrastructure, operations. The traditional application, technical, DevOps, and Ops layers, understood as stages of one concern.
 - **binding time**: design, build, deploy, runtime. Says which artifact holds an answer.
 - **binding level**: organization standard, platform, system, component. Says who owns an answer and who inherits it.

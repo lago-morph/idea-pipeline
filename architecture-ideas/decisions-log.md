@@ -32,6 +32,13 @@ Status: draft, 2026-09-05. Conclusions reached in the working session of 2026-09
 | 26 | Anything new must prove it cannot be a field on one of the six structures before becoming a seventh | proposed |
 | 27 | The spine is instantiated for the workbench here as a shadow before anything is proposed to agent-method, and agent-method receives pieces only at their triggers | proposed |
 | 28 | Provenance on every decision record, including agent-made-while-building, is what makes review by ratification possible | proposed |
+| 29 | The profile has an eighth characteristic, integration surface, because none of the seven switches on communication or external dependencies by itself. May collapse into deployment topology | proposed, to confirm |
+| 30 | The workbench's profile caps it at M2 Durable, from concurrent users one, single device, and best effort alone. M2 is therefore also its plausible target | proposed |
+| 31 | The workbench's statefulness is "local" not "none", because the vision commits to durable storage; memory-only implementations are a maturity fact, not a profile fact | proposed |
+| 32 | The registry seed merges the brainstorming areas to 49 rows; a merged area gets its own row only when an implementation shows it needs separate questions | proposed |
+| 33 | The persistent-storage registry entry is the first piece to propose to agent-method, timed to the Save ideas use case, carrying status vocabulary, binding time, and verification per question with it | proposed |
+| 34 | The workbench catalog treats the check-hooks contract as an interface subject and the working repository as an environment subject, so the inference is visible | proposed, to confirm |
+| 35 | End-user management is an M4 criterion, not M5 | proposed, resolving a contradiction between the ladder's criteria and matrix |
 
 ## Open questions carried forward
 
@@ -40,3 +47,5 @@ Status: draft, 2026-09-05. Conclusions reached in the working session of 2026-09
 - Whether "system" is a subject kind or the vision's implicit subject. To be settled when the subject catalog is instantiated.
 - How coarse the profile can be. Six to eight characteristics is the starting bet.
 - Whether runtime binding time exists for the workbench before it has an operator other than the owner.
+- Whether the criteria matrix in the maturity ladder stays authored or is generated from the registry rows' applicability rules. Both files raise it. One source of truth is wanted.
+- Whether the five verification-related rows in the registry stay there or move under verification.md.
