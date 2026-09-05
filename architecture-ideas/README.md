@@ -2,49 +2,65 @@
 
 Status: draft, started 2026-09-05.
 
-Ideas about the decisions and designs that sit between an idea and a running system, other than the application source code. They are kept here so they can be pulled into [agent-method](https://github.com/lago-morph/agent-method) one at a time, as that method's workbench reaches the point where each is needed. Agent-method is about getting functional requirements and basic application architecture right, and it adds process and artifact types only when real friction shows they are needed. This directory respects that: nothing here is meant to land in agent-method ahead of its trigger.
+Ideas and structure for the decisions and designs that sit between an idea and a running system, other than the application source code. Two parts. The **nuggets** in `ideas/` are pulled into [agent-method](https://github.com/lago-morph/agent-method) one at a time as that method's workbench reaches the point where each is needed. The **spine** in `spine/` is the structure that keeps a whole system's artifacts, subjects, and decisions navigable, so that a real application does not collapse under free-form notes. Agent-method is about getting functional requirements and basic application architecture right, and adds process only when real friction shows it is needed. This directory respects that: nothing here lands in agent-method ahead of its trigger.
 
 ## How to read this directory
 
-Three levels, read as far as you need:
+Read as far as you need.
 
-1. **This file.** The table below is one line per idea, with the event in agent-method that makes it needed and where it would land. Also a list of what agent-method already covers, so those ideas are not re-invented.
-2. **One file per idea** in `ideas/`. Each is one screen: the idea, why it matters for agents, what it would look like in agent-method, open questions, and the source.
-3. **Background.** `objectives.md` is what this exercise is for. `ideas.md` is the process-level discussion the idea files were extracted from. `reference/brainstorming.md` is the transcribed handwritten notes that started it.
+1. **This file.** What is here and where to go.
+2. **`objectives.md`** for what this is for, and **`spine/overview.md`** for the six structures, what rides on them, and the vocabulary. Those two files are the whole picture at one screen each.
+3. **`spine/`** for each structure in detail, with fields, rules, a workbench example where one exists, and open questions. **`plan.md`** for how this matures alongside agent-method. **`inventory.md`** for what exists and what is still to create. **`decisions-log.md`** for what the owner has settled and what is only proposed.
+4. **`ideas/`** for the nuggets, one screen each, with the agent-method event that triggers each and where it would land. The table below indexes them.
+5. **Background.** `ideas.md` is the process-level discussion the nuggets were extracted from. `reference/brainstorming.md` is the transcribed handwritten notes that started it.
 
-## How to pull an idea into agent-method
+## The spine
+
+| # | Structure | File |
+|---|---|---|
+| 1 | System profile | `spine/system-profile.md` |
+| 2 | Maturity ladder | `spine/maturity-ladder.md` |
+| 3 | Subject catalog | `spine/subject-catalog.md` |
+| 4 | Artifact type registry | `spine/artifact-type-registry.md` |
+| 5 | Decision records | `spine/decision-record.md` |
+| 6 | Derivation graph | `spine/derivation-graph.md` |
+| | Modes of entry | `spine/modes.md` |
+| | Verification, three levels | `spine/verification.md` |
+| | Harvest loop | `spine/harvest-loop.md` |
+
+## How to pull a nugget into agent-method
 
 1. The trigger in the idea's front matter has happened, or is about to.
-2. Read the idea file and its `depends-on` list. A dependency that is still `idea` or `discussed` usually needs to go first, or at least be considered in the same round.
-3. Author the change in agent-method in the home named in the front matter, using agent-method's vocabulary and its one-artifact-at-a-time rule.
+2. Read the idea file and its `depends-on` list. A dependency still at `idea` or `discussed` usually goes first, or at least in the same round.
+3. Author the change in agent-method in the home named in the front matter, using agent-method's vocabulary and its one-artifact-at-a-time rule. Where the nugget is also a spine field, carry the spine's name for it.
 4. Update the idea file's status to `pulled` with a link to the agent-method file, and record anything that changed in translation.
 
 Statuses: `idea` (named, not yet discussed in depth), `discussed` (discussed and written up here), `drafted` (a concrete draft exists here or in a branch of agent-method), `pulled` (landed in agent-method; link in the file).
 
-## Ideas
+## Nuggets
 
-| Idea | One line | Trigger in agent-method | Status |
-|---|---|---|---|
-| [status-vocabulary](ideas/status-vocabulary.md) | Every decision is undecided, decided, deliberately open, inherited, or not applicable with reason | Next guide written, or record 3 markup | discussed |
-| [tight-fields-loose-guidance](ideas/tight-fields-loose-guidance.md) | Question lists are tight from the start; guidance starts loose | Writing any new guide | discussed |
-| [decision-inventory](ideas/decision-inventory.md) | The brainstorming notes are a seed list of future guides | Planning any new guide | discussed |
-| [verification-per-question](ideas/verification-per-question.md) | Every guide question says how compliance is checked | Quality-standards execution methods get built | discussed |
-| [binding-time](ideas/binding-time.md) | Each decision is tagged design, build, deploy, or runtime | First decision that belongs in configuration | discussed |
-| [dependency-kinds](ideas/dependency-kinds.md) | Must-exist-before and must-be-consistent-with are different links | First guide that depends on another guide's answers | discussed |
-| [concern-tags](ideas/concern-tags.md) | Concern is a tag for auditing; subject is the organizer | More than about five guides | discussed |
-| [refinement-stages](ideas/refinement-stages.md) | The traditional layers are stages of one concern, not categories | Component and interface types are written | discussed |
-| [five-kinds-of-guidance](ideas/five-kinds-of-guidance.md) | A type carries authoring, relating, consuming, verifying, and reviewing guidance | Type descriptions written from real instances | discussed |
-| [guidance-pruning](ideas/guidance-pruning.md) | Guidance needs a removal rule | A run shows a guide was skimmed | discussed |
-| [artifact-count-test](ideas/artifact-count-test.md) | Artifact count for the toy app is a health metric | Every implementation record | discussed |
-| [system-profile](ideas/system-profile.md) | A short profile decides which guides are required and which are skipped with reason | Foreseen guides outgrow one implementation, or a second application | discussed |
-| [binding-level](ideas/binding-level.md) | Decisions are owned at a level and inherited below | A platform the workbench does not own, or a second application | idea |
-| [extraction-mode](ideas/extraction-mode.md) | Guides double as an interview script over an existing system | Method applied to a pre-existing system | idea |
+| Idea | One line | Trigger in agent-method | Spine home | Status |
+|---|---|---|---|---|
+| [status-vocabulary](ideas/status-vocabulary.md) | Every decision is undecided, decided, deliberately open, inherited, or not applicable with reason | Next guide written, or record 3 markup | decision record | discussed |
+| [tight-fields-loose-guidance](ideas/tight-fields-loose-guidance.md) | Question lists are tight from the start; guidance starts loose | Writing any new guide | registry | discussed |
+| [decision-inventory](ideas/decision-inventory.md) | The brainstorming notes are a seed list of future guides | Planning any new guide | registry seed table | discussed |
+| [verification-per-question](ideas/verification-per-question.md) | Every guide question says how compliance is checked | Quality-standards execution methods get built | registry, verification | discussed |
+| [binding-time](ideas/binding-time.md) | Each decision is tagged design, build, deploy, or runtime | First decision that belongs in configuration | registry question, decision record | discussed |
+| [dependency-kinds](ideas/dependency-kinds.md) | Must-exist-before and must-be-consistent-with are different links | First guide that depends on another guide's answers | derivation graph | discussed |
+| [concern-tags](ideas/concern-tags.md) | Concern is a tag for auditing; subject is the organizer | More than about five guides | registry question, subject catalog | discussed |
+| [refinement-stages](ideas/refinement-stages.md) | The traditional layers are stages of one concern, not categories | Component and interface types are written | registry | discussed |
+| [five-kinds-of-guidance](ideas/five-kinds-of-guidance.md) | A type carries authoring, relating, consuming, verifying, and reviewing guidance | Type descriptions written from real instances | registry entry | discussed |
+| [guidance-pruning](ideas/guidance-pruning.md) | Guidance needs a removal rule | A run shows a guide was skimmed | harvest loop | discussed |
+| [artifact-count-test](ideas/artifact-count-test.md) | Artifact count for the toy app is a health metric | Every implementation record | verification, level 3 | discussed |
+| [system-profile](ideas/system-profile.md) | A short profile decides which guides are required and which are skipped with reason | Foreseen guides outgrow one implementation, or a second application | system profile | discussed |
+| [binding-level](ideas/binding-level.md) | Decisions are owned at a level and inherited below | A platform the workbench does not own, or a second application | decision record, standards | idea |
+| [extraction-mode](ideas/extraction-mode.md) | Guides double as an interview script over an existing system | Method applied to a pre-existing system | modes | idea |
 
 The order above is a rough guess at the order the triggers will fire.
 
 ## Already in agent-method
 
-These came up in discussion and need no pulling. They are listed so the idea files can refer to them by agent-method's names.
+These came up in discussion and need no pulling. They are listed so the idea and spine files can refer to them by agent-method's names.
 
 | Discussed as | Agent-method already has |
 |---|---|
@@ -57,7 +73,4 @@ These came up in discussion and need no pulling. They are listed so the idea fil
 | Progressive disclosure to agents | Tiered document access in `ai/procedures/implement-by-subagent.md` |
 | Definition of done per artifact | Partly: the review checklist in the implementation procedure. The rest is `five-kinds-of-guidance` |
 | Not-applicable-with-reason | Partly: "Persistent storage: none, memory only" in the records. Naming it is `status-vocabulary` |
-
-## Not yet placed
-
-- The data model for the framework itself. The discussion concluded that agent-method's artifact graph with typed two-way links already is a data model, and that the ideas above are fields, statuses, and link types on it rather than a separate model. This should be confirmed before any separate data model is drafted.
+| Ratified versus merged | Ratification is the owner's word in conversation; a merge is never ratification. The decision record's ratification field uses the same rule |
