@@ -3,7 +3,7 @@ id: decision-inventory
 title: The brainstorming notes are a seed list of future guides
 status: discussed
 kind: rule
-event: G
+event: any guide written or revised
 friction: The decision-guides note already keeps a foreseen-areas list and writes guides only when needed. This rule adds the brainstorming areas to that list so the check happens before a run reports the gap.
 agent-method-home: workbench/note/decision-guides.md, the foreseen-areas list
 depends-on: []

@@ -3,7 +3,7 @@ id: binding-level
 title: Decisions are owned at a level and inherited below it
 status: idea
 kind: conditional
-event: E7
+event: something above the workbench
 friction: None yet. Nothing exists above the workbench's system level.
 agent-method-home: method/CONVENTIONS.md or decision-guides.md; possibly a new link type
 depends-on: [status-vocabulary]

@@ -3,7 +3,7 @@ id: binding-time
 title: Tag each decision with when it binds
 status: discussed
 kind: rider
-event: E2
+event: persistent-storage guide
 friction: Anticipated, not yet observed. The storage guide's question on where the store lives is the first deploy-time question agent-method will ask, so the column is proposed with that guide.
 agent-method-home: workbench/note/decision-guides.md, as a column on each guide question
 depends-on: [status-vocabulary]

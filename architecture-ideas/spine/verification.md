@@ -52,7 +52,7 @@ This level measures the method, not the application. Every measure comes from a 
 | Checks per orientation | Coverage of the check script | The script's output | A column. Run 1: 46 |
 | Tokens, tool uses, minutes | Cost of a run | The completion notification and the transcript | Columns |
 
-The maturity ladder gives the expected shape: artifact count should rise with maturity level and stay small at M0 and M1. The workbench is the standing test. If it needs around five artifacts the method scales down; if it needs twenty, the applicability rules are not working.
+The maturity ladder gives the expected shape: artifact count should rise with maturity level and stay small at Sketch and Prototype. The workbench is the standing test. If it needs around five artifacts the method scales down; if it needs twenty, the applicability rules are not working.
 
 What agent-method has for it: the metrics table and its extraction commands in `implement-by-subagent.md`, the one row for run 1, and the note that comparing rows across models answers the repeatability and context questions.
 

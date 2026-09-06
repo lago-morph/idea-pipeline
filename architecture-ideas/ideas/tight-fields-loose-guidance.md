@@ -3,7 +3,7 @@ id: tight-fields-loose-guidance
 title: Define question lists tightly and guidance loosely
 status: discussed
 kind: rule
-event: G
+event: any guide written or revised
 friction: The implementation 1 versus 2 comparison worked because the decisions notes repeated the same numbered questions. UI-standards questions 11 and 12 were added at the end after implementation 2, which is the practice this rule names.
 agent-method-home: decision-guides.md as a rule
 depends-on: []

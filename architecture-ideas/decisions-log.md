@@ -33,13 +33,14 @@ Status: draft, 2026-09-05. Conclusions reached in the working session of 2026-09
 | 27 | The spine is instantiated for the workbench here as a shadow before anything is proposed to agent-method, and agent-method receives pieces only at their triggers | proposed |
 | 28 | Provenance on every decision record, including agent-made-while-building, is what makes review by ratification possible | proposed |
 | 29 | The profile has an eighth characteristic, integration surface, because none of the seven switches on communication or external dependencies by itself. May collapse into deployment topology | proposed, to confirm |
-| 30 | The workbench's profile caps it at M2 Durable, from concurrent users one, single device, and best effort alone. M2 is therefore also its plausible target | proposed |
+| 30 | The workbench's profile caps it at Durable, from concurrent users one, single device, and best effort alone. Durable is therefore also its plausible target | proposed |
 | 31 | The workbench's statefulness is "local" not "none", because the vision commits to durable storage; memory-only implementations are a maturity fact, not a profile fact | proposed |
 | 32 | The registry seed merges the brainstorming areas to 49 rows; a merged area gets its own row only when an implementation shows it needs separate questions | proposed |
 | 33 | The persistent-storage registry entry is the first piece to propose to agent-method, timed to the Save ideas use case, carrying status vocabulary, binding time, and verification per question with it | proposed |
 | 34 | The workbench catalog treats the check-hooks contract as an interface subject and the working repository as an environment subject, so the inference is visible | proposed, to confirm |
-| 35 | End-user management is an M4 criterion, not M5 | proposed, resolving a contradiction between the ladder's criteria and matrix |
-| 36 | Each nugget has one relationship kind, rule, rider, or conditional, and one agent-method event from a fixed list shared with the plan. A nugget names the friction in agent-method that justifies it. "Pulled" means its content appears in a ratified agent-method artifact | owner asked for the ambiguity removed; the scheme is proposed |
+| 35 | End-user management is an Operated criterion, not Enterprise | proposed, resolving a contradiction between the ladder's criteria and matrix |
+| 36 | Each nugget has one relationship kind, rule, rider, or conditional, and one agent-method event from a fixed, named list shared with the plan. A nugget names the friction in agent-method that justifies it. "Pulled" means its content appears in a ratified agent-method artifact | owner asked for the ambiguity removed; the scheme is proposed |
+| 37 | No invented codes for things the owner reviews or follows. Events and maturity levels are written out by name everywhere | owner |
 
 ## Open questions carried forward
 

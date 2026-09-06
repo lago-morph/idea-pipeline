@@ -3,7 +3,7 @@ id: system-profile
 title: A system profile decides which guides are required
 status: discussed
 kind: conditional
-event: E6
+event: guides outgrow one implementation
 friction: None yet. One implementation still needs every guide that exists; the foreseen list has not outgrown it.
 agent-method-home: a new note first (per the promotion path), then possibly a method-level artifact type
 depends-on: [status-vocabulary, decision-inventory]

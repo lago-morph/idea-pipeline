@@ -3,7 +3,7 @@ id: extraction-mode
 title: Guides double as an interview script over an existing system
 status: idea
 kind: conditional
-event: E7
+event: something above the workbench
 friction: None yet. The workbench is built from the method; nothing pre-existing has been captured.
 agent-method-home: a new procedure in ai/procedures/, then a method procedure
 depends-on: [status-vocabulary]

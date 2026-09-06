@@ -30,21 +30,21 @@ Read as far as you need.
 
 ## The interface with agent-method
 
-Every nugget has one relationship kind and one agent-method event. The events are the rows of the sync table in `plan.md`, given ids here so both files say the same thing.
+Every nugget has one relationship kind and one agent-method event. The events are named here and the same names are used in the sync table in `plan.md` and in each nugget's front matter.
 
 ### Events
 
-| id | Agent-method event | Fires |
+| Event | What happens in agent-method | Fires |
 |---|---|---|
-| G | A guide is written or revised | every time |
-| M | A regeneration run finishes and its metrics row is recorded | every time |
-| E1 | Implementation record 3 is marked up and the implementation 3 run happens | once, next |
-| E2 | The Save ideas use case is ratified and the persistent-storage guide is written | once |
-| E3 | A guide is written whose questions depend on another guide's answers | once, first occurrence |
-| E4 | The agent-facing type descriptions are written in `method/types/` from real instances | once |
-| E5 | The component and interface types are written | once |
-| E6 | The guide set outgrows one implementation: guides exist that no implementation needs, a run reports a guide skimmed, or the notes become hard to navigate | conditional |
-| E7 | A level above the workbench appears: a platform it does not own, a second application, or an existing system to capture | conditional |
+| any guide written or revised | A guide is written or revised | every time |
+| any regeneration run recorded | A regeneration run finishes and its metrics row is recorded | every time |
+| implementation 3 | Implementation record 3 is marked up and the implementation 3 run happens | once, next |
+| persistent-storage guide | The Save ideas use case is ratified and the persistent-storage guide is written | once |
+| first guide that depends on another | A guide is written whose questions depend on another guide's answers | once, first occurrence |
+| type descriptions | The agent-facing type descriptions are written in `method/types/` from real instances | once |
+| component and interface types | The component and interface types are written | once |
+| guides outgrow one implementation | The guide set outgrows one implementation: guides exist that no implementation needs, a run reports a guide skimmed, or the notes become hard to navigate | conditional |
+| something above the workbench | A level above the workbench appears: a platform it does not own, a second application, or an existing system to capture | conditional |
 
 ### Kinds
 
@@ -73,22 +73,22 @@ A nugget is pulled when its content appears in a ratified agent-method artifact.
 
 | Idea | One line | Kind | Event | Spine home | Status |
 |---|---|---|---|---|---|
-| [tight-fields-loose-guidance](ideas/tight-fields-loose-guidance.md) | Question lists are tight from the start; guidance starts loose | rule | G | registry | discussed |
-| [decision-inventory](ideas/decision-inventory.md) | The brainstorming notes are a seed list of future guides | rule | G | registry seed table | discussed |
-| [verification-per-question](ideas/verification-per-question.md) | Every guide question says how compliance is checked | rule | G | registry, verification | discussed |
-| [artifact-count-test](ideas/artifact-count-test.md) | Artifact count for the toy app is a health metric | rule | M | verification, level 3 | discussed |
-| [status-vocabulary](ideas/status-vocabulary.md) | Every decision is undecided, decided, deliberately open, inherited, or not applicable with reason | rider | E2 | decision record | discussed |
-| [binding-time](ideas/binding-time.md) | Each decision is tagged design, build, deploy, or runtime | rider | E2 | registry question, decision record | discussed |
-| [dependency-kinds](ideas/dependency-kinds.md) | Must-exist-before and must-be-consistent-with are different links | rider | E3 | derivation graph | discussed |
-| [five-kinds-of-guidance](ideas/five-kinds-of-guidance.md) | A type carries authoring, relating, consuming, verifying, and reviewing guidance | rider | E4 | registry entry | discussed |
-| [refinement-stages](ideas/refinement-stages.md) | The traditional layers are stages of one concern, not categories | rider | E5 | registry | discussed |
-| [concern-tags](ideas/concern-tags.md) | Concern is a tag for auditing; subject is the organizer | conditional | E6 | registry question, subject catalog | discussed |
-| [guidance-pruning](ideas/guidance-pruning.md) | Guidance needs a removal rule | conditional | E6 | harvest loop | discussed |
-| [system-profile](ideas/system-profile.md) | A short profile decides which guides are required and which are skipped with reason | conditional | E6 | system profile | discussed |
-| [binding-level](ideas/binding-level.md) | Decisions are owned at a level and inherited below | conditional | E7 | decision record, standards | idea |
-| [extraction-mode](ideas/extraction-mode.md) | Guides double as an interview script over an existing system | conditional | E7 | modes | idea |
+| [tight-fields-loose-guidance](ideas/tight-fields-loose-guidance.md) | Question lists are tight from the start; guidance starts loose | rule | any guide written or revised | registry | discussed |
+| [decision-inventory](ideas/decision-inventory.md) | The brainstorming notes are a seed list of future guides | rule | any guide written or revised | registry seed table | discussed |
+| [verification-per-question](ideas/verification-per-question.md) | Every guide question says how compliance is checked | rule | any guide written or revised | registry, verification | discussed |
+| [artifact-count-test](ideas/artifact-count-test.md) | Artifact count for the toy app is a health metric | rule | any regeneration run recorded | verification, level 3 | discussed |
+| [status-vocabulary](ideas/status-vocabulary.md) | Every decision is undecided, decided, deliberately open, inherited, or not applicable with reason | rider | persistent-storage guide | decision record | discussed |
+| [binding-time](ideas/binding-time.md) | Each decision is tagged design, build, deploy, or runtime | rider | persistent-storage guide | registry question, decision record | discussed |
+| [dependency-kinds](ideas/dependency-kinds.md) | Must-exist-before and must-be-consistent-with are different links | rider | first guide that depends on another | derivation graph | discussed |
+| [five-kinds-of-guidance](ideas/five-kinds-of-guidance.md) | A type carries authoring, relating, consuming, verifying, and reviewing guidance | rider | type descriptions | registry entry | discussed |
+| [refinement-stages](ideas/refinement-stages.md) | The traditional layers are stages of one concern, not categories | rider | component and interface types | registry | discussed |
+| [concern-tags](ideas/concern-tags.md) | Concern is a tag for auditing; subject is the organizer | conditional | guides outgrow one implementation | registry question, subject catalog | discussed |
+| [guidance-pruning](ideas/guidance-pruning.md) | Guidance needs a removal rule | conditional | guides outgrow one implementation | harvest loop | discussed |
+| [system-profile](ideas/system-profile.md) | A short profile decides which guides are required and which are skipped with reason | conditional | guides outgrow one implementation | system profile | discussed |
+| [binding-level](ideas/binding-level.md) | Decisions are owned at a level and inherited below | conditional | something above the workbench | decision record, standards | idea |
+| [extraction-mode](ideas/extraction-mode.md) | Guides double as an interview script over an existing system | conditional | something above the workbench | modes | idea |
 
-E1 carries no nugget. It is the next event in agent-method's sequence and is listed because phase 2 of `plan.md` uses its output.
+The implementation 3 event carries no nugget. It is the next event in agent-method's sequence and is listed because phase 2 of `plan.md` uses its output.
 
 ## Already in agent-method
 

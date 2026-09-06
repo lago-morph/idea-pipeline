@@ -3,7 +3,7 @@ id: concern-tags
 title: Concern is a tag for auditing, not an organizer
 status: discussed
 kind: conditional
-event: E6
+event: guides outgrow one implementation
 friction: None yet. Five guides exist and cross-guide consistency is still done by reading.
 agent-method-home: front matter or a column on guide questions; later the link validator
 depends-on: []

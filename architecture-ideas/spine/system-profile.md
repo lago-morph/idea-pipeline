@@ -6,7 +6,7 @@ Status: draft, 2026-09-05. Structure 1 of the spine.
 
 The profile is a short statement of what the system is: six to eight characteristics, each with a coarse value. A single-user memory-only page and a Kubernetes transaction processor differ on these few values, and the required artifact set falls out of the difference. The profile is one of two inputs to the required artifact set. The other is the maturity ladder in `maturity-ladder.md`.
 
-The two are different axes. The profile says what the system is. Maturity says how far along it is. A system whose profile says "shared durable state" can still be at M1 Prototype with no persistence yet. The profile does not change when a level is reached, and reaching a level does not change the profile. The profile caps the ladder: some values make higher levels unreachable, and some make whole rungs collapse. That interaction is described in `maturity-ladder.md`.
+The two are different axes. The profile says what the system is. Maturity says how far along it is. A system whose profile says "shared durable state" can still be at Prototype with no persistence yet. The profile does not change when a level is reached, and reaching a level does not change the profile. The profile caps the ladder: some values make higher levels unreachable, and some make whole rungs collapse. That interaction is described in `maturity-ladder.md`.
 
 The profile is not a requirements document, not a design, and not a list of decisions. It holds no answers to registry questions. It only says which questions are asked.
 

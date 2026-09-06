@@ -13,7 +13,7 @@ The spine is six structures. Three things ride on it: modes of entry, verificati
 | # | Structure | What it holds | One-line role | Detail |
 |---|---|---|---|---|
 | 1 | System profile | Six to eight characteristics of the application, coarse values | What the system *is*; sets the ceiling and skips rungs | `system-profile.md` |
-| 2 | Maturity ladder | Ordered levels M0 to M5 with criteria | How far along the system is; the gap to target is the work list | `maturity-ladder.md` |
+| 2 | Maturity ladder | Ordered levels Sketch to Enterprise with criteria | How far along the system is; the gap to target is the work list | `maturity-ladder.md` |
 | 3 | Subject catalog | System, components, interfaces, data stores, environments | What every artifact and decision attaches to; the navigation axis | `subject-catalog.md` |
 | 4 | Artifact type registry | One entry per artifact type: questions, tags, guidance, applicability rule | Which artifacts exist, what each asks, when each is required | `artifact-type-registry.md` |
 | 5 | Decision records | One record per subject per question: status, provenance, ratification, rationale, evidence | Where humans and agents record and ratify decisions | `decision-record.md` |

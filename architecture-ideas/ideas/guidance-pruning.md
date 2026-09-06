@@ -3,7 +3,7 @@ id: guidance-pruning
 title: Guidance needs a removal rule, not just an accumulation rule
 status: discussed
 kind: conditional
-event: E6
+event: guides outgrow one implementation
 friction: None yet. Every run so far has added questions; no run has shown a guide skimmed.
 agent-method-home: decision-guides.md as a rule; implement-by-subagent.md metrics
 depends-on: []

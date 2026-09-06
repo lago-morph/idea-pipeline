@@ -4,7 +4,7 @@ Status: draft, 2026-09-05. Structure 2 of the spine.
 
 ## What the ladder is
 
-Six ordered levels, M0 to M5. A level says how far along a system is, not what it is; what it is lives in `system-profile.md`. Each level has entry criteria and a set of concerns that become required. Entry criteria are checkable facts about artifacts and the running system, never activities. "Persistence records ratified and data survives reopen" is a criterion. "Persistence designed" is not.
+Six ordered levels, Sketch to Enterprise. A level says how far along a system is, not what it is; what it is lives in `system-profile.md`. Each level has entry criteria and a set of concerns that become required. Entry criteria are checkable facts about artifacts and the running system, never activities. "Persistence records ratified and data survives reopen" is a criterion. "Persistence designed" is not.
 
 The gap between the level a system has and the level its owner targets is the work list. That is the ladder's whole purpose.
 
@@ -12,12 +12,12 @@ The gap between the level a system has and the level its owner targets is the wo
 
 | Level | Meaning | Entry criteria | Concerns that become required |
 |---|---|---|---|
-| M0 Sketch | The system exists as artifacts and nothing runs | A vision exists. At least one use case exists. The profile is set. No runnable is claimed | documentation |
-| M1 Prototype | A runnable produced from the artifacts exists and the owner can use it | An implementation record exists for the runnable. Acceptance criteria, test method, test data, and automated checks exist and the checks pass. The run's ambiguity list is harvested. The runnable is on the owner's device | runtime environment; lifecycle at the level of how it is run and delivered; testing |
-| M2 Durable | State survives closing and reopening, and the owner can get the data out | Persistence records ratified: mechanism, on-disk format and its version, size limits, export path. Closing and reopening loses nothing, checked by an automated check. Data written by implementation N is read by implementation N+1, or the record says why not. External dependencies version pinned | persistence; configuration; external dependencies; concurrency and failure at the level of save failure |
-| M3 Shared | More than one user, device, or host depends on the same system | Identity and access records ratified for every interface. Communication records ratified per interface: transport, serialization, error codes, retry, timeout. Concurrency semantics stated per interface. Install on a second host or for a second user follows a written procedure. Releases are numbered | identity and access; communication; concurrency and failure; security at the boundary |
-| M4 Operated | The system runs continuously and someone is responsible for it | Observability records ratified: metrics, log aggregation, alarming, and each has a running instance. Backup and restore exercised at least once with evidence. Configuration held under management with changes traced. A release and deployment procedure with rollback, exercised. A troubleshooting and remediation procedure exists. End-user management has a ratified record | observability; lifecycle across install, update, and release; configuration management; security monitoring |
-| M5 Enterprise | Many teams and regulated or internal data; most answers are inherited from above the system | A level above the system exists, organization standard or platform, and records inherit from it with binding level stated. Audit log management, HA and DR with tested failover, SLA and SLO recorded and reported, and security incident management each have a ratified record and a running instance | every concern, with inheritance; whatever a standard mandates be documented |
+| Sketch | The system exists as artifacts and nothing runs | A vision exists. At least one use case exists. The profile is set. No runnable is claimed | documentation |
+| Prototype | A runnable produced from the artifacts exists and the owner can use it | An implementation record exists for the runnable. Acceptance criteria, test method, test data, and automated checks exist and the checks pass. The run's ambiguity list is harvested. The runnable is on the owner's device | runtime environment; lifecycle at the level of how it is run and delivered; testing |
+| Durable | State survives closing and reopening, and the owner can get the data out | Persistence records ratified: mechanism, on-disk format and its version, size limits, export path. Closing and reopening loses nothing, checked by an automated check. Data written by implementation N is read by implementation N+1, or the record says why not. External dependencies version pinned | persistence; configuration; external dependencies; concurrency and failure at the level of save failure |
+| Shared | More than one user, device, or host depends on the same system | Identity and access records ratified for every interface. Communication records ratified per interface: transport, serialization, error codes, retry, timeout. Concurrency semantics stated per interface. Install on a second host or for a second user follows a written procedure. Releases are numbered | identity and access; communication; concurrency and failure; security at the boundary |
+| Operated | The system runs continuously and someone is responsible for it | Observability records ratified: metrics, log aggregation, alarming, and each has a running instance. Backup and restore exercised at least once with evidence. Configuration held under management with changes traced. A release and deployment procedure with rollback, exercised. A troubleshooting and remediation procedure exists. End-user management has a ratified record | observability; lifecycle across install, update, and release; configuration management; security monitoring |
+| Enterprise | Many teams and regulated or internal data; most answers are inherited from above the system | A level above the system exists, organization standard or platform, and records inherit from it with binding level stated. Audit log management, HA and DR with tested failover, SLA and SLO recorded and reported, and security incident management each have a ratified record and a running instance | every concern, with inheritance; whatever a standard mandates be documented |
 
 The names are the levels. "Prototype" here is the ladder's word; agent-method avoids it outside descriptive prose and says implementation, which is unchanged.
 
@@ -25,7 +25,7 @@ The names are the levels. "Prototype" here is the ladder's word; agent-method av
 
 Rows are concerns. Cells say what must exist at that level for that concern, in a few words. A cell is cumulative with the cells to its left. "n/a" means the concern asks nothing new at that level.
 
-| Concern | M0 | M1 | M2 | M3 | M4 | M5 |
+| Concern | Sketch | Prototype | Durable | Shared | Operated | Enterprise |
 |---|---|---|---|---|---|---|
 | Persistence | n/a | memory only allowed, stated | mechanism, format version, export | shared store, ownership per component | backup and restore exercised | retention, HA and DR |
 | Identity and access | n/a | n/a | n/a | mechanism, user model, per interface | end-user management | provider inherited, access audited |
@@ -40,23 +40,23 @@ Rows are concerns. Cells say what must exist at that level for that concern, in 
 | Testing | scenarios with test data drafted | acceptance criteria, test method, checks, test data | reopen check, migration check | integration tests, concurrency tests | checks run in CI, environment parity | quality standards inherited, compliance evidence |
 | Documentation | vision, use cases | implementation record, decisions notes, ambiguity list | storage format, export documented | interface contracts with examples, install procedure | runbooks, troubleshooting | what a standard mandates |
 
-The M0 to M2 columns are validated against the workbench. The M3 to M5 columns are seeded from the DevOps and Ops sections of the brainstorming notes and are not yet validated against any system (to confirm).
+The Sketch to Durable columns are validated against the workbench. The Shared to Enterprise columns are seeded from the DevOps and Ops sections of the brainstorming notes and are not yet validated against any system (to confirm).
 
 ## How profile and maturity combine
 
-The profile caps the ladder. Some values make a level unreachable: a system with concurrent users one and deployment topology single device has no M3, because M3 means more than one user, device, or host. A system with availability target best effort has no M4. The cap is not a judgment; it follows from the values.
+The profile caps the ladder. Some values make a level unreachable: a system with concurrent users one and deployment topology single device has no Shared, because Shared means more than one user, device, or host. A system with availability target best effort has no Operated. The cap is not a judgment; it follows from the values.
 
-The profile skips rungs. When every concern a level requires is not applicable by profile, the level's records are all not-applicable with reason, and the level is claimed with no work. A stateless system passes through M2 this way. A system born with many users and continuous availability will find M2 collapses into M3 and M3 into M4, and its work list starts at the higher level.
+The profile skips rungs. When every concern a level requires is not applicable by profile, the level's records are all not-applicable with reason, and the level is claimed with no work. A stateless system passes through Durable this way. A system born with many users and continuous availability will find Durable collapses into Shared and Shared into Operated, and its work list starts at the higher level.
 
 The required artifact set is a function of three things: the profile, the target maturity, and the current maturity. The profile says which registry entries apply at all. The target says which levels' concerns are required. The current level says which of those already have ratified records. The difference is the gap, and the gap is the work list: registry entries that need instances, questions that need records, checks that need to pass.
 
 ### The workbench as the worked example
 
-Current level: M1 Prototype (to confirm). Implementations 1 and 2 were delivered from the artifacts with acceptance criteria, test method, test data, and automated checks, and their decisions made while building are recorded in per-area decisions notes. Whether every record made while building has been ratified is not established here, and the level is claimed only when it is. Implementation 3's run and its ambiguity list are not yet recorded in the copy read.
+Current level: Prototype (to confirm). Implementations 1 and 2 were delivered from the artifacts with acceptance criteria, test method, test data, and automated checks, and their decisions made while building are recorded in per-area decisions notes. Whether every record made while building has been ratified is not established here, and the level is claimed only when it is. Implementation 3's run and its ambiguity list are not yet recorded in the copy read.
 
-Cap from the profile: M2. Concurrent users one and deployment topology single device rule out M3, and best effort rules out M4. M2 is therefore also the plausible target, and it is what the vision's success criterion 3 describes.
+Cap from the profile: Durable. Concurrent users one and deployment topology single device rule out Shared, and best effort rules out Operated. Durable is therefore also the plausible target, and it is what the vision's success criterion 3 describes.
 
-The gap from M1 to M2 is the following, with each item traced to a source.
+The gap from Prototype to Durable is the following, with each item traced to a source.
 
 | Gap item | Source |
 |---|---|
@@ -65,9 +65,9 @@ The gap from M1 to M2 is the following, with each item traced to a source.
 | Carrying data between implementations decided: whether implementation N+1 must read implementation N's data | decision-guides.md, guides to write |
 | Delivery to the device decided as a durable route, not the working-session attachment | implementation record 3, build and installation method |
 | An automated check that closing and reopening loses nothing, plus the restored UI state the vision names | vision success criterion 3; test-method-definition.md |
-| Save failure semantics recorded: what the user sees when a save fails | concurrency and failure at M2 |
+| Save failure semantics recorded: what the user sees when a save fails | concurrency and failure at Durable |
 | External dependencies stated as none and pinned if that changes | implementation record 3 |
-| Logging and diagnostics decided, since M2 requires diagnostics retrievable after a failure | decision-guides.md, guides to write |
+| Logging and diagnostics decided, since Durable requires diagnostics retrievable after a failure | decision-guides.md, guides to write |
 
 Every gap item is either a guide agent-method already lists as "to write when the first implementation that needs them is being planned" or a check the vision already implies. That is the expected result: the ladder makes the existing rule computable and adds nothing to it.
 
@@ -81,7 +81,7 @@ Every gap item is either a guide agent-method already lists as "to write when th
 
 ## Open questions
 
-- Whether M3 Shared conflates two steps, a second device for the same user and a second user, and whether the profile resolves that without a seventh level.
-- Whether the M1 entry criteria should require the ambiguity list be harvested, or only recorded. Requiring harvest ties the claim to the harvest loop, which may be right.
-- Whether the matrix's M3 to M5 cells belong here or in the registry entries' applicability rules, with the matrix generated from them. Generating it would keep one source of truth.
+- Whether Shared conflates two steps, a second device for the same user and a second user, and whether the profile resolves that without a seventh level.
+- Whether the Prototype entry criteria should require the ambiguity list be harvested, or only recorded. Requiring harvest ties the claim to the harvest loop, which may be right.
+- Whether the matrix's Shared to Enterprise cells belong here or in the registry entries' applicability rules, with the matrix generated from them. Generating it would keep one source of truth.
 - Whether current level should be recorded in the implementation record, which already lists what each implementation covers, or in its own claim record as proposed above.

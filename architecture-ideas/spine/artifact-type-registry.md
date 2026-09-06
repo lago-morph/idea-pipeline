@@ -34,59 +34,59 @@ One entry per artifact type. An entry says which subjects the type attaches to, 
 
 ## The seed registry
 
-Source: existing means an agent-method type or guide; foreseen means one of the six guides decision-guides.md foresees; notes means the brainstorming notes. First required at is the maturity level at which a subject the rule applies to must have an instance, or an explicit not-applicable record. Levels are those of maturity-ladder.md: M0 Sketch, M1 Prototype, M2 Durable, M3 Shared, M4 Operated, M5 Enterprise. Values were set from the ladder's entry criteria and criteria matrix. The ladder's M3 to M5 columns are not yet validated against any system, so every value at M3 or above is to confirm. Merged areas are named in the purpose column.
+Source: existing means an agent-method type or guide; foreseen means one of the six guides decision-guides.md foresees; notes means the brainstorming notes. First required at is the maturity level at which a subject the rule applies to must have an instance, or an explicit not-applicable record. Levels are those of maturity-ladder.md: Sketch, Prototype, Durable, Shared, Operated, Enterprise. Values were set from the ladder's entry criteria and criteria matrix. The ladder's Shared to Enterprise columns are not yet validated against any system, so every value at Shared or above is to confirm. Merged areas are named in the purpose column.
 
 | id | attaches to | stage | source | first required at | purpose |
 |---|---|---|---|---|---|
-| vision | system | logical | existing | M0 | Why the system exists and what success is; the root artifact |
-| ui-use-case | interface | logical | existing | M0 | The single home of the UI design for one kind of interface, per ADR 0006 |
-| functional-use-case | system | logical | existing | M0 | UI-neutral behavior with corner cases and an Interface guidance section |
-| component | component | logical | existing, no instance yet | M1 (to confirm) | What a component promises: responsibility, lifecycle states, contract per state, state machine with complete transitions, data ownership. Notes' component items merge here |
-| interface | interface | logical | existing, no instance yet | M1 (to confirm) | Example input and output, preconditions, function, postconditions and error semantics, synchronous or asynchronous, typed structures, concurrency semantics, edge cases. Notes' interface items merge here |
+| vision | system | logical | existing | Sketch | Why the system exists and what success is; the root artifact |
+| ui-use-case | interface | logical | existing | Sketch | The single home of the UI design for one kind of interface, per ADR 0006 |
+| functional-use-case | system | logical | existing | Sketch | UI-neutral behavior with corner cases and an Interface guidance section |
+| component | component | logical | existing, no instance yet | Prototype (to confirm) | What a component promises: responsibility, lifecycle states, contract per state, state machine with complete transitions, data ownership. Notes' component items merge here |
+| interface | interface | logical | existing, no instance yet | Prototype (to confirm) | Example input and output, preconditions, function, postconditions and error semantics, synchronous or asynchronous, typed structures, concurrency semantics, edge cases. Notes' interface items merge here |
 | note | any | any | existing | never required | Free-form; the escape hatch. Becomes a type only when it recurs |
-| implementation-record | system | mechanism | existing | M1 | One line per decision area for one implementation, linking to per-area notes |
-| ui-decisions | interface | mechanism | existing | M1 | Appearance and interaction values for one implementation; guide is ui-standards-definition |
-| implementation-structure | component | mechanism | existing | M1 | Model, identity, ordering, rendering, code shape for one implementation. Splits into code-conventions and data-model when those guides exist |
-| test-method | environment | infrastructure (to confirm) | existing | M1 | How checks run: harness, engine, sizes, loading, output contract, what a person checks |
-| acceptance-criteria | system | logical (to confirm) | existing | M1 | One row per use-case sentence or record decision: source, check, result per environment |
-| test-data | system | logical (to confirm) | existing | M1 | The data sets and the walk-throughs that exercise corner cases. Notes' scenarios with test data merge here |
-| automated-checks | system, interface | mechanism (to confirm) | existing | M1 | The specification a check script is regenerated from, including the hooks contract |
-| quality-standards | system | infrastructure (to confirm) | existing | M1 | What is wanted of unit, type, static, integration, UI, and end-to-end checks; not how. Notes' coding, testing, and naming standards merge here |
-| persistent-storage | data store | mechanism | foreseen | M2 | Where durable storage concretely is, format, limits, export. Worked entry below. Notes' persistence mechanism merges here |
-| delivery-to-device | environment | infrastructure | foreseen | M1 | How the runnable reaches the device. Notes' install and update merge here |
-| code-conventions | component | mechanism | foreseen | M2 (to confirm) | Language level, file structure, naming, traceability to use-case sentences, what a comment says |
-| logging-diagnostics | component | mechanism | foreseen | M1 | What is logged, where, and how the owner reads it on the device. Notes' logging mechanism merges here |
-| data-model | system, data store | logical | foreseen | M1 | What an idea is in memory and in storage, identity across saves, glossary. Notes' data model and glossary merge here |
-| data-migration | data store | mechanism | foreseen | M2 | Whether implementation N+1 reads implementation N's data, and how |
-| business-rules | component | logical | notes | M1 | Validation rules and algorithms in pseudocode with examples. The Edit ideas use case holds one inline today |
-| error-taxonomy | system | logical | notes | M2 (to confirm) | Kinds of error, behavior for each, decision tables |
-| external-dependencies | system, component | logical | notes | M1 | What outside the system is relied on, stated explicitly; "none" is an answer |
-| not-specified | system, component | logical | notes | M1 | The deliberately open records for a subject, with bounds. May be a generated view over records rather than an authored artifact (to confirm) |
-| non-functional-requirements | system | logical | notes | M2 (to confirm) | Properties the running system must satisfy and the supporting components that satisfy them. Overlaps the system profile (to confirm) |
-| implementation-mechanism | component | mechanism | notes | M1 | Language, stack, and the runtime the component requires. Answered once for the whole system in the implementation record today |
-| concurrency-mechanism | component, interface | mechanism | notes | M3 (to confirm) | Threads, workers, event loop, locking: the mechanism behind an interface's concurrency semantics |
-| failure-restart-retry | component, interface | mechanism | notes | M2 (to confirm) | What happens on failure: restart, retry, timeout, give up. Notes' interface retry and timeout merge here |
-| authn-z | component, interface | mechanism | notes | M3 (to confirm) | Authentication and authorization mechanism, and transport security. Notes' interface security merges here |
-| transport-serdes | interface | mechanism | notes | M3 (to confirm) | Channel, protocol, serialization, error codes for an interface that crosses a process or network boundary |
-| configuration-parameters | system, component | mechanism | notes | M2 (to confirm) | Which answers bind at deploy time, how they are supplied, their defaults |
-| dependency-pinning | component | mechanism | notes | M2 | Versions of external dependencies pinned; their interfaces and data models specified |
-| execution-environment | environment | infrastructure | notes | M1 | The host itself: device, browser, runtime, cluster, and any stand-in used for checks. Notes' digital twins merge here |
-| observability-infrastructure | environment | infrastructure | notes | M4 (to confirm) | Metrics, log aggregation, traces, profiling tooling, for production and development alike |
-| auth-tools | environment | infrastructure | notes | M3 (to confirm) | Identity provider and access tooling, including dev and test user management |
-| persistence-infrastructure | data store, environment | infrastructure | notes | M2 (to confirm) | Disk, object store, browser origin: what the persistence mechanism runs on |
-| platform-services | environment | infrastructure | notes | M4 (to confirm) | Database, message queue, and other services used but not owned |
-| ci-cd | environment | infrastructure | notes | M4 (to confirm) | What runs on every change and before delivery, and where |
-| release-management | system | infrastructure | notes | M3 (to confirm) | Numbering, packaging, where releases live, how one is chosen for deployment |
-| source-control-and-tooling | environment | infrastructure | notes | M1 | Repository layout, branching, review; IDEs, issue tracking, docs, comms. Implementation standards decide the layout today |
-| shared-libraries | component | infrastructure | notes | M5 (to confirm) | Code shared across components or systems, and who owns it |
-| troubleshooting | system, component | operations | notes | M4 (to confirm) | How a problem is diagnosed and remedied by whoever operates the system |
-| alarming | system | operations | notes | M4 (to confirm) | Which conditions raise an alarm, to whom, how |
-| ha-dr-backup | data store | operations | notes | M4 (to confirm) | Backup and restore exercised with evidence at M4; high availability and disaster recovery at M5 by profile. Getting the data out at M2 is a persistent-storage question |
-| sla-slo | system | operations | notes | M5 (to confirm) | Service levels promised and the objectives measured against them |
-| end-user-management | system | operations | notes | M4 (to confirm) | Onboarding, roles, and removal of end users |
-| security-monitoring | system | operations | notes | M4 (to confirm) | Security monitoring and incident management |
-| configuration-management | environment | operations | notes | M4 (to confirm) | How deploy-time and runtime values are set, tracked, and changed in a running environment |
-| audit-log-management | data store, system | operations | notes | M5 (to confirm) | What is audited, retention, who may read the audit log |
+| implementation-record | system | mechanism | existing | Prototype | One line per decision area for one implementation, linking to per-area notes |
+| ui-decisions | interface | mechanism | existing | Prototype | Appearance and interaction values for one implementation; guide is ui-standards-definition |
+| implementation-structure | component | mechanism | existing | Prototype | Model, identity, ordering, rendering, code shape for one implementation. Splits into code-conventions and data-model when those guides exist |
+| test-method | environment | infrastructure (to confirm) | existing | Prototype | How checks run: harness, engine, sizes, loading, output contract, what a person checks |
+| acceptance-criteria | system | logical (to confirm) | existing | Prototype | One row per use-case sentence or record decision: source, check, result per environment |
+| test-data | system | logical (to confirm) | existing | Prototype | The data sets and the walk-throughs that exercise corner cases. Notes' scenarios with test data merge here |
+| automated-checks | system, interface | mechanism (to confirm) | existing | Prototype | The specification a check script is regenerated from, including the hooks contract |
+| quality-standards | system | infrastructure (to confirm) | existing | Prototype | What is wanted of unit, type, static, integration, UI, and end-to-end checks; not how. Notes' coding, testing, and naming standards merge here |
+| persistent-storage | data store | mechanism | foreseen | Durable | Where durable storage concretely is, format, limits, export. Worked entry below. Notes' persistence mechanism merges here |
+| delivery-to-device | environment | infrastructure | foreseen | Prototype | How the runnable reaches the device. Notes' install and update merge here |
+| code-conventions | component | mechanism | foreseen | Durable (to confirm) | Language level, file structure, naming, traceability to use-case sentences, what a comment says |
+| logging-diagnostics | component | mechanism | foreseen | Prototype | What is logged, where, and how the owner reads it on the device. Notes' logging mechanism merges here |
+| data-model | system, data store | logical | foreseen | Prototype | What an idea is in memory and in storage, identity across saves, glossary. Notes' data model and glossary merge here |
+| data-migration | data store | mechanism | foreseen | Durable | Whether implementation N+1 reads implementation N's data, and how |
+| business-rules | component | logical | notes | Prototype | Validation rules and algorithms in pseudocode with examples. The Edit ideas use case holds one inline today |
+| error-taxonomy | system | logical | notes | Durable (to confirm) | Kinds of error, behavior for each, decision tables |
+| external-dependencies | system, component | logical | notes | Prototype | What outside the system is relied on, stated explicitly; "none" is an answer |
+| not-specified | system, component | logical | notes | Prototype | The deliberately open records for a subject, with bounds. May be a generated view over records rather than an authored artifact (to confirm) |
+| non-functional-requirements | system | logical | notes | Durable (to confirm) | Properties the running system must satisfy and the supporting components that satisfy them. Overlaps the system profile (to confirm) |
+| implementation-mechanism | component | mechanism | notes | Prototype | Language, stack, and the runtime the component requires. Answered once for the whole system in the implementation record today |
+| concurrency-mechanism | component, interface | mechanism | notes | Shared (to confirm) | Threads, workers, event loop, locking: the mechanism behind an interface's concurrency semantics |
+| failure-restart-retry | component, interface | mechanism | notes | Durable (to confirm) | What happens on failure: restart, retry, timeout, give up. Notes' interface retry and timeout merge here |
+| authn-z | component, interface | mechanism | notes | Shared (to confirm) | Authentication and authorization mechanism, and transport security. Notes' interface security merges here |
+| transport-serdes | interface | mechanism | notes | Shared (to confirm) | Channel, protocol, serialization, error codes for an interface that crosses a process or network boundary |
+| configuration-parameters | system, component | mechanism | notes | Durable (to confirm) | Which answers bind at deploy time, how they are supplied, their defaults |
+| dependency-pinning | component | mechanism | notes | Durable | Versions of external dependencies pinned; their interfaces and data models specified |
+| execution-environment | environment | infrastructure | notes | Prototype | The host itself: device, browser, runtime, cluster, and any stand-in used for checks. Notes' digital twins merge here |
+| observability-infrastructure | environment | infrastructure | notes | Operated (to confirm) | Metrics, log aggregation, traces, profiling tooling, for production and development alike |
+| auth-tools | environment | infrastructure | notes | Shared (to confirm) | Identity provider and access tooling, including dev and test user management |
+| persistence-infrastructure | data store, environment | infrastructure | notes | Durable (to confirm) | Disk, object store, browser origin: what the persistence mechanism runs on |
+| platform-services | environment | infrastructure | notes | Operated (to confirm) | Database, message queue, and other services used but not owned |
+| ci-cd | environment | infrastructure | notes | Operated (to confirm) | What runs on every change and before delivery, and where |
+| release-management | system | infrastructure | notes | Shared (to confirm) | Numbering, packaging, where releases live, how one is chosen for deployment |
+| source-control-and-tooling | environment | infrastructure | notes | Prototype | Repository layout, branching, review; IDEs, issue tracking, docs, comms. Implementation standards decide the layout today |
+| shared-libraries | component | infrastructure | notes | Enterprise (to confirm) | Code shared across components or systems, and who owns it |
+| troubleshooting | system, component | operations | notes | Operated (to confirm) | How a problem is diagnosed and remedied by whoever operates the system |
+| alarming | system | operations | notes | Operated (to confirm) | Which conditions raise an alarm, to whom, how |
+| ha-dr-backup | data store | operations | notes | Operated (to confirm) | Backup and restore exercised with evidence at Operated; high availability and disaster recovery at Enterprise by profile. Getting the data out at Durable is a persistent-storage question |
+| sla-slo | system | operations | notes | Enterprise (to confirm) | Service levels promised and the objectives measured against them |
+| end-user-management | system | operations | notes | Operated (to confirm) | Onboarding, roles, and removal of end users |
+| security-monitoring | system | operations | notes | Operated (to confirm) | Security monitoring and incident management |
+| configuration-management | environment | operations | notes | Operated (to confirm) | How deploy-time and runtime values are set, tracked, and changed in a running environment |
+| audit-log-management | data store, system | operations | notes | Enterprise (to confirm) | What is audited, retention, who may read the audit log |
 
 ## Worked entry: persistent storage
 
@@ -97,7 +97,7 @@ The next guide agent-method will need, first required by the Save ideas use case
 | id | persistent-storage |
 | attaches to | data store |
 | stage | mechanism |
-| applicability rule | profile statefulness is local or shared durable, per system-profile.md, and maturity M2 Durable or above, per maturity-ladder.md. With statefulness none, every question is not applicable with that value as the reason. Below M2 the questions are not yet required; implementation records 1 to 3 say memory only, which the profile note calls a maturity fact, not a profile fact |
+| applicability rule | profile statefulness is local or shared durable, per system-profile.md, and maturity Durable or above, per maturity-ladder.md. With statefulness none, every question is not applicable with that value as the reason. Below Durable the questions are not yet required; implementation records 1 to 3 say memory only, which the profile note calls a maturity fact, not a profile fact |
 | authoring | One decisions note per data store per implementation, linked to this guide. Values, not adjectives. Where the owner says "whatever is conventional", take the default and mark it as a default. The guide asks and lists; it never decides |
 | relating | depends-on: data-model, and the use case that names durable storage. Must be consistent with: data-migration, test-data question 4 on where the set lives once the loader goes, delivery-to-device, and configuration-parameters for any deploy-time answer |
 | consuming | Read questions 1, 3, and 5 before writing any storage code, and the rest before writing the checks. An answer that is deliberately open is license only within its stated bounds |

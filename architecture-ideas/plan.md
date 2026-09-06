@@ -4,7 +4,7 @@ Status: draft, 2026-09-05. How this work matures in parallel with agent-method, 
 
 ## Principles
 
-- **Agent-method's rule applies here too.** Nothing lands in agent-method ahead of its event, per the events table in `README.md`. Nothing here is defined without being instantiated against a real application in the same phase.
+- **Agent-method's rule applies here too.** Nothing lands in agent-method ahead of its event, per the events table in `README.md`, where events have names rather than codes. Nothing here is defined without being instantiated against a real application in the same phase.
 - **Shadow first, then pull.** Each spine structure is instantiated for the workbench here, in `testbed/`, before anything is proposed to agent-method. The shadow is the proof that the structure fits real content. When it does, the piece agent-method needs is proposed there through agent-method's own process, one artifact at a time, for the owner's markup.
 - **One structure at a time.** The same discipline agent-method learned the hard way. Each phase below has an exit test. A phase does not start until the previous phase's exit test passes.
 - **Six structures, no more.** Anything new must prove it cannot be a field on one of the six. The plan includes a standing check for this.
@@ -72,19 +72,19 @@ Exit test: the artifact count for the workbench is still small, and the second a
 
 ## Sync points with agent-method's own sequence
 
-Event ids match the events table in `README.md`, which is where each nugget names its event.
+Event names match the events table in `README.md`, which is where each nugget names its event.
 
-| id | Agent-method event | What this work does at that point |
+| Event | What happens in agent-method | What this work does at that point |
 |---|---|---|
-| E1 | Implementation record 3 is marked up and the implementation 3 run happens | Phase 2: rewrite its record as decision records; first metrics row |
-| E2 | Save ideas is ratified and the persistent-storage guide is written | Phase 3: the registry-shaped guide is the proposal, carrying status-vocabulary and binding-time as riders |
-| E3 | A guide is written whose questions depend on another guide's answers | dependency-kinds rides on it |
-| E4 | Type descriptions are written in `method/types/` from real instances | five-kinds-of-guidance becomes the section list |
-| E5 | The component and interface types are written | refinement-stages rides on them; the subject catalog informs them |
-| E6 | The guide set outgrows one implementation | concern-tags, guidance-pruning, and system-profile become riders on whatever work the event creates; the registry and decision records are offered as the replacement for note clusters |
-| E7 | A level above the workbench appears: a platform, a second application, or an existing system | Phase 6; binding-level and extraction-mode become riders; the spine's transfer test |
-| G | A guide is written or revised | The four rules apply: tight-fields-loose-guidance, decision-inventory, verification-per-question, and for M below, artifact-count-test |
-| M | A regeneration run's metrics row is recorded | artifact-count-test applies; phase 4's metrics columns |
+| implementation 3 | Implementation record 3 is marked up and the implementation 3 run happens | Phase 2: rewrite its record as decision records; first metrics row |
+| persistent-storage guide | Save ideas is ratified and the persistent-storage guide is written | Phase 3: the registry-shaped guide is the proposal, carrying status-vocabulary and binding-time as riders |
+| first guide that depends on another | A guide is written whose questions depend on another guide's answers | dependency-kinds rides on it |
+| type descriptions | Type descriptions are written in `method/types/` from real instances | five-kinds-of-guidance becomes the section list |
+| component and interface types | The component and interface types are written | refinement-stages rides on them; the subject catalog informs them |
+| guides outgrow one implementation | The guide set outgrows one implementation | concern-tags, guidance-pruning, and system-profile become riders on whatever work the event creates; the registry and decision records are offered as the replacement for note clusters |
+| something above the workbench | A level above the workbench appears: a platform, a second application, or an existing system | Phase 6; binding-level and extraction-mode become riders; the spine's transfer test |
+| any guide written or revised | A guide is written or revised | The four rules apply: tight-fields-loose-guidance, decision-inventory, verification-per-question, and artifact-count-test on the next row |
+| any regeneration run recorded | A regeneration run's metrics row is recorded | artifact-count-test applies; phase 4's metrics columns |
 
 ## Standing checks
 

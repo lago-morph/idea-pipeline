@@ -3,7 +3,7 @@ id: verification-per-question
 title: Every guide question states how compliance is checked
 status: discussed
 kind: rule
-event: G
+event: any guide written or revised
 friction: The automated-checks notes already derive the script from the note. The quality-standards guide states what is wanted and defers how. Neither says per question how compliance is checked.
 agent-method-home: decision-guides.md as a rule; test-method-definition.md and automated-checks notes as the mechanism
 depends-on: []

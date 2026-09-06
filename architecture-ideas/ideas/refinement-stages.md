@@ -3,7 +3,7 @@ id: refinement-stages
 title: Application, technical, DevOps, and Ops are refinement stages of one concern
 status: discussed
 kind: rider
-event: E5
+event: component and interface types
 friction: The implementation-structure notes hold mechanism-stage decisions for components that have no logical-stage artifact yet, so the two stages have nowhere distinct to go.
 agent-method-home: method/types/component.md and interface.md; possibly new types for the technical and operational stages
 depends-on: [concern-tags]
