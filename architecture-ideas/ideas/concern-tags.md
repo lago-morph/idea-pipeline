@@ -2,7 +2,9 @@
 id: concern-tags
 title: Concern is a tag for auditing, not an organizer
 status: discussed
-trigger: The number of guides passes about five and cross-guide consistency review becomes a real step.
+kind: conditional
+event: E6
+friction: None yet. Five guides exist and cross-guide consistency is still done by reading.
 agent-method-home: front matter or a column on guide questions; later the link validator
 depends-on: []
 ---

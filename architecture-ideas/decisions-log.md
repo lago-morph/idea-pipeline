@@ -39,6 +39,7 @@ Status: draft, 2026-09-05. Conclusions reached in the working session of 2026-09
 | 33 | The persistent-storage registry entry is the first piece to propose to agent-method, timed to the Save ideas use case, carrying status vocabulary, binding time, and verification per question with it | proposed |
 | 34 | The workbench catalog treats the check-hooks contract as an interface subject and the working repository as an environment subject, so the inference is visible | proposed, to confirm |
 | 35 | End-user management is an M4 criterion, not M5 | proposed, resolving a contradiction between the ladder's criteria and matrix |
+| 36 | Each nugget has one relationship kind, rule, rider, or conditional, and one agent-method event from a fixed list shared with the plan. A nugget names the friction in agent-method that justifies it. "Pulled" means its content appears in a ratified agent-method artifact | owner asked for the ambiguity removed; the scheme is proposed |
 
 ## Open questions carried forward
 

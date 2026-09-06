@@ -2,7 +2,9 @@
 id: guidance-pruning
 title: Guidance needs a removal rule, not just an accumulation rule
 status: discussed
-trigger: A regeneration run shows the subagent skimmed or ignored a guide, or a guide exceeds a size the procedure's document tiers can afford.
+kind: conditional
+event: E6
+friction: None yet. Every run so far has added questions; no run has shown a guide skimmed.
 agent-method-home: decision-guides.md as a rule; implement-by-subagent.md metrics
 depends-on: []
 ---

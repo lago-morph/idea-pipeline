@@ -2,7 +2,9 @@
 id: five-kinds-of-guidance
 title: An artifact type carries five kinds of guidance
 status: discussed
-trigger: Writing the agent-facing type descriptions in method/types/ from real instances, the last step in PLAN.md's sequence.
+kind: rider
+event: E4
+friction: The vision type description carries authoring guidance only. Reviewing guidance exists but lives in the implementation procedure's checklist, and consuming guidance exists only as tiered document access.
 agent-method-home: method/types/*.md, as a standard set of sections
 depends-on: [verification-per-question]
 ---

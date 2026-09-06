@@ -4,7 +4,7 @@ Status: draft, 2026-09-05. How this work matures in parallel with agent-method, 
 
 ## Principles
 
-- **Agent-method's rule applies here too.** Nothing lands in agent-method ahead of its trigger. Nothing here is defined without being instantiated against a real application in the same phase.
+- **Agent-method's rule applies here too.** Nothing lands in agent-method ahead of its event, per the events table in `README.md`. Nothing here is defined without being instantiated against a real application in the same phase.
 - **Shadow first, then pull.** Each spine structure is instantiated for the workbench here, in `testbed/`, before anything is proposed to agent-method. The shadow is the proof that the structure fits real content. When it does, the piece agent-method needs is proposed there through agent-method's own process, one artifact at a time, for the owner's markup.
 - **One structure at a time.** The same discipline agent-method learned the hard way. Each phase below has an exit test. A phase does not start until the previous phase's exit test passes.
 - **Six structures, no more.** Anything new must prove it cannot be a field on one of the six. The plan includes a standing check for this.
@@ -42,7 +42,7 @@ Exit test: every existing decision in the workbench fits a record without forcin
 
 Seed the artifact type registry from agent-method's existing types, its six foreseen guides, and the brainstorming inventory, each row with an applicability rule in profile and maturity terms.
 
-Write the persistent-storage entry in full, registry-shaped: numbered questions, each with concern, binding time, option space, and verified-by. This is timed to agent-method's Save ideas use case, which is the next in its build order and the trigger for its persistent-storage guide. The entry is proposed to agent-method as that guide, in agent-method's guide shape, with the registry fields as extra columns. That carries three nuggets across at once: `status-vocabulary`, `binding-time`, and `verification-per-question`.
+Write the persistent-storage entry in full, registry-shaped: numbered questions, each with concern, binding time, option space, and verified-by. This is timed to agent-method's Save ideas use case, which is the next in its build order and the trigger for its persistent-storage guide. The entry is proposed to agent-method as that guide, in agent-method's guide shape, with the registry fields as extra columns. That carries two riders across at once, `status-vocabulary` and `binding-time`, and the `verification-per-question` rule applies to the guide as it is written.
 
 Exit test: the persistent-storage guide is in agent-method for markup, and the implementation that uses it produces decision records the owner can review by subject.
 
@@ -72,14 +72,19 @@ Exit test: the artifact count for the workbench is still small, and the second a
 
 ## Sync points with agent-method's own sequence
 
-| Agent-method event | What this work does at that point |
-|---|---|
-| Implementation 3 runs from record 3 | Phase 2: rewrite its record as decision records; first metrics row |
-| Save ideas use case; persistent-storage guide needed | Phase 3: the registry-shaped guide is the proposal |
-| Type descriptions written from real instances | `five-kinds-of-guidance` becomes the section list |
-| Component and interface types written | Subject catalog and `refinement-stages` inform them |
-| Note pile becomes hard to use | Registry and decision records offered as the replacement for note clusters |
-| A second application is specified with the method | Phase 6; the spine's transfer test |
+Event ids match the events table in `README.md`, which is where each nugget names its event.
+
+| id | Agent-method event | What this work does at that point |
+|---|---|---|
+| E1 | Implementation record 3 is marked up and the implementation 3 run happens | Phase 2: rewrite its record as decision records; first metrics row |
+| E2 | Save ideas is ratified and the persistent-storage guide is written | Phase 3: the registry-shaped guide is the proposal, carrying status-vocabulary and binding-time as riders |
+| E3 | A guide is written whose questions depend on another guide's answers | dependency-kinds rides on it |
+| E4 | Type descriptions are written in `method/types/` from real instances | five-kinds-of-guidance becomes the section list |
+| E5 | The component and interface types are written | refinement-stages rides on them; the subject catalog informs them |
+| E6 | The guide set outgrows one implementation | concern-tags, guidance-pruning, and system-profile become riders on whatever work the event creates; the registry and decision records are offered as the replacement for note clusters |
+| E7 | A level above the workbench appears: a platform, a second application, or an existing system | Phase 6; binding-level and extraction-mode become riders; the spine's transfer test |
+| G | A guide is written or revised | The four rules apply: tight-fields-loose-guidance, decision-inventory, verification-per-question, and for M below, artifact-count-test |
+| M | A regeneration run's metrics row is recorded | artifact-count-test applies; phase 4's metrics columns |
 
 ## Standing checks
 

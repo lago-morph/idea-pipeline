@@ -78,7 +78,7 @@ In the shape of agent-method's `ai/procedures/`: observed in, what was done, wha
 | Applicability matrix: artifact type by profile value and maturity level | derived from registry rows | stub, one column in the seed table |
 | Criteria matrix: concern by maturity level | `spine/maturity-ladder.md` | draft |
 | Concern list, ten concerns | `spine/overview.md` vocabulary | draft |
-| Nuggets and their triggers | `README.md` | draft |
+| Nuggets, their kinds and events | `README.md` | draft |
 | Already in agent-method | `README.md` | draft |
 
 ## Working documents

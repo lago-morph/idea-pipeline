@@ -2,7 +2,9 @@
 id: dependency-kinds
 title: Must-exist-before and must-be-consistent-with are different dependencies
 status: discussed
-trigger: The first guide whose questions depend on another guide's answers, most likely the persistent-storage guide depending on a data-model guide.
+kind: rider
+event: E3
+friction: Test-data questions 4 to 7 were answered only provisionally in implementation 2, pending the storage guide. That is a cross-guide dependency with no link type to express it.
 agent-method-home: method/CONVENTIONS.md link types
 depends-on: []
 ---

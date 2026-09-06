@@ -2,7 +2,9 @@
 id: verification-per-question
 title: Every guide question states how compliance is checked
 status: discussed
-trigger: The execution methods for the quality-standards guide are built, which the handoff schedules for after the first rounds of implementing the workbench.
+kind: rule
+event: G
+friction: The automated-checks notes already derive the script from the note. The quality-standards guide states what is wanted and defers how. Neither says per question how compliance is checked.
 agent-method-home: decision-guides.md as a rule; test-method-definition.md and automated-checks notes as the mechanism
 depends-on: []
 ---

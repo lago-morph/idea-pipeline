@@ -2,7 +2,9 @@
 id: status-vocabulary
 title: Every decision carries an explicit status
 status: discussed
-trigger: The next guide is written (persistent storage, for Save ideas), or implementation record 3 is marked up.
+kind: rider
+event: E2
+friction: Run 1 reported 15 ambiguities, every one a place the artifacts were silent and the agent chose. Implementation records already write skips with reasons by hand: "persistent storage: none, memory only".
 agent-method-home: workbench/note/decision-guides.md (the guide / decisions / standard pattern) and implementation-record-definition.md
 depends-on: []
 ---

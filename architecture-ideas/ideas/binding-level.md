@@ -2,7 +2,9 @@
 id: binding-level
 title: Decisions are owned at a level and inherited below it
 status: idea
-trigger: The workbench gains a platform it does not own (a server, hosting, a runtime with its own logging or auth), or the method is applied to a second application.
+kind: conditional
+event: E7
+friction: None yet. Nothing exists above the workbench's system level.
 agent-method-home: method/CONVENTIONS.md or decision-guides.md; possibly a new link type
 depends-on: [status-vocabulary]
 ---

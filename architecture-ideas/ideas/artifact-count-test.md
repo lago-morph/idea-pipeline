@@ -2,7 +2,9 @@
 id: artifact-count-test
 title: The number of artifacts the toy app needs is a health metric
 status: discussed
-trigger: Every implementation record; the metrics table in implement-by-subagent.md.
+kind: rule
+event: M
+friction: The metrics table already has a "repo docs opened" column, 25 for run 1. This rule reads it as a health metric and adds a by-type breakdown.
 agent-method-home: ai/procedures/implement-by-subagent.md metrics table
 depends-on: [system-profile]
 ---

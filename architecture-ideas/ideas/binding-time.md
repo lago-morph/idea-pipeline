@@ -2,7 +2,9 @@
 id: binding-time
 title: Tag each decision with when it binds
 status: discussed
-trigger: The first decision whose answer belongs in configuration rather than in code, most likely storage location or delivery target.
+kind: rider
+event: E2
+friction: Anticipated, not yet observed. The storage guide's question on where the store lives is the first deploy-time question agent-method will ask, so the column is proposed with that guide.
 agent-method-home: workbench/note/decision-guides.md, as a column on each guide question
 depends-on: [status-vocabulary]
 ---

@@ -2,7 +2,9 @@
 id: extraction-mode
 title: Guides double as an interview script over an existing system
 status: idea
-trigger: The method is first applied to a system that already exists.
+kind: conditional
+event: E7
+friction: None yet. The workbench is built from the method; nothing pre-existing has been captured.
 agent-method-home: a new procedure in ai/procedures/, then a method procedure
 depends-on: [status-vocabulary]
 ---

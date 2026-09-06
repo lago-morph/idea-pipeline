@@ -2,7 +2,9 @@
 id: system-profile
 title: A system profile decides which guides are required
 status: discussed
-trigger: The list of foreseen guides grows past what one implementation needs, or the method is applied to a second application with a different shape.
+kind: conditional
+event: E6
+friction: None yet. One implementation still needs every guide that exists; the foreseen list has not outgrown it.
 agent-method-home: a new note first (per the promotion path), then possibly a method-level artifact type
 depends-on: [status-vocabulary, decision-inventory]
 ---
