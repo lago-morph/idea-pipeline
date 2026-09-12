@@ -45,8 +45,6 @@ Idea:
     - If it is easily recreated (and how).  Must be explicit recipe or
       positive statement that it is not possible/intended to recreate
       exact state.
-      [second sentence is a margin note on the page, arrow-linked to this
-      bullet; the author supplied its full wording, 2026-09-12]
     - Expected concurrency
     - Expected use (with details in prompt)
 
