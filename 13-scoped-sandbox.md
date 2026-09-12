@@ -43,8 +43,13 @@ Idea:
 
     - CRUD permissions          <- [margin note, arrow pointing at this
                                    line] Must be explicit recipe or
-                                   positive statement none [last word
-                                   uncertain]
+                                   positive statement nove [last word
+                                   not confidently read; letterforms read
+                                   n-o-v-e, matching the pointed "v" of
+                                   "positive" in the same annotation;
+                                   "none" is the plausible intended word
+                                   but the third glyph is not the writer's
+                                   "n"]
     - If it is easily recreated (and how)
     - Expected concurrency
     - Expected use (with details in prompt)
