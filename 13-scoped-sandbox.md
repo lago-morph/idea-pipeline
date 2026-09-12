@@ -42,15 +42,11 @@ Idea:
   Every item is tagged
 
     - CRUD permissions
-    - If it is easily recreated (and how)
-                                <- [margin note, arrow pointing at this
-                                   line] Must be explicit recipe or
-                                   positive statement that it is not
-                                   possible/intended to recreate exact
-                                   state
-                                   [the page has a single short word where
-                                   this phrase now stands; the author
-                                   supplied the full wording, 2026-09-12]
+    - If it is easily recreated (and how).  Must be explicit recipe or
+      positive statement that it is not possible/intended to recreate
+      exact state.
+      [second sentence is a margin note on the page, arrow-linked to this
+      bullet; the author supplied its full wording, 2026-09-12]
     - Expected concurrency
     - Expected use (with details in prompt)
 
