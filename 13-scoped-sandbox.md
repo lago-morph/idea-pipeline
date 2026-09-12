@@ -41,16 +41,16 @@ Idea:
 
   Every item is tagged
 
-    - CRUD permissions          <- [margin note, arrow pointing at this
-                                   line] Must be explicit recipe or
-                                   positive statement nove [last word
-                                   not confidently read; letterforms read
-                                   n-o-v-e, matching the pointed "v" of
-                                   "positive" in the same annotation;
-                                   "none" is the plausible intended word
-                                   but the third glyph is not the writer's
-                                   "n"]
+    - CRUD permissions
     - If it is easily recreated (and how)
+                                <- [margin note, arrow pointing at this
+                                   line] Must be explicit recipe or
+                                   positive statement that it is not
+                                   possible/intended to recreate exact
+                                   state
+                                   [the page has a single short word where
+                                   this phrase now stands; the author
+                                   supplied the full wording, 2026-09-12]
     - Expected concurrency
     - Expected use (with details in prompt)
 
@@ -68,9 +68,9 @@ Idea:
 
   - Repeatability for controlled experiments
 
-      How context affects tasks
-      Comparing models, harnesses, skills
-        experiments when 1 variable changes
+      - How context affects tasks
+      - Comparing models, harnesses, skills
+      - experiments when 1 variable changes
 
   - Reducing accidental context
     pollution
