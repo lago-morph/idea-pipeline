@@ -10,7 +10,7 @@ category: session-setup
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-agents-md, anthropic-2025-ccbp, openhands-2026-ccbp, claude-code-docs, codex-docs, agentsmd-spec, osmani-2026-agent-harness-engineering]
+sources: [osmani-2026-agents-md, anthropic-2025-ccbp, openhands-2026-ccbp, claude-code-docs, codex-docs, agentsmd-spec, osmani-2026-agent-harness-engineering, cheapcode-2026]
 related: [auto-generated-agents-md, capture-lessons, intent-ledger]
 aliases: []
 ---
@@ -42,7 +42,7 @@ and followed none.
 - [codex-docs] Codex concatenates root-first, closest last, and silently truncates past 32 KiB.
 - [agentsmd-spec] no required fields, so hygiene is self-imposed; the test is "anything you'd tell a new teammate".
 - [osmani-2026-agent-harness-engineering] HumanLayer keeps its rule file under ~60 lines, every line traceable to a real failure.
-
+- [cheapcode-2026] the project's own CLAUDE.md got a rule index and a cap lint, keeping agent-facing rules enforceable rather than conventional as they accumulated.
 **Tool notes:** Claude Code: a `CLAUDE.md` containing `@AGENTS.md` bridges both tools;
 `/context` shows what loaded. Codex: the chain rebuilds per run, so restart after
 editing; `AGENTS.override.md` suppresses its sibling `AGENTS.md`.

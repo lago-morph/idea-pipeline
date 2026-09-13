@@ -10,7 +10,7 @@ category: anti-pattern
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-comprehension-debt, willison-2026-aep, osmani-2026-dont-outsource-learning]
+sources: [osmani-2026-comprehension-debt, willison-2026-aep, osmani-2026-dont-outsource-learning, cheapcode-2026, beyondhumanreadable-2026]
 related: [cognitive-surrender, review-agent-diffs]
 aliases: []
 ---
@@ -47,3 +47,5 @@ never reopen.
 - [osmani-2026-comprehension-debt] a cited RCT found AI-assisted learners scored 17% lower on comprehension, worst on debugging.
 - [willison-2026-aep] treats not understanding your own codebase as cognitive debt, paid down with a generated walkthrough or an animated explanation.
 - [osmani-2026-dont-outsource-learning] one follow-up prompt on concepts used and what to read converts a closed task into retained understanding.
+- [cheapcode-2026] as the codebase grew, whole-repo agent audits stopped fitting in context and structural drift accumulated until the architecture was given a durable typed representation.
+- [beyondhumanreadable-2026] (argument, not result) its limitations section warns that optimising a codebase for agents moves cognitive load onto human reviewers.

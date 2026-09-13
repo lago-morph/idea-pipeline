@@ -10,7 +10,7 @@ category: planning
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [anthropic-2025-ccbp, openhands-2026-ccbp, osmani-2026-ai-coding-workflow, osmani-2026-good-spec, every-2026-04-23-gpt-5-5-vibe-check, horthy-2025-acefca]
+sources: [anthropic-2025-ccbp, openhands-2026-ccbp, osmani-2026-ai-coding-workflow, osmani-2026-good-spec, every-2026-04-23-gpt-5-5-vibe-check, horthy-2025-acefca, dontvibe-2025]
 related: [spec-first, review-plans-not-code, small-reviewable-steps]
 aliases: []
 ---
@@ -39,5 +39,5 @@ real overhead and buys nothing on a trivial change.
 - [osmani-2026-good-spec] Read-only Plan Mode blocks edits until the plan leaves "no room for misinterpretation".
 - [every-2026-04-23-gpt-5-5-vibe-check] Every's best benchmark run paired an Opus-written plan with GPT-5.5 execution.
 - [horthy-2025-acefca] The research-backed plan produced a maintainer-approved PR where the unresearched plan fixed the wrong place.
-
+- [dontvibe-2025] 11 of 13 observed participants owned the plan before implementation, and following a well-defined plan was the second-highest-rated agent strength.
 **Tool notes:** Claude Code: plan mode, entered at startup, with Shift+Tab, or `/plan`.

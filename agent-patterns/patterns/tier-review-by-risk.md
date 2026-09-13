@@ -10,7 +10,7 @@ category: review-quality
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-agentic-code-review, osmani-2026-code-review-ai]
+sources: [osmani-2026-agentic-code-review, osmani-2026-code-review-ai, dontvibe-2025]
 related: [review-agent-diffs, test-the-failure-paths, calibrate-autonomy]
 aliases: []
 ---
@@ -31,3 +31,4 @@ aliases: []
 **Evidence:**
 - [osmani-2026-agentic-code-review] review depth should follow blast radius, code lifetime, and reader count — a config change earns a linter and a glance, a payments path earns types, tests, two AI reviewers, a human owner, and a security pass; deterministic gates must stay strict because agents weaken CI to reach green.
 - [osmani-2026-code-review-ai] the PR contract carries risk tier and which parts were AI-written, and auth/payments/secrets/untrusted-input always get a human threat-model pass plus a security tool.
+- [dontvibe-2025] review depth tracked domain familiarity: line-by-line inside one's expertise, decision-and-output monitoring outside it, and avoidance entirely for high-stakes (0:8) and security-critical (2:5) work.

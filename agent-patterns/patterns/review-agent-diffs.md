@@ -10,7 +10,7 @@ category: review-quality
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-agentic-code-review, osmani-2026-code-review-ai, osmani-2026-cognitive-surrender, willison-2026-aep, anthropic-2025-ccbp, karpathy-2026-llmwiki]
+sources: [osmani-2026-agentic-code-review, osmani-2026-code-review-ai, osmani-2026-cognitive-surrender, willison-2026-aep, anthropic-2025-ccbp, karpathy-2026-llmwiki, dontvibe-2025]
 related: [unreviewed-code, tier-review-by-risk, small-reviewable-steps]
 aliases: []
 ---
@@ -37,5 +37,5 @@ aliases: []
 - [willison-2026-aep] the first review pass is your job, and agent-written PR descriptions need validating too.
 - [anthropic-2025-ccbp] a fresh-context reviewer sees the result, not the reasoning that produced it.
 - [karpathy-2026-llmwiki] gist commenters reviewed the generated artifact rather than the agent's plan, reporting plan review catches far fewer problems.
-
+- [dontvibe-2025] the nine participants working inside their expertise reviewed every agentic change; one-shotting without modification or verification was among the most rejected uses (5:23).
 **Tool notes:** Claude Code: run the second pass as a subagent in fresh context and tell it to report only correctness and requirement gaps — a reviewer asked for findings will invent them.

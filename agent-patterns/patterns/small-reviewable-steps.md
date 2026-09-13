@@ -10,7 +10,7 @@ category: execution-loop
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-ai-coding-workflow, osmani-2026-agentic-code-review, osmani-2026-cognitive-surrender, willison-2026-aep, openhands-2026-ccbp, horthy-2025-acefca]
+sources: [osmani-2026-ai-coding-workflow, osmani-2026-agentic-code-review, osmani-2026-cognitive-surrender, willison-2026-aep, openhands-2026-ccbp, horthy-2025-acefca, dontvibe-2025]
 related: [review-agent-diffs, checkpoint-commits, plan-before-code]
 aliases: []
 ---
@@ -42,3 +42,4 @@ intend to keep.
 - [willison-2026-aep] several small PRs beat one big one, and the agent now does the Git splitting work for you.
 - [openhands-2026-ccbp] ask for one function at a time, or stub-then-fill, to stop mid-change drift.
 - [horthy-2025-acefca] implement phase by phase against the plan, verifying each phase before recording it.
+- [dontvibe-2025] 70-plus-step plans were executed at most six steps at a time, a median of 1.8 steps per prompt, explicitly to keep control.

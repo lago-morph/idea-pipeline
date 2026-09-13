@@ -44,4 +44,4 @@ irritation is not evidence the practice is wrong.
 - [osmani-2026-cognitive-surrender] participants accepted the AI's wrong answer 73% of the time, and their confidence rose when AI was available.
 - [osmani-2026-cognitive-surrender] scanning and approving a 600-line PR is ratification, not review; surrender scales with change size and with fatigue.
 - [every-2026-04-20-ai-autopilot] automation research: the more reliable a system, the less humans cross-check it; fluency bias makes polished output read as correct.
-- [dontvibe-2025] Across 13 field observations and 99 survey responses, every observed developer retained control of implementation and no respondent endorsed fully autonomous agent operation — the norm was to keep reading the output and steering.
+- [dontvibe-2025] across 13 field observations and 99 survey responses, every observed developer retained control of implementation and no respondent endorsed fully autonomous agent operation — the norm was to keep reading the output and steering.

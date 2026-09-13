@@ -1,5 +1,30 @@
 # log
 
+## 2026-09-13 — ingest step 4: new evidence lines from the three re-read papers
+
+- Added 12 evidence lines across 10 pattern pages, completing the `ingest`
+  workflow's step 4 for the re-ingested sources: `dontvibe-2025` to
+  small-reviewable-steps, front-load-context, tier-review-by-risk,
+  agentic-manual-testing, plan-before-code and review-agent-diffs;
+  `cheapcode-2026` to calibrate-autonomy, give-a-runnable-check,
+  front-load-context, agents-md-hygiene and comprehension-debt;
+  `beyondhumanreadable-2026` to comprehension-debt, marked "(argument, not
+  result)" because it comes from that paper's limitations section.
+- Dropped one proposed line: `dontvibe-2025` → stale-scaffolding ("agents did
+  more than asked", 8 of 13). It is real in the paper but it is an argument for
+  small units and cheap rollback, not for scaffolding going stale; wrong page.
+- No status or confidence changes. None of the pages gaining lines is a
+  candidate, so the ≥2-evidence promotion rule was not triggered; `high`
+  confidence still requires own experience (SPEC §6), which waits on Phase 5.
+  `verified:` untouched — adding a source is not a re-judgement against models.
+- Checked: every `sources:` id has an evidence line and vice versa on all 36
+  pages; no dangling source refs. Side effect worth naming: pages over the ~250
+  word body limit went 26 → 27 of 36 (plan-before-code crossed). The limit is
+  a pre-existing Phase 4 problem, now slightly worse.
+- Source notes' `patterns:` back-links remain broader than the pages that cite
+  them (e.g. the `dontvibe-2025` note lists 12 slugs, 8 pages cite it). SPEC
+  §5.2 calls these best-effort, so they are left as the distillers wrote them.
+
 ## 2026-09-13 — re-ingest abstract-only sources; patterns-list contract + regeneration
 
 - **Data.** The three arXiv items distilled from their abstract pages in Phase 3

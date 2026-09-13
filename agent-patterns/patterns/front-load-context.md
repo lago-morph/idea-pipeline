@@ -10,7 +10,7 @@ category: session-setup
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-ai-coding-workflow, every-2026-06-10-fable-5-get-most-out, horthy-2025-acefca, anthropic-2025-ccbp, willison-2026-aep]
+sources: [osmani-2026-ai-coding-workflow, every-2026-06-10-fable-5-get-most-out, horthy-2025-acefca, anthropic-2025-ccbp, willison-2026-aep, dontvibe-2025, cheapcode-2026]
 related: [context-compaction, spec-first]
 aliases: []
 ---
@@ -41,3 +41,5 @@ correcting every turn.
 - [horthy-2025-acefca] a research artifact before planning fixed the bug in the right place where the no-research plan did not.
 - [anthropic-2025-ccbp] prompt with file, scenario, constraint, and a pointer to an existing example; vague prompts are for exploration only.
 - [willison-2026-aep] naming known software and cloning a reference repo to `/tmp` substitute for paragraphs of spec.
+- [dontvibe-2025] clear context and explicit instructions were the most-cited strategy (12 of 13 observed, 43 of 99 surveyed), and longer prompts were reported to work better.
+- [cheapcode-2026] constraints were sliced at dispatch down to the files a change would touch and injected into the brief, beating letting the agent trip a lint and repair.
