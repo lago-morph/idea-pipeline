@@ -10,7 +10,7 @@ category: debugging-recovery
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [anthropic-2025-ccbp, openhands-2026-ccbp, horthy-2025-acefca]
+sources: [anthropic-2025-ccbp, openhands-2026-ccbp, horthy-2025-acefca, cheapcode-2026]
 related: [context-compaction, small-reviewable-steps]
 aliases: []
 ---
@@ -27,6 +27,8 @@ an assumption you already rejected, or the session is full of failed approaches.
 - Fold the correction into the prompt itself, not into another turn of argument.
 - Prefer a clear over a compaction when the problem is a wrong belief — summarising
   carries the wrong belief forward.
+- Before concluding the model can't do it, ask whether the task was ever framed as a
+  constrained, checkable process. A failed delegation is usually under-framing.
 
 **Why:** a filled window holds every failed attempt, and the model keeps drawing on
 them. A clean session with a better prompt beats a long one that has been talked out
@@ -40,6 +42,7 @@ exploration twice.
 - [anthropic-2025-ccbp] treat a second correction on the same issue as the signal to clear and re-prompt.
 - [openhands-2026-ccbp] when context holds an assumption the model keeps reverting to, /compact preserves it — dump progress, clear, restart.
 - [horthy-2025-acefca] discarding a derailed session and restarting with steering added to the original prompt is the first improvement over chatting until the agent apologises.
+- [cheapcode-2026] a repeated lesson was to read a failed delegation as a task not yet decomposed and constrained, rather than as model incapability.
 
 **Tool notes:** Claude Code: `/clear` to reset, not `/compact`; Esc interrupts and
 rewind/checkpoints restore earlier conversation or code state.

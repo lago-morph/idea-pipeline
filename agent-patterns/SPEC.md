@@ -262,9 +262,57 @@ description: Practitioner patterns for interactive coding sessions. Use at the s
    (or tell the user what to add if the wiki isn't reachable).
 ```
 
-`lint` copies `quickref.md` and a generated `patterns-list.md` (id — title — one line)
-into this folder so the skill is self-contained when symlinked into
-`\~/.claude/skills/` and `\~/.codex/skills/`.
+`lint` copies `quickref.md` and a generated `patterns-list.md` (§5.11) into this
+folder so the skill is self-contained when symlinked into `\~/.claude/skills/`
+and `\~/.codex/skills/`.
+
+### 5.11 `skill/agent-patterns/patterns-list.md` (generated)
+
+The skill's router, and the only index an agent has when the full wiki is not
+reachable. Header line states the generation date. One row per pattern page —
+*every* page, whatever its status, unlike `quickref.md`, which is adopted-only —
+sorted by id:
+
+```
+- `<id>` — <type>[ (<status>)] — <title> — <trigger>
+```
+
+The status is shown for anything that is not `adopted`: `(candidate)`,
+`(deprecated)`, `(absorbed)`. A page that is no longer to be applied still gets a
+row, because an agent meeting a reference to it elsewhere needs to learn that from
+the router; its trigger says so instead of naming a situation — e.g. "Deprecated;
+do not apply — see <id> instead.".
+
+The **trigger** is the working part of the row and the only part that is
+expensive to get right:
+
+* It states *the situation in which you would reach for this page*, not what the
+  page tells you to do. `quickref.md` answers "what do I do"; the category lines
+  in `index.md` answer "what is this"; this file answers "does this apply to me
+  right now". None of the three is a copy of another.
+* One complete sentence, ending in a period, \~120 characters or fewer.
+* **Authored, never mechanically extracted.** A page's **Use when:** paragraph is
+  the input, but it is hard-wrapped prose — condense it into one sentence.
+  Cutting it at the first line break is the known failure (§5.11.1).
+* A trigger that only restates the title is a failed row; the title is already in
+  the row. If a trigger can't be made to say more than the title, fix that page's
+  **Use when:** first.
+
+#### 5.11.1 Generation check (applies to every generated file)
+
+After generating any file by pulling sections out of other files, read the output
+back before committing and check it mechanically:
+
+* no empty extracted field;
+* every trigger row ends in a period — one that doesn't was truncated;
+* the extractor was tried against *every* heading variant the pages are allowed
+  to use. Anti-pattern pages use **Use when (at risk of it):** and
+  **Use when (you are at risk):**, not only **Use when:**.
+
+This rule exists because the first generated `patterns-list.md` regex-pulled the
+first *physical line* after **Use when:**: 30 of 36 rows were cut mid-sentence
+and the one page using a heading variant got an empty trigger. Nothing errored;
+the file just quietly stopped routing.
 
 \---
 
@@ -337,11 +385,13 @@ row to `\_triage.md`; log.
 polish. This is the only workflow Jonathan is expected to trigger by habit.
 
 **lint** (cadence: after every ingest batch; otherwise monthly or at any major model
-release): empty `inbox.md` into patterns; merge duplicates; promote candidates with ≥ 2
-evidence lines to `adopted` (ask if unsure); flag pages whose `verified` is older than
+release): empty `inbox.md` into patterns; merge duplicates; promote a candidate to
+`adopted` once ≥ 2 *independent sources* back it, `\[own]` experience counting as
+one (ask if unsure; two lines from a single source is detail, not corroboration); flag pages whose `verified` is older than
 the latest model release; re-rate durability where a model change plausibly matters;
-regenerate `quickref.md`, `bibliography.md`, `skill/…/patterns-list.md`, and the
-"recently changed" block in `index.md`; log a 3–5 line summary.
+regenerate `quickref.md`, `bibliography.md`, `skill/…/patterns-list.md` (§5.11 —
+authored triggers, then the §5.11.1 check), and the "recently changed" block in
+`index.md`; log a 3–5 line summary.
 
 **experiment**: propose a change to structure/process; write it in `experiments.md`
 with hypothesis, success criterion, revisit date; do it; on revisit, keep or revert

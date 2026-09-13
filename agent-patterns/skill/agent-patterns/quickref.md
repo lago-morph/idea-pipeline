@@ -1,4 +1,4 @@
-# quickref — generated 2026-08-29 · verified against: claude-5, gpt-5.6
+# quickref — generated 2026-09-13 · verified against: claude-5, gpt-5.6
 
 GENERATED from adopted patterns by lint — edit `patterns/<id>.md`, not this file.
 
@@ -28,18 +28,17 @@ GENERATED from adopted patterns by lint — edit `patterns/<id>.md`, not this fi
 
 ## Before finishing
 
-- Review every diff yourself first; agent-written PR descriptions need review too. [review-agent-diffs]
 - Tier review depth by blast radius; auth/payments/secrets get a human threat model. [tier-review-by-risk]
 - Have a different model or fresh session review the result. [cross-model-review]
 - Probe the failure paths: what must not work when the wrong caller tries it. [test-the-failure-paths]
 - Final gate: open the running app and use it; checks passing isn't "good". [polish-pass]
-- Turn this session's failures into standing instructions; quality compounds. [capture-lessons]
+- Capture sessions as history; mine the pile for threads worth mechanising. [capture-lessons]
+- Seen the same failure twice? Convert it to a type, lint or gate — prose doesn't bind. [prefer-deterministic-controls]
 - Record the why — decisions, rejected options — where agents will re-read it. [intent-ledger]
 - Repeated task? Turn it into a skill with steps and exit criteria, tested first. [skill-authoring]
 
 ## Watch out for
 
-- Shipping agent output nobody read. [unreviewed-code]
 - Accepting because it sounds right — polish is not correctness. [cognitive-surrender]
 - A codebase nobody on the team understands anymore. [comprehension-debt]
 - Prompts and skills tuned for last year's model quietly hurting this year's. [stale-scaffolding]

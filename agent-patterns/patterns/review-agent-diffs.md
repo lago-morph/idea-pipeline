@@ -2,19 +2,35 @@
 id: review-agent-diffs
 title: Review every agent diff yourself
 type: pattern
-status: adopted
-durability: structural
+status: deprecated
+durability: compensation
 scope: interactive
 tools: both
 category: review-quality
-verified: 2026-08-29
+verified: 2026-09-13
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-agentic-code-review, osmani-2026-code-review-ai, osmani-2026-cognitive-surrender, willison-2026-aep, anthropic-2025-ccbp, karpathy-2026-llmwiki]
-related: [unreviewed-code, tier-review-by-risk, small-reviewable-steps]
+sources: [osmani-2026-agentic-code-review, osmani-2026-code-review-ai, osmani-2026-cognitive-surrender, willison-2026-aep, anthropic-2025-ccbp, karpathy-2026-llmwiki, dontvibe-2025]
+related: [unreviewed-code, tier-review-by-risk, prefer-deterministic-controls, verify-from-clean-state, small-reviewable-steps]
 aliases: []
 ---
 # Review every agent diff yourself
+
+> **Deprecated 2026-09-13 — kept for the record, do not apply.** Same disposition
+> as [unreviewed-code](unreviewed-code.md): reading every diff an agent produces
+> was necessary in 2025 and is not the 2026 working norm, and the wiki owner's own
+> practice is not to. Re-rated `compensation` — it was working around a model
+> weakness that has eased. What survives is distributed, not deleted: depth by
+> blast radius in [tier-review-by-risk](tier-review-by-risk.md), the agent's
+> narration needing checking in
+> [demand-evidence-not-summary](demand-evidence-not-summary.md), and the real
+> replacement for attention — a mechanism that fails closed — in
+> [prefer-deterministic-controls](prefer-deterministic-controls.md) and
+> [verify-from-clean-state](verify-from-clean-state.md). The evidence below
+> predates the judgement and is left unedited. Worth recording: in a captured session covering six merged
+> pull requests, neither defect that surfaced — an agent claiming an artifact it
+> had never produced, and a validator pinned to the wrong release — was the kind a
+> human would have caught by reading a diff.
 
 **Use when:** before you merge, push, or open a PR containing anything an agent wrote.
 
@@ -37,5 +53,5 @@ aliases: []
 - [willison-2026-aep] the first review pass is your job, and agent-written PR descriptions need validating too.
 - [anthropic-2025-ccbp] a fresh-context reviewer sees the result, not the reasoning that produced it.
 - [karpathy-2026-llmwiki] gist commenters reviewed the generated artifact rather than the agent's plan, reporting plan review catches far fewer problems.
-
+- [dontvibe-2025] the nine participants working inside their expertise reviewed every agentic change; one-shotting without modification or verification was among the most rejected uses (5:23).
 **Tool notes:** Claude Code: run the second pass as a subagent in fresh context and tell it to report only correctness and requirement gaps — a reviewer asked for findings will invent them.

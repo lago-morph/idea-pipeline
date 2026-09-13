@@ -10,7 +10,7 @@ category: planning
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-good-spec, every-2026-08-04-think-like-designer, osmani-2026-agentic-engineering, osmani-2026-new-sdlc-vibe-coding]
+sources: [osmani-2026-good-spec, every-2026-08-04-think-like-designer, osmani-2026-agentic-engineering, osmani-2026-new-sdlc-vibe-coding, lagomorph-2026-k8s-forensics]
 related: [plan-before-code, define-done-first, intent-ledger]
 aliases: []
 ---
@@ -42,5 +42,5 @@ decides silently, and its guess becomes the code.
 - [every-2026-08-04-think-like-designer] A worked spec with overview, hero scenario, requirements, behavioral rules, non-goals and failure modes — nearly every line encoding what the model could not know.
 - [osmani-2026-agentic-engineering] Agentic engineering "starts with a plan": a design doc written before any prompting, and that is the step people skip.
 - [osmani-2026-new-sdlc-vibe-coding] Spec quality is the bottleneck because implementation drops to hours while requirements and architecture stay slow judgment work.
-
+- [lagomorph-2026-k8s-forensics] all four standing blockers on one project were layer boundaries the founding spec never named; one seam's entire specification was a sentence saying the next tool takes over from there.
 **Tool notes:** Claude Code: draft the spec in read-only Plan Mode so nothing is written while it is still wrong.

@@ -7,7 +7,7 @@ durability: unknown
 scope: interactive
 tools: both
 category: anti-pattern
-verified: 2026-08-29
+verified: 2026-09-13
 models: [claude-5, gpt-5.6]
 confidence: low
 sources: [beyondhumanreadable-2026]
@@ -16,15 +16,15 @@ aliases: []
 ---
 # Over-compressed context
 
-**Use when (you are at risk):** you are shrinking something the agent reads — a rules
-file, a log format, a summary handed between steps — and judging the change by the
-input-token count it saves.
+**Use when (you are at risk):** you are shrinking something the agent has to read and
+interpret — a log stream, a data dump, a handoff summary — and judging the change by
+the input tokens it saves.
 
 **Do instead:**
 - Cut zero-information tokens: ceremony, boilerplate, repetition.
 - Keep the high-value tokens: names, structure, and explicit relationships. These are
   the easiest thing to mistake for padding when trimming.
-- Judge any trimming change on total session cost and result quality, not on input
+- Judge any trimming change on total session tokens and wall-clock time, not on input
   tokens alone.
 - Treat terse, encoded formats as a hypothesis to measure, not a default.
 
@@ -34,7 +34,8 @@ more than the tokens saved.
 
 **Don't, when not:** this is not an argument against compaction or against short
 instruction files. Removing genuine noise still helps; the failure is squeezing
-meaning out.
+meaning out. Past the context window, compressing and fetching selectively is the
+right move — and a compressed format paired with a decoder tool beat raw compression.
 
 **Evidence:**
-- [beyondhumanreadable-2026] a log-format experiment reports aggressive compression cut input tokens 17% while raising total session cost 67%, the burden moving into the reasoning phase — read from the abstract only, so scale, models, and generality beyond log formats are unverified.
+- [beyondhumanreadable-2026] a four-session log-format demo (200 generated events, one session per format, no repeats and no statistics) found abbreviated names cut file tokens 17% but raised session tokens 67% and wall-clock time 4x, the burden moving into the model's reasoning. Correctness was 5/5 in every condition — a token-and-latency finding, not a quality one — and the author disclaims generality beyond linear retrieval.

@@ -10,7 +10,7 @@ category: session-setup
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-intent-debt, osmani-2026-agents-md]
+sources: [osmani-2026-intent-debt, osmani-2026-agents-md, lagomorph-2026-k8s-forensics]
 related: [capture-lessons, agents-md-hygiene]
 aliases: []
 ---
@@ -40,3 +40,4 @@ let the ledger grow into a codebase overview.
 - [osmani-2026-intent-debt] "treat AGENTS.md as your intent ledger, not your config"; lightweight decision records are pure intent-debt paydown.
 - [osmani-2026-intent-debt] the failure case is an agent removing a guard clause because nothing ever recorded whether it was load-bearing.
 - [osmani-2026-agents-md] what earns a line is the unguessable — do-not-touch warnings and non-obvious conventions — not what the code already shows.
+- [lagomorph-2026-k8s-forensics] a burndown file marked every item done at the same commit where the handoff file said nothing was done, so a fresh session's belief depended on which it opened first.

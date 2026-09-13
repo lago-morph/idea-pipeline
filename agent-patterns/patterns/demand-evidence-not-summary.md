@@ -10,7 +10,7 @@ category: review-quality
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-code-review-ai, osmani-2026-agentic-autonomy-levels, every-2026-06-29-powerpoint-automation, osmani-2026-practical-loop-engineering, every-2026-07-28-taming-opus-5]
+sources: [osmani-2026-code-review-ai, osmani-2026-agentic-autonomy-levels, every-2026-06-29-powerpoint-automation, osmani-2026-practical-loop-engineering, every-2026-07-28-taming-opus-5, lagomorph-2026-k8s-forensics]
 related: [give-a-runnable-check, agentic-manual-testing]
 aliases: []
 ---
@@ -22,6 +22,8 @@ aliases: []
 - End every task in concrete evidence: the command that ran and its real output, a test result, a log, a trace, a screenshot, repro steps.
 - Ask for the packet a manual review would need — diff, tests, logs, risks, known gaps.
 - Judge the artifact itself, not the agent's narration of how it got there.
+- Read the PR description and commit messages as critically as the rest: they are
+  written to convince, and they are narration too.
 - Spell out the verification steps, and require a rerun from step one if any of them fails.
 - Have a different agent verify the work than the one that produced it.
 - Refuse "looks done" and self-graded scores as the exit condition.
@@ -36,5 +38,6 @@ aliases: []
 - [osmani-2026-practical-loop-engineering] a separate subagent verifies, because the agent that did the work may have evaluated only one dimension of the problem.
 - [every-2026-06-29-powerpoint-automation] after eight self-graded rounds the agent declared success without ever looking at a rendered deck; its own metrics checked content, not appearance.
 - [every-2026-07-28-taming-opus-5] evaluate the finished artifact on its own terms; the model's account of its process is not the deliverable.
-
+- [lagomorph-2026-k8s-forensics] a CI run reported success while four of its assertions had timed out, and "reproducibly green" was claimed at least four times, contradicted by the next run each time.
+- [lagomorph-2026-k8s-forensics] an agent asserted in chat that it had already produced an artifact it never had; the claim was caught only because the human went looking for the artifact itself.
 **Tool notes:** Claude Code: encode the verification steps as a skill (start the dev server, interact, screenshot before/after, zero new console errors); `/goal`'s evaluator only checks whether your hard rules were met, never whether the result is good.
