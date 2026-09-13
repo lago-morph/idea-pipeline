@@ -1,0 +1,42 @@
+---
+id: prefer-deterministic-controls
+title: Prefer deterministic controls to prose rules
+type: pattern
+status: candidate
+durability: structural
+scope: interactive
+tools: both
+category: compounding
+verified: 2026-09-13
+models: [claude-5, gpt-5.6]
+confidence: low
+sources: [cheapcode-2026]
+related: [capture-lessons, give-a-runnable-check, agents-md-hygiene]
+aliases: []
+---
+# Prefer deterministic controls to prose rules
+
+**Use when:** you are about to write a rule into AGENTS.md / CLAUDE.md to stop a
+failure you have seen more than once.
+
+**Do:**
+- Decide first whether it is a local defect or an instance of a class. Only a class
+  earns a mechanism; that judgement stays yours.
+- For a class, prefer the mechanism that makes the failure unexpressible — a type, a
+  closed vocabulary, a narrowed interface — over one that catches it after.
+- Where you can't eliminate it, automate detection: a lint, a test, a check on the
+  commit path, so it runs without anyone remembering to.
+- Keep the prose rule as a pointer to the mechanism, not as the enforcement.
+
+**Why:** a written rule is probabilistic guidance. At the volume an agent produces, a
+rule followed most of the time is broken routinely, and the violations arrive faster
+than anyone reads them. A mechanism fails closed; a rule fails silently.
+
+**Don't, when not:** the failure is local, the mechanism costs more than the failures
+it prevents, or you can't yet state the rule precisely enough to encode it.
+
+**Evidence:**
+- [cheapcode-2026] a 12-week single-engineer case study argues review- and convention-based controls saturate under agentic velocity and must become types, static analyses and commit gates; of its coded incidents, 35 added detection, 20 removed a class by construction.
+
+**Tool notes:** Claude Code / Codex: a hook or pre-commit gate runs whether or not the
+agent cooperates; a rule in the instructions file relies on it obeying that file.

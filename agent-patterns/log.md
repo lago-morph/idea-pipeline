@@ -1,5 +1,30 @@
 # log
 
+## 2026-09-13 — orphan slugs resolved; Jonathan rejects the review anti-pattern
+
+- New page `prefer-deterministic-controls` (candidate, confidence low, single
+  source `cheapcode-2026`): convert a recurring failure into a type, lint or gate
+  rather than another prose rule. Deliberately ONE evidence line despite the
+  source supporting two — two lines from one source would trip lint's
+  ≥2-evidence promotion rule, same reasoning as `over-compressed-context`.
+- `reframe-before-blaming-the-model` folded into `fresh-context-reset` as a Do
+  bullet plus an evidence line, rather than getting its own page: it is a
+  disposition, not a procedure.
+- `agent-legible-code` parked in `inbox.md`, not written — single source, no
+  experiment, and repo-design rather than session practice.
+- Could not triage the agent-governance mechanism catalogue cited by
+  `cheapcode-2026`: davisjam.github.io is live but the cited path 404s. Recorded
+  in `inbox.md` rather than invented as a triage row with a guessed relevance.
+- **Open and unresolved: Jonathan does not accept `unreviewed-code` as written**
+  — "in 2026 very few people review all the code an AI agent writes; that was
+  necessary a year ago." Captured in `inbox.md`. This implicates the whole review
+  cluster (`unreviewed-code`, `review-agent-diffs`, `tier-review-by-risk`), all
+  currently `durability: structural`; if he is right they are `compensation` for
+  a model weakness that has eased. No page changed yet — the scope of the
+  rewrite is his call, and it moves `quickref.md`, the injectable artifact.
+- Word-limit cleanup deferred by Jonathan; the new page was still written to
+  the limit rather than adding to the backlog. Skill install path left as is.
+
 ## 2026-09-13 — ingest step 4: new evidence lines from the three re-read papers
 
 - Added 12 evidence lines across 10 pattern pages, completing the `ingest`

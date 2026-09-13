@@ -24,7 +24,7 @@
 | UI / visual work | polish-pass · jig-for-tuning · agentic-manual-testing |
 | stuck / session going badly | fresh-context-reset · match-model-to-task · context-compaction · form-your-own-take-first |
 | dependency upgrade | run-tests-first · agentic-manual-testing · test-the-failure-paths · checkpoint-commits |
-| session end | capture-lessons · intent-ledger · skill-authoring |
+| session end | capture-lessons · intent-ledger · skill-authoring · prefer-deterministic-controls |
 | new model release | stale-scaffolding · match-model-to-task |
 
 ## By category
@@ -73,6 +73,7 @@
 
 ### compounding
 - capture-lessons — failures become standing instructions; quality compounds
+- prefer-deterministic-controls *(candidate)* — convert a recurring failure into a type, lint or gate, not a prose rule
 - skill-authoring — skills as tested process with exit criteria, not prose
 
 ### anti-pattern
@@ -91,6 +92,8 @@ do this automatically.
 
 ## Recently changed
 
+- 2026-09-13 — new candidate `prefer-deterministic-controls` from `cheapcode-2026`;
+  folded "a failed delegation is under-framing" into `fresh-context-reset`.
 - 2026-09-13 — re-ingested the three arXiv sources that had been distilled from
   their abstracts (`dontvibe-2025`, `cheapcode-2026`, `beyondhumanreadable-2026`)
   from full text; corrected the four evidence lines citing them and narrowed
