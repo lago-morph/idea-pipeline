@@ -1,5 +1,52 @@
 # log
 
+## 2026-09-13 — re-ingest abstract-only sources; patterns-list contract + regeneration
+
+- **Data.** The three arXiv items distilled from their abstract pages in Phase 3
+  (`dontvibe-2025`, `cheapcode-2026`, `beyondhumanreadable-2026`) were re-fetched
+  in full (HTML → text in `.cache/arxiv/`, gitignored) and re-distilled by three
+  Opus subagents. No "abstract only" marker remains anywhere in `sources/` or
+  `patterns/`. The other degraded notes are the six paywall-truncated Every
+  emails; SPEC §2 puts paid content out of scope, so those caveats stand.
+- **Corrections the full texts forced.** `cheapcode-2026` was the worst: the
+  abstract-only note framed it as "controls can't be derived up front", but the
+  paper uses ex-ante controls and calls them necessary-but-not-sufficient, and
+  its engineer inspected almost no agent code behind a verification substrate
+  2.75x the product's size — "inspectable" there means machine-checkable, not
+  human-read. `beyondhumanreadable-2026`'s 17%/67% result turns out to be four
+  single sessions on one model with no repeats or statistics, measuring session
+  *tokens* and wall-clock, not cost or quality (correctness was 5/5 in every
+  condition). `dontvibe-2025` narrowed: implementation control was universal
+  (13/13) but design control was 11/13, and three participants working outside
+  their expertise did not read the generated code at all.
+- Four evidence lines rewritten (`calibrate-autonomy`, `cognitive-surrender`,
+  `capture-lessons`, `over-compressed-context`). `over-compressed-context` also
+  had its **Use when**, one **Do instead** bullet and **Don't, when not** narrowed
+  to what the paper actually measured; `verified: 2026-09-13`. It **stays
+  `candidate`** — the full text is more detail on the same single finding, not a
+  second independent source, so the ≥2-evidence rule is not met. `confidence: low`
+  is right and unchanged.
+- **Contract.** `skill/agent-patterns/patterns-list.md` had no format spec beyond
+  "(id — title — one line)", so Phase 4 generated it by regex-pulling the first
+  *physical* line after `**Use when:**`. Pages are hard-wrapped, so 30 of 36 rows
+  were cut mid-sentence and the one page using a heading variant got an empty
+  trigger — the skill's router, degraded to bare pattern names. Added SPEC §5.11
+  (row format; the trigger says *when you would reach for the page*, is authored
+  not extracted, one sentence ≤ ~120 chars ending in a period) and §5.11.1 (read
+  generated files back; check for empty fields, truncated rows, and every heading
+  variant). Mirrored into AGENTS.md §2 and a new lint step 5.
+- All 36 triggers rewritten by hand from the full **Use when:** paragraphs and
+  checked mechanically against §5.11.1: 36 rows, ids match the page set and are
+  sorted, none empty, none over 120 chars, none merely restating the title, all
+  status labels agree with frontmatter.
+- Not done here: Phase 5 (dogfood) — still blocked on SPEC §11 items 4 and 5.
+  Deliberately left for Jonathan: (a) new candidate slugs surfaced with no page —
+  `prefer-deterministic-controls`, `reframe-before-blaming-the-model`,
+  `agent-legible-code`; (b) `cheapcode-2026` is a published counter-case to
+  `unreviewed-code` and the note frames it as a boundary condition; (c) a new
+  triage candidate, davisjam.github.io/agent-governance-mechanisms; (d) 26 of 36
+  pattern pages exceed the ~250-word body limit (pre-existing, from Phase 4).
+
 ## 2026-08-29 — Phase 4: synthesize → Checkpoint B
 
 - Clustered ~90 candidate slugs into 30 patterns + 6 anti-patterns (5 Opus

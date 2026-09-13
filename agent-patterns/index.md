@@ -81,7 +81,7 @@
 - comprehension-debt — a system nobody on the team understands anymore
 - stale-scaffolding — prompts/skills tuned for last year's model
 - auto-generated-agents-md — /init overviews are redundant at best, anchoring at worst
-- over-compressed-context *(candidate)* — token-shaving that raises total cost
+- over-compressed-context *(candidate)* — token-shaving that raises total session tokens
 
 ## Status legend
 
@@ -91,5 +91,10 @@ do this automatically.
 
 ## Recently changed
 
+- 2026-09-13 — re-ingested the three arXiv sources that had been distilled from
+  their abstracts (`dontvibe-2025`, `cheapcode-2026`, `beyondhumanreadable-2026`)
+  from full text; corrected the four evidence lines citing them and narrowed
+  `over-compressed-context`. Rewrote `skill/…/patterns-list.md` against a new
+  row contract (SPEC §5.11) after 30 of its 36 triggers were found truncated.
 - 2026-08-29 — initial synthesis: 30 patterns + 6 anti-patterns from 49 source
   notes (see log.md, Phases 0–4).

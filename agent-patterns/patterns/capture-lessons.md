@@ -41,4 +41,4 @@ agent already follows — every line competes for attention.
 - [osmani-2026-agent-harness-engineering] convert each agent mistake into an AGENTS.md line, hook, or reviewer check so it cannot recur.
 - [every-2026-08-26-cloning-coworkers-skills] a self-improve skill interrogates the bad output and proposes a targeted edit to the operating instructions.
 - [every-2026-08-04-think-like-designer] a correction made twice becomes a standing rule rather than a third correction.
-- [cheapcode-2026] (abstract only) controls that sustain agentic velocity are discovered from failures during the work, not derived up front.
+- [cheapcode-2026] rules written in advance were necessary but not sufficient; the controls that sustained velocity were induced from failures visible only during the agentic work.

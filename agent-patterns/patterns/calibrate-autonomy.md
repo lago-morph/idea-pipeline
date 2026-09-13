@@ -39,4 +39,4 @@ approvals dull review and push you toward granting broader access than the task 
 **Evidence:**
 - [osmani-2026-agentic-autonomy-levels] Autonomy should follow the verification process, not the task name, tested by how fast you'd know you're wrong, how cleanly you could undo it, and what would prove you're right.
 - [osmani-2026-practical-loop-engineering] Safe, well-bounded work such as docs or coverage checks can be delegated, while complex or auth/security/finance work gets watched closely.
-- [dontvibe-2025] A field and survey study of professional developers reports they deliberately keep agency over design and implementation and exercise judgment about which tasks suit an agent.
+- [dontvibe-2025] Task suitability was coded across 89 task types: agents were judged fit for small, repetitive and scaffolding work and unfit as complexity, required domain knowledge or stakes rise; no respondent (0:12) said agents could replace human decision making.
