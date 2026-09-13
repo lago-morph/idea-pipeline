@@ -1,5 +1,62 @@
 # log
 
+## 2026-09-13 — completed transcript folded in; `review-agent-diffs` deprecated; `capture-lessons` rewritten
+
+- The `2026-06-10-218` transcript is complete (3,426 → 8,914 words) and back in
+  scope. Its own redo note supersedes the fidelity caveat the first version
+  carried: it was rebuilt from the full session log by a deterministic script,
+  with no compaction, so the sections holding Jonathan's own statements are
+  verbatim rather than summary. That upgrades the source.
+- **Two corrections it forced on the existing note.** The instruction-file refactor
+  moved rule text into 47 detail files, not 20; and the full instruction ceiling is
+  ~73,000 tokens against the ~15,200 floor already recorded. Both propagated to
+  `agents-md-hygiene`.
+- **The `capture-lessons` counter-evidence framing was wrong** and is fixed. The
+  transcript shows capture was load-bearing — the entire forensic analysis exists
+  only because 45 retrospectives and a full run record had been kept. What failed
+  was *emitting rules from* the captures. Framed as counter-evidence it read as an
+  argument against retrospectives, which this source does not support.
+- `capture-lessons` rewritten to Jonathan's model and retitled "Capture lessons as
+  history, then mechanise them" (id unchanged per D3): capture generously, treat a
+  single retro's recommendations as data rather than a to-do list *unless one is
+  already a mechanism*, mine the accumulated record for cross-session threads, and
+  convert those into a harness hook, CI check or linter — prose only for what can't
+  be mechanised. `confidence: high` (many independent sources plus `[own]`).
+- `review-agent-diffs` deprecated on the same reasons and disposition as
+  `unreviewed-code`, at Jonathan's instruction. `compensation`, kept for the
+  record, removed from `quickref.md` (45 lines) and rerouted out of four rows of
+  the index task table. Surviving parts distributed rather than deleted: depth by
+  blast radius stays in `tier-review-by-risk`; "the PR description is narration
+  too" absorbed into `demand-evidence-not-summary`; the replacement for attention
+  is `prefer-deterministic-controls` and `verify-from-clean-state`. Both
+  deprecation notes now name where the function went — without that the wiki would
+  drop a function without recording its successor.
+- Supporting the deprecation, from the transcript: across six merged pull requests
+  there is no instance of Jonathan reading a diff, and neither defect that
+  surfaced — an agent claiming an artifact it had never produced, and a validator
+  pinned to the wrong release — was the kind a diff read would have caught.
+- Two new anti-patterns at his direction: `bloated-instruction-surface` (accreted
+  AGENTS.md, skills and ADRs — context spent at best, unresolvable contradictions
+  at worst) and `no-progressive-disclosure` (reference material that can only be
+  loaded whole). Both `candidate`, both `confidence: medium`.
+- **Sourcing point worth remembering:** `lagomorph-2026-k8s-forensics` is
+  Jonathan's own project, so it and an `[own]` line are the *same* practitioner and
+  do not corroborate each other. Those two anti-patterns therefore stay `candidate`
+  despite carrying two evidence lines each. `prefer-deterministic-controls` is
+  unaffected — `cheapcode-2026` is genuinely independent of him.
+- `prefer-deterministic-controls` gained the cost side his position omits: a new
+  check usually needs false positives fixed and pre-existing findings triaged
+  before it can gate, gates bind indiscriminately, and two hooks obstructed correct
+  work — scope an exemption with a removal trigger rather than widening the gate.
+- Placeholder page `refactor-skills-into-checks` created at his request, marked
+  "direction stated, evidence pending", `confidence: low`, excluded from quickref.
+  `inbox.md` carries the reminder to ask him for real-project evidence.
+- Also in `inbox.md`: a candidate slug `adversarial-self-review` (evidence parked on
+  `cross-model-review` for now), and the ADR nuance — the transcript shows an ADR
+  that *was* ratified, implemented and shipped with a contract lint, so "ADR edits
+  get ignored" is too broad; the cut that holds is behavioural prose remedy versus
+  design decision plus enforcement.
+
 ## 2026-09-13 — ingest: `lagomorph-2026-k8s-forensics` (own project, first-hand)
 
 - Jonathan's own `lago-morph/k8s-platform`: `ai/LESSONS.md` plus the whole

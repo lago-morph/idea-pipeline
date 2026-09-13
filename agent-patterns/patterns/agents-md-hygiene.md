@@ -43,7 +43,7 @@ and followed none.
 - [agentsmd-spec] no required fields, so hygiene is self-imposed; the test is "anything you'd tell a new teammate".
 - [osmani-2026-agent-harness-engineering] HumanLayer keeps its rule file under ~60 lines, every line traceable to a real failure.
 - [cheapcode-2026] the project's own CLAUDE.md got a rule index and a cap lint, keeping agent-facing rules enforceable rather than conventional as they accumulated.
-- [lagomorph-2026-k8s-forensics] one project's instructions file went 243 to 1,347 lines in 15 days, settling at 748 — a floor of ~15,200 instruction tokens per session before any project code; moving rule text into detail files cut what loads without cutting what exists. (Cost, not disobedience: the forensics decline the claim that a shorter file is obeyed more.)
+- [lagomorph-2026-k8s-forensics] one project's instructions file went 243 to 1,347 lines in 15 days, settling at 748 — a floor of ~15,200 instruction tokens per session before any project code; moving rule text into 47 detail files cut what loads without cutting what exists, against a ~73,000-token ceiling with every source loaded. (Cost, not disobedience: the forensics decline the claim that a shorter file is obeyed more.)
 **Tool notes:** Claude Code: a `CLAUDE.md` containing `@AGENTS.md` bridges both tools;
 `/context` shows what loaded. Codex: the chain rebuilds per run, so restart after
 editing; `AGENTS.override.md` suppresses its sibling `AGENTS.md`.

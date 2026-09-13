@@ -43,5 +43,6 @@ the code the way a human would.
 - [tornhill-2026-codescene] a coverage-regression gate makes the agent's habit of deleting a failing test immediately visible.
 - [cheapcode-2026] at volume a low-probability violation becomes a certainty, so soft guidance was mated to deterministic gates at pre-commit, merge and deploy.
 - [lagomorph-2026-k8s-forensics] six of ten workflows were dispatch-only and none ran on pull requests, so the agent chose when to be tested and no gate ever built the system from committed source.
+- [lagomorph-2026-k8s-forensics] a schema validator was hollow: the relevant schema had never been fetched and its store was pinned to a different release than the one deployed, so it validated nothing while reading as a gate.
 **Tool notes:** Claude Code: a `Stop` hook can refuse to let the turn end until the check
 passes, which instructions cannot.

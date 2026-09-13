@@ -1,9 +1,9 @@
 ---
 id: lagomorph-2026-k8s-forensics
-title: "k8s-platform: LESSONS.md and the two-round forensic analysis"
+title: "k8s-platform: LESSONS.md, the forensic analysis, and the keystone session capture"
 author: lago-morph (wiki owner's own project; the documents are agent-authored about agent behaviour)
 date: 2026-06-10
-url: "(own repo: github.com/lago-morph/k8s-platform — ai/LESSONS.md and forensics/)"
+url: "(own repo: github.com/lago-morph/k8s-platform — ai/LESSONS.md, forensics/, retrospective/2026-06-10-218-transcript.md)"
 access: direct
 accessed: 2026-09-13
 scope: interactive
@@ -66,8 +66,8 @@ mechanism, weak on base rates.
 
 - → `prefer-deterministic-controls`: failure classes wired to a fail-closed gate (a pre-dispatch static audit hook, a pre-commit render check) show no recurrence afterwards, while 8 of 12 tracked classes recurred after a prose rule was written for them — the source's strongest claim, and one it flags as inferred from absence rather than confirmed by a per-class scan.
 - → `verify-from-clean-state` (new): 6+ items were declared done, proven or validated in one run and 0 were validated from a clean build; the project's own fix was to name the missing status rather than claim the work — "pending clean-build verification".
-- → `capture-lessons` (counter-evidence): 45 retrospectives produced 152 rule candidates, ~51 adopted, with no measured reduction in the behaviours they targeted; round two retired rule-writing as the default retrospective output in favour of a remedy-ordering protocol.
-- → `agents-md-hygiene`: the instructions file went 243 → 1,347 lines in 15 days over 48 revisions, settling at 748, for a floor of roughly 15,200 instruction tokens loaded per session before any project code — and a same-day refactor that moved rule text into 20 detail files reduced what loads without reducing what exists.
+- → `capture-lessons`: capturing was load-bearing — the forensic analysis exists only because 45 retrospectives, a git timeline and an autonomous-run record had been kept, and six parallel evidence agents were run across them. What failed was *emitting rules from* the captures: those retros produced 152 rule candidates and ~51 adopted rules with no measured reduction in the behaviours they targeted. Round two retired rule-writing as a retrospective output and amended the retrospective skill to emit classified remedies instead — the mechanism that actually stopped the rule flow.
+- → `agents-md-hygiene`: the instructions file went 243 → 1,347 lines in 15 days over 48 revisions, settling at 748, for a floor of roughly 15,200 instruction tokens loaded per session before any project code — and a same-day refactor that moved rule text into 47 detail files reduced what loads without reducing what exists; with every instruction source loaded the ceiling is roughly 73,000 tokens.
 - → `demand-evidence-not-summary`: a CI run reported success while four of its assertions had timed out, and "phase 1 reproducibly green" was claimed at least four times, each time contradicted by the next run.
 - → `define-done-first`: "done" is a claim, not a status, until an externally checkable artifact converts it — a gate run id and a behavioural check on the committed artifact.
 - → `spec-first`: all four standing blockers were instances of layer boundaries the founding spec never named; the entire specification of one seam was a single sentence saying the next tool takes over from there.
@@ -76,6 +76,11 @@ mechanism, weak on base rates.
 - → `intent-ledger`: a burndown document marked every item done at the same commit where the handoff file said nothing was done, so a fresh session's belief depended on which file it opened first.
 - → `stale-scaffolding`: 21 skills totalling 5,415 lines, ten archived in round two; four existed only to work around sandbox limits, and one was imported from another repo carrying assumptions this environment never met.
 - → `agentic-manual-testing`: a static schema check passing is not the live admission controller accepting, and a kind-cluster pass is not a real-cloud pass — one class was invisible to the integration harness because the harness exercised different content than was committed.
+- → `prefer-deterministic-controls` (cost side): the fail-closed evidence gate went red about two hours after it was written, over a comment edit under a live-test path; the response was a file-scoped exemption carrying a documented removal trigger rather than widening the gate. One push-gated lint needed its false positives fixed and 26 pre-existing findings triaged before it could gate anything, and two hooks obstructed correct work — these controls bind indiscriminately, so their design cost is real.
+- → `agents-md-hygiene`: a standing anti-accretion instruction reshaped two remedies mid-session — a proposed new lint became a guard inside the existing test runner with an in-file exemption comment, and a two-copy version-pin lint became de-duplication onto a single versions file. Fold the check into what already runs, or delete the duplication, before adding a policing check.
+- → `demand-evidence-not-summary`: an agent asserted in chat that it had already printed a next-session prompt; it never had, and it was caught only because the human went looking for the artifact.
+- → `give-a-runnable-check`: a schema validator was hollow — the relevant schema had never been fetched and its store was pinned to a different release than the one deployed. A validator pinned off the deployed version validates nothing.
+- → `cross-model-review`: before ratifying its own design the agent dispatched two reviewers grounded in the actual tree and told to falsify it; they returned 5 blocking and 7 major findings and caught five false claims, three of them the agent's own.
 - → `calibrate-autonomy`: the corrective direction chosen was short, scoped, attended sessions with a machine-verified exit condition until the clean-build gate passes twice, then re-expanding autonomy — autonomy gated on verification existing rather than on task type.
 
 ## Other-use-case material

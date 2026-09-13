@@ -8,8 +8,9 @@ advice read `quickref.md`; for the full page read `agent-patterns/patterns/<id>.
 - `agentic-manual-testing` — pattern — Have the agent test like a human — The suite is green and you are about to believe it.
 - `agents-md-hygiene` — pattern — Keep AGENTS.md short and earned — You are about to add a line to AGENTS.md / CLAUDE.md, or the agent is ignoring rules already in it.
 - `auto-generated-agents-md` — anti-pattern — Auto-generated AGENTS.md — Setting up a repo for agent work and reaching for the generate-my-context-file command first.
+- `bloated-instruction-surface` — anti-pattern (candidate) — Bloated instruction surface — You are adding to an AGENTS.md, skill or ADR set that has grown for months with nothing you can point to.
 - `calibrate-autonomy` — pattern — Calibrate autonomy to verification — Deciding, per task, how far to let the agent run before you look at what it did.
-- `capture-lessons` — pattern — Capture lessons into instructions — You corrected an agent mistake, or a session taught you something the next one would need.
+- `capture-lessons` — pattern — Capture lessons as history, then mechanise them — A session taught you something the next one needs, or enough captures have piled up to mine.
 - `checkpoint-commits` — pattern — Commit small, commit often — An agent is making edits you may want to undo — any session that changes more than one thing.
 - `cognitive-surrender` — anti-pattern — Cognitive surrender — You are ratifying a long diff rather than reviewing it, or shipping a fix to a stack trace you never read.
 - `comprehension-debt` — anti-pattern — Comprehension debt — The codebase is growing faster than your model of it, and nothing feels wrong because the suite is green.
@@ -26,12 +27,14 @@ advice read `quickref.md`; for the full page read `agent-patterns/patterns/<id>.
 - `intent-ledger` — pattern — Keep an intent ledger — A decision or constraint exists only in your head, and the next session will start cold without it.
 - `jig-for-tuning` — pattern (candidate) — Ask for a jig, not a tweak — You are iterating on a value rather than a behaviour: timings, spacing, thresholds, opacity.
 - `match-model-to-task` — pattern — Match the model to the task — Starting a task, or handing off between phases of one.
+- `no-progressive-disclosure` — anti-pattern (candidate) — Reference material without progressive disclosure — You are writing reference material an agent must load whole to use any part of.
 - `over-compressed-context` — anti-pattern (candidate) — Over-compressed context — You are shrinking something the agent must read and interpret, judging the change by the tokens it saves.
 - `plan-before-code` — pattern — Plan before code — The change spans several files, the codebase is unfamiliar, or the approach is still uncertain.
 - `polish-pass` — pattern — Polish with the running app open — The change has a surface a person experiences — UI, copy, output formatting — and the checks are green.
 - `prefer-deterministic-controls` — pattern — Prefer deterministic controls to prose rules — You are about to write a rule into an instructions file to stop a failure you have seen twice.
 - `red-green-tdd` — pattern (candidate) — Prompt for red/green TDD — The change has a statable behaviour and the project has a test suite the agent can run.
-- `review-agent-diffs` — pattern — Review every agent diff yourself — Before you merge, push, or open a PR containing anything an agent wrote.
+- `refactor-skills-into-checks` — pattern (candidate) — Refactor skills into checks — You have skills encoding a repeated process in prose and already mechanise new failures.
+- `review-agent-diffs` — pattern (deprecated) — Review every agent diff yourself — Deprecated; do not apply — see tier-review-by-risk, demand-evidence-not-summary and prefer-deterministic-controls.
 - `review-plans-not-code` — pattern — Review plans, not just code — The agent produced research or a plan and you are deciding where to spend your own attention.
 - `run-tests-first` — pattern (candidate) — Open the session by running the tests — Starting work in an existing repo, especially one you or the agent have not touched recently.
 - `skill-authoring` — pattern — Author skills as tested process — You are writing down a procedure you repeat: a review pass, a release checklist, a manual pipeline.

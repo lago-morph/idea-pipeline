@@ -18,3 +18,19 @@ Quick capture from real sessions; consumed by lint. Format:
   davisjam.github.io/agent-governance-mechanisms/index.html — the lab site is live
   but that path 404s as of today. Retry later or ask the authors.
 
+- 2026-09-13 [agent-patterns] ASK JONATHAN LATER: `refactor-skills-into-checks` is
+  a placeholder page with `[own]` direction but no demonstration. He offered
+  evidence from real projects at a future date. Do not promote past `candidate`
+  until that lands.
+- 2026-09-13 [agent-patterns] Candidate slug not written: `adversarial-self-review`
+  — dispatch reviewers grounded in the actual tree, told to falsify your own draft,
+  before you act on it. Distinct from `cross-model-review` (different model, before
+  shipping) in that it targets your own unratified plan and its claims. Evidence
+  added to `cross-model-review` for now; ask whether it deserves its own page.
+- 2026-09-13 [agent-patterns] Nuance to check with Jonathan: his position is that
+  edits to AGENTS.md, ADRs *and* skills get ignored. The transcript complicates the
+  ADR half — an ADR there was ratified, implemented, and shipped with a contract
+  lint. The cut that holds is behavioural-prose-remedy vs design-decision-plus-
+  enforcement, not document type. `prefer-deterministic-controls` currently states
+  it the broad way.
+

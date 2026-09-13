@@ -10,7 +10,7 @@ category: review-quality
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [every-2026-07-16-case-against-skills, every-2026-08-10-vibe-coded-security-risk, openhands-2026-ccbp]
+sources: [every-2026-07-16-case-against-skills, every-2026-08-10-vibe-coded-security-risk, openhands-2026-ccbp, lagomorph-2026-k8s-forensics]
 related: [review-plans-not-code, review-agent-diffs]
 aliases: []
 ---
@@ -33,3 +33,4 @@ aliases: []
 - [every-2026-07-16-case-against-skills] a review skill packages the agent's diff for a different model, then loops verify-fix-rerun until no snags remain, with an instruction to stop and ask before any fix that expands the task.
 - [every-2026-08-10-vibe-coded-security-risk] a newer, different model pointed at a shipped codebase found a public registration route that had been live for weeks, and asked to take the connector down while it investigated.
 - [openhands-2026-ccbp] on high-stakes changes, a fresh model reviewing the plan catches wrong turns the original reasoning had already baked in.
+- [lagomorph-2026-k8s-forensics] an agent dispatched two reviewers grounded in the actual tree and told to falsify its own draft before it acted; they returned 5 blocking and 7 major findings and caught five false claims, three of them the agent's own.

@@ -23,7 +23,10 @@ aliases: []
 > "read every diff" but "don't ship what nothing has checked" — that point now lives
 > in [prefer-deterministic-controls](prefer-deterministic-controls.md) and
 > [tier-review-by-risk](tier-review-by-risk.md). The evidence below predates the
-> judgement and is left unedited.
+> judgement and is left unedited. Worth recording: in a captured session covering six merged
+> pull requests, neither defect that surfaced — an agent claiming an artifact it
+> had never produced, and a validator pinned to the wrong release — was the kind a
+> human would have caught by reading a diff.
 
 **Use when:** you are at risk of this — the tests are green, the diff is large
 and tidy, the agent's PR description reads convincingly, and you are at the end
