@@ -98,9 +98,12 @@ whole context can be picked up again later. Both voices are compressed; key
 phrases are quoted.
 
 **What this is not.** Not a design, not a prioritized list, not a set of
-decisions. Where a decision *was* made explicitly in the conversation it is
-marked as such. Everything else is still open. Summarizing and shaping a
-solution out of this comes later.
+decisions. J stated afterward that the only decisions made in the session
+were about process — how the handwritten notes were transcribed, and how
+this capture was made. Everything J said about the idea itself, however
+firmly, was J's opinion at that point in time. Lines marked *stated
+position* are the ones J put most firmly; they are not settled.
+Summarizing and shaping a solution out of this comes later.
 
 Attribution: **J** is the author of the notes. **A** is the agent. Lines
 marked **A (interpretation)** are the agent's read of intent, mood, or
@@ -187,8 +190,8 @@ What happened to that list in conversation:
   and offered a middle: a stub is a named field allowed to be empty, not a
   code path. **J** then went further than A's suggestion: no stubs at all.
   Implement the lean MVP and nothing else, "with a concession of an
-  unstructured notes field if I just can't help myself." *Explicit
-  decision.*
+  unstructured notes field if I just can't help myself." *Stated
+  position.*
 - **A** on the notes field: it is also where the agent puts "this didn't
   fit the four slots," which stops it inventing a fifth.
 - **A:** The recreatability tag is the most valuable item in the notes'
@@ -229,8 +232,8 @@ This was the most emphatic theme from J.
   gets a scope." **J** pushed back: J will not be specifying; the agent
   decides what size warrants the machinery, and **adapts on its own by
   paying attention to J's behavior**, applying it more or less as J's
-  reactions indicate. A withdrew the tripwire. *Explicit decision that the
-  agent judges and adapts.*
+  reactions indicate. A withdrew the tripwire. *Stated position: the agent
+  judges and adapts.*
 - **A** then offered one observation to keep alongside it: adaptation
   needs a signal, and the cheapest is J overriding ("scope this" / "don't
   scope this") with the agent tracking the overrides. Offered as an
@@ -254,7 +257,7 @@ This was the most emphatic theme from J.
   see start to finish and mine old tasks to use as a basis for new
   experiments, or to analyze what went right or wrong."
 - **J:** **Beads** is the initial choice for carrying this information.
-  "It has to be displaced to consider anything else." *Explicit.*
+  "It has to be displaced to consider anything else." *Stated position.*
 - **A** had suggested "the bead *is* the scope card" as the cleanest
   answer to where the declaration lives. Consistent with J's choice.
 - **Snapshotting outputs.** **A** warned that snapshotting would "eat you"
@@ -265,9 +268,9 @@ This was the most emphatic theme from J.
   plus the bead**, which stays around after closure. The bead is "the
   place to put the breadcrumbs that allow one to reconstruct inputs and
   outputs. Then everything stays together." Anything else goes to Later.
-  *Explicit.*
+  *Stated position.*
 - **J:** "Later" is a **file, not a bead**, at this stage — J does not want
-  to use beads to work out the idea itself. *Explicit.* (A had earlier
+  to use beads to work out the idea itself. *Stated position.* (A had earlier
   suggested Later as a bead tagged `later`; superseded.)
 
 ---
@@ -279,7 +282,7 @@ This was the most emphatic theme from J.
 - **J:** Scope should assume a PR. The input will already carry a commit —
   perhaps a single input commit for all git-tracked items.
 - **J:** Anything not tracked in git is assumed **not recreatable**.
-  *Explicit.*
+  *Stated position.*
 - **A** had proposed a one-bit-per-directory "safe to blow away and
   regenerate" flag as cheap enough for v1. **A** reads J's
   git-tracked-or-not rule as subsuming it — tracked implies regenerable
@@ -308,7 +311,7 @@ This was the most emphatic theme from J.
   security** — the frustration is that credentials "live all over the
   place" and it is confusing to figure out which ones an agent needs.
   Limited lifetime and least privilege come later, "if I end up wanting
-  it." *Explicit.*
+  it." *Stated position.*
 - **J:** Will probably start as a skill wrapper around AWS Secrets Manager
   or an equivalent, focused on convenience. Anything more involved, like
   the vault-with-a-password idea in 14, is "for later or never if not
@@ -387,11 +390,12 @@ the session except as noted:
 
 ### A.11 MVP versus Later — as discussed, not as decided
 
-J was explicit that, except where stated, the MVP-versus-Later split has
-**not** been decided. This section records what was *said* about the
-split, in the words used, without ranking.
+The MVP-versus-Later split has **not** been decided; J said so during the
+session and reaffirmed it afterward (see A.13). This section records what
+was *said* about the split, in the words used, without ranking. Where J
+spoke firmly it was J's opinion at that point in time.
 
-Things J explicitly placed in the first cut:
+Things J placed in the first cut, as stated at the time:
 - Problem statement and definition of done in the encapsulation.
 - Per-directory scope on a git repo with per-directory CRUD.
 - Recreatability by git-tracked-or-not; scope assumes a PR.
@@ -402,7 +406,7 @@ Things J explicitly placed in the first cut:
 - Single all-access credential via a convenience skill.
 - No stubs; an unstructured notes field as the pressure valve.
 
-Things J explicitly placed in Later (or "later or never"):
+Things J placed in Later (or "later or never"), as stated at the time:
 - Tracking harness config / skills / agents.md outside the repo — J
   called this **high priority** within Later.
 - Advisory parent-scope lint over sub-scopes ("v2.0").
@@ -477,5 +481,12 @@ capture too.
 - What A did with that: the section structure above; A.1 for the
   interpretive read; A.11 as a record of what was said about the split
   rather than a ranking; A.12 as the parallel.
+- **J**, after reading the first version of this appendix, corrected its
+  framing: the only decisions made in the session were about process —
+  how the original transcription was handled and how this capture was
+  handled. Anything J had stated as a decision about the idea itself was
+  an opinion at a specific point in time; J does not want decisions solid
+  until later. A replaced every *explicit decision* marker with *stated
+  position* and reworded the introduction and A.11 to match.
 
 *End of Appendix A.*
