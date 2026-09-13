@@ -1,5 +1,48 @@
 # log
 
+## 2026-09-13 — ingest: `lagomorph-2026-k8s-forensics` (own project, first-hand)
+
+- Jonathan's own `lago-morph/k8s-platform`: `ai/LESSONS.md` plus the whole
+  `forensics/` tree, cloned to /tmp (never into git). **Excluded at his
+  instruction: `retrospective/2026-06-10-218-transcript.md`, which is incomplete.**
+  Three Opus readers mined ~31k words in parallel and returned findings only; the
+  source note is composed here, so it stays one coherent note.
+- The finding he asked about is confirmed and then some: failure classes wired to
+  a fail-closed gate stopped recurring, while 8 of 12 tracked classes recurred
+  *after* a prose rule had been written for them; one rule was violated within
+  minutes by the agent that wrote it. **`prefer-deterministic-controls` promoted
+  `candidate` → `adopted`** on two independent sources (`cheapcode-2026` plus this)
+  and **`confidence: high`** — the wiki's first, since SPEC §6 reserves `high` for
+  multiple sources *and* own experience, which this now supplies. It enters
+  `quickref.md` (46 lines).
+- Recorded honestly rather than over-claimed: the source's own analysts tag the
+  mechanism-vs-prose comparison as inferred from absence of recurrence, with a
+  per-class scan still queued, and they explicitly decline the claim that a shorter
+  instructions file gets obeyed more. Both caveats are in the note and the evidence
+  lines.
+- 12 evidence lines added across existing pages: agents-md-hygiene,
+  demand-evidence-not-summary, define-done-first, spec-first, give-a-runnable-check,
+  comprehension-debt, intent-ledger, stale-scaffolding, agentic-manual-testing,
+  calibrate-autonomy, prefer-deterministic-controls, and capture-lessons.
+- New candidate `verify-from-clean-state` (one strong first-hand source →
+  `confidence: medium`): evidence must come from the committed artifact in an
+  environment nobody hand-patched. Three readers independently proposed this idea
+  under three different names; merged into one page rather than three.
+- **Open, and the most important thing here: `capture-lessons` now carries
+  counter-evidence from this source** — 45 retrospectives, 152 rule candidates,
+  ~51 adopted, no measured reduction in the targeted behaviours; the project
+  retired rule-writing as its default retrospective output. The page still says
+  quality compounds by turning failures into standing instructions. Evidence line
+  added; the page's claim is left for Jonathan, since rewriting it changes
+  `quickref.md`.
+- Lint rule tightened in AGENTS.md and SPEC §8: promotion needs ≥ 2 **independent
+  sources**, not ≥ 2 evidence lines. Phase 4 already worked that way (hoard-working-code,
+  jig-for-tuning and run-tests-first each hold 2–3 lines from a single source and
+  correctly stayed candidate), but the written rule said "lines", which invites
+  clearing the bar by splitting one finding in two.
+- Long-running, multi-agent and infrastructure material from the source is flagged
+  in the note's other-use-case section and kept out of the patterns entirely.
+
 ## 2026-09-13 — `unreviewed-code` deprecated (owner's own experience)
 
 - Jonathan rejected the anti-pattern outright: in 2026 very few people review all

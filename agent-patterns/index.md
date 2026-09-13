@@ -19,7 +19,7 @@
 | bug fix with repro | run-tests-first · red-green-tdd · small-reviewable-steps · fresh-context-reset |
 | refactor | plan-before-code · small-reviewable-steps · checkpoint-commits · agentic-manual-testing · review-agent-diffs |
 | spike / throwaway prototype | hoard-working-code · match-model-to-task · jig-for-tuning (review discipline relaxes only if it stays throwaway) |
-| big delegated chunk | full-brief-up-front · define-done-first · calibrate-autonomy · demand-evidence-not-summary |
+| big delegated chunk | full-brief-up-front · define-done-first · calibrate-autonomy · demand-evidence-not-summary · verify-from-clean-state |
 | reviewing a diff (agent's or someone else's) | review-agent-diffs · tier-review-by-risk · form-your-own-take-first · cross-model-review · test-the-failure-paths |
 | UI / visual work | polish-pass · jig-for-tuning · agentic-manual-testing |
 | stuck / session going badly | fresh-context-reset · match-model-to-task · context-compaction · form-your-own-take-first |
@@ -66,6 +66,7 @@
 - cross-model-review — a different model or fresh session as reviewer
 - test-the-failure-paths — probe what must NOT work (auth, abuse, errors)
 - polish-pass — final gate is using the running thing
+- verify-from-clean-state *(candidate)* — evidence from the committed artifact, in an environment nobody patched
 - red-green-tdd *(candidate)* — the four-word prompt that enforces test-first
 
 ### debugging-recovery
@@ -73,7 +74,7 @@
 
 ### compounding
 - capture-lessons — failures become standing instructions; quality compounds
-- prefer-deterministic-controls *(candidate)* — convert a recurring failure into a type, lint or gate, not a prose rule
+- prefer-deterministic-controls — convert a recurring failure into a type, lint or gate, not a prose rule
 - skill-authoring — skills as tested process with exit criteria, not prose
 
 ### anti-pattern
@@ -92,6 +93,11 @@ do this automatically.
 
 ## Recently changed
 
+- 2026-09-13 — ingested `lagomorph-2026-k8s-forensics` (own project, first-hand):
+  12 evidence lines across existing pages, new candidate `verify-from-clean-state`,
+  and `prefer-deterministic-controls` promoted to adopted at `confidence: high` —
+  the wiki's first, since own experience plus a second independent source now back
+  it. Carries counter-evidence against `capture-lessons`.
 - 2026-09-13 — `unreviewed-code` deprecated on the owner's own experience: reading
   every line an agent writes is no longer the 2026 norm. Re-rated `compensation`;
   its surviving point (ship nothing that *nothing* has checked) absorbed into

@@ -2,15 +2,15 @@
 id: prefer-deterministic-controls
 title: Prefer deterministic controls to prose rules
 type: pattern
-status: candidate
+status: adopted
 durability: structural
 scope: interactive
 tools: both
 category: compounding
 verified: 2026-09-13
 models: [claude-5, gpt-5.6]
-confidence: low
-sources: [cheapcode-2026]
+confidence: high
+sources: [cheapcode-2026, lagomorph-2026-k8s-forensics]
 related: [capture-lessons, give-a-runnable-check, agents-md-hygiene, unreviewed-code]
 aliases: []
 ---
@@ -39,6 +39,6 @@ it prevents, or you can't yet state the rule precisely enough to encode it.
 
 **Evidence:**
 - [cheapcode-2026] a 12-week single-engineer case study argues review- and convention-based controls saturate under agentic velocity and must become types, static analyses and commit gates; of its coded incidents, 35 added detection, 20 removed a class by construction.
-
+- [lagomorph-2026-k8s-forensics] on one six-week project, failure classes wired to a fail-closed gate stopped recurring while 8 of 12 tracked classes recurred after a prose rule had been written for them — the source's own analysts flag this as inferred from absence rather than confirmed per class.
 **Tool notes:** Claude Code / Codex: a hook or pre-commit gate runs whether or not the
 agent cooperates; a rule in the instructions file relies on it obeying that file.

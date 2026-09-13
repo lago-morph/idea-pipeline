@@ -34,6 +34,7 @@ GENERATED from adopted patterns by lint — edit `patterns/<id>.md`, not this fi
 - Probe the failure paths: what must not work when the wrong caller tries it. [test-the-failure-paths]
 - Final gate: open the running app and use it; checks passing isn't "good". [polish-pass]
 - Turn this session's failures into standing instructions; quality compounds. [capture-lessons]
+- Seen the same failure twice? Convert it to a type, lint or gate — prose doesn't bind. [prefer-deterministic-controls]
 - Record the why — decisions, rejected options — where agents will re-read it. [intent-ledger]
 - Repeated task? Turn it into a skill with steps and exit criteria, tested first. [skill-authoring]
 

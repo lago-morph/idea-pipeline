@@ -10,7 +10,7 @@ category: compounding
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [willison-2026-aep, every-2026-05-29-compound-engineering-upgrade, cheapcode-2026, osmani-2026-intent-debt, every-2026-08-26-cloning-coworkers-skills, osmani-2026-agent-harness-engineering, every-2026-08-04-think-like-designer]
+sources: [willison-2026-aep, every-2026-05-29-compound-engineering-upgrade, cheapcode-2026, osmani-2026-intent-debt, every-2026-08-26-cloning-coworkers-skills, osmani-2026-agent-harness-engineering, every-2026-08-04-think-like-designer, lagomorph-2026-k8s-forensics]
 related: [intent-ledger, skill-authoring, agents-md-hygiene]
 aliases: []
 ---
@@ -42,3 +42,4 @@ agent already follows — every line competes for attention.
 - [every-2026-08-26-cloning-coworkers-skills] a self-improve skill interrogates the bad output and proposes a targeted edit to the operating instructions.
 - [every-2026-08-04-think-like-designer] a correction made twice becomes a standing rule rather than a third correction.
 - [cheapcode-2026] rules written in advance were necessary but not sufficient; the controls that sustained velocity were induced from failures visible only during the agentic work.
+- [lagomorph-2026-k8s-forensics] (counter-evidence) 45 retrospectives produced 152 rule candidates and ~51 adopted rules with no measured reduction in the behaviours they targeted; the project retired rule-writing as its default retrospective output.

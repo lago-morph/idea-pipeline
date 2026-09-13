@@ -10,7 +10,7 @@ category: anti-pattern
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [every-2026-07-16-case-against-skills, every-2026-07-28-taming-opus-5, osmani-2026-agent-harness-engineering, every-2026-04-17-opus-4-7-vibe-check]
+sources: [every-2026-07-16-case-against-skills, every-2026-07-28-taming-opus-5, osmani-2026-agent-harness-engineering, every-2026-04-17-opus-4-7-vibe-check, lagomorph-2026-k8s-forensics]
 related: [skill-authoring, agents-md-hygiene]
 aliases: []
 ---
@@ -42,3 +42,4 @@ context, competes with training, and costs tokens.
 - [osmani-2026-agent-harness-engineering] each harness component encodes an assumption about the model; the author's own context-anxiety mitigations became dead code.
 - [every-2026-07-28-taming-opus-5] a release can invalidate prompts and agent instructions built for the previous model; expect to re-tune them.
 - [every-2026-04-17-opus-4-7-vibe-check] old prompts went stale at the 4.7 release; five testers on fixed tasks produced a split verdict a single benchmark would hide.
+- [lagomorph-2026-k8s-forensics] 21 skills totalling 5,415 lines, ten archived in one pass: four existed only to work around sandbox limits and one was imported from another repo carrying assumptions this environment never met.

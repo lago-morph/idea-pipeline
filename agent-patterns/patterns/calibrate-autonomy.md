@@ -10,7 +10,7 @@ category: delegation
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-agentic-autonomy-levels, osmani-2026-practical-loop-engineering, dontvibe-2025, cheapcode-2026]
+sources: [osmani-2026-agentic-autonomy-levels, osmani-2026-practical-loop-engineering, dontvibe-2025, cheapcode-2026, lagomorph-2026-k8s-forensics]
 related: [full-brief-up-front, tier-review-by-risk]
 aliases: []
 ---
@@ -41,3 +41,4 @@ approvals dull review and push you toward granting broader access than the task 
 - [osmani-2026-practical-loop-engineering] Safe, well-bounded work such as docs or coverage checks can be delegated, while complex or auth/security/finance work gets watched closely.
 - [dontvibe-2025] task suitability was coded across 89 task types: agents were judged fit for small, repetitive and scaffolding work and unfit as complexity, required domain knowledge or stakes rise; no respondent (0:12) said agents could replace human decision making.
 - [cheapcode-2026] one engineer dropped code inspection almost entirely, but only behind a verification substrate 2.75x the product's size — autonomy bought with verification.
+- [lagomorph-2026-k8s-forensics] after a six-week failure the corrective was short attended sessions with a machine-verified exit condition until the clean-build gate passed twice, then re-expanding — autonomy gated on verification existing, not on task type.

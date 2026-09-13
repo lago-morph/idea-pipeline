@@ -10,7 +10,7 @@ category: planning
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [osmani-2026-practical-loop-engineering, osmani-2026-agent-harness-engineering, every-2026-06-10-fable-5-get-most-out, osmani-2026-agentic-autonomy-levels]
+sources: [osmani-2026-practical-loop-engineering, osmani-2026-agent-harness-engineering, every-2026-06-10-fable-5-get-most-out, osmani-2026-agentic-autonomy-levels, lagomorph-2026-k8s-forensics]
 related: [give-a-runnable-check, demand-evidence-not-summary]
 aliases: []
 ---
@@ -40,5 +40,5 @@ pretend it is delegable either.
 - [osmani-2026-agent-harness-engineering] Writing the done-condition before starting caught more scope drift than any prompt change he has made.
 - [every-2026-06-10-fable-5-get-most-out] A task is only worth delegating whole when you can supply context, one clear goal, an explicit definition of done, and a way to verify.
 - [osmani-2026-agentic-autonomy-levels] Goal-driven autonomy needs a measurable, automatable stopping condition, written into a per-run contract with the evidence that would confirm it.
-
+- [lagomorph-2026-k8s-forensics] treating done as a claim rather than a status — convertible only by a gate run id and a behavioural check on the committed artifact — is what made a six-week project's missing verification visible.
 **Tool notes:** Claude Code: `/goal` iterates a bounded task until an evaluator model confirms the stated condition each time the agent tries to stop; recurring `/loop` runs are session-scoped and expire seven days after creation.

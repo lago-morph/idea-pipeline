@@ -29,7 +29,7 @@ advice read `quickref.md`; for the full page read `agent-patterns/patterns/<id>.
 - `over-compressed-context` — anti-pattern (candidate) — Over-compressed context — You are shrinking something the agent must read and interpret, judging the change by the tokens it saves.
 - `plan-before-code` — pattern — Plan before code — The change spans several files, the codebase is unfamiliar, or the approach is still uncertain.
 - `polish-pass` — pattern — Polish with the running app open — The change has a surface a person experiences — UI, copy, output formatting — and the checks are green.
-- `prefer-deterministic-controls` — pattern (candidate) — Prefer deterministic controls to prose rules — You are about to write a rule into an instructions file to stop a failure you have seen twice.
+- `prefer-deterministic-controls` — pattern — Prefer deterministic controls to prose rules — You are about to write a rule into an instructions file to stop a failure you have seen twice.
 - `red-green-tdd` — pattern (candidate) — Prompt for red/green TDD — The change has a statable behaviour and the project has a test suite the agent can run.
 - `review-agent-diffs` — pattern — Review every agent diff yourself — Before you merge, push, or open a PR containing anything an agent wrote.
 - `review-plans-not-code` — pattern — Review plans, not just code — The agent produced research or a plan and you are deciding where to spend your own attention.
@@ -42,3 +42,4 @@ advice read `quickref.md`; for the full page read `agent-patterns/patterns/<id>.
 - `test-the-failure-paths` — pattern — Test the failure paths — The change exposes a surface someone else can reach: an endpoint, a login, a payment, untrusted input.
 - `tier-review-by-risk` — pattern — Tier review depth by risk — Deciding how much of your attention a change deserves — which is every change, once diffs outrun you.
 - `unreviewed-code` — anti-pattern (deprecated) — Shipping unreviewed agent code — Deprecated; do not apply — see prefer-deterministic-controls and tier-review-by-risk instead.
+- `verify-from-clean-state` — pattern (candidate) — Verify from a clean state — You are about to accept a green check or a demo produced in an environment you or the agent could have patched.

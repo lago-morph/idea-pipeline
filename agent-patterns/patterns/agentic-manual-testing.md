@@ -10,7 +10,7 @@ category: review-quality
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [willison-2026-aep, every-2026-06-10-fable-5-get-most-out, dontvibe-2025]
+sources: [willison-2026-aep, every-2026-06-10-fable-5-get-most-out, dontvibe-2025, lagomorph-2026-k8s-forensics]
 related: [give-a-runnable-check, demand-evidence-not-summary, polish-pass]
 aliases: []
 ---
@@ -32,3 +32,4 @@ aliases: []
 - [willison-2026-aep] a dedicated chapter argues passing tests regularly coexist with broken software, and that agent-driven manual exercise surfaces what the suite missed; the Showboat pattern records the real command and real output to stop the agent writing down what it wished had happened.
 - [every-2026-06-10-fable-5-get-most-out] a bug survived a confident code-only fix and was solved only once the model was told to run the app locally and watch it.
 - [dontvibe-2025] verification was manual exercise as often as suites — clicking the UI, browser dev tools, debuggers — and UI, database and remote-app testing stayed manual.
+- [lagomorph-2026-k8s-forensics] a static schema check passing is not the live admission controller accepting; one defect class was invisible to the integration harness because the harness exercised different content than was committed.

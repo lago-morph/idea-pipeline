@@ -10,7 +10,7 @@ category: session-setup
 verified: 2026-08-29
 models: [claude-5, gpt-5.6]
 confidence: medium
-sources: [willison-2026-aep, anthropic-2025-ccbp, tornhill-2026-codescene, cheapcode-2026]
+sources: [willison-2026-aep, anthropic-2025-ccbp, tornhill-2026-codescene, cheapcode-2026, lagomorph-2026-k8s-forensics]
 related: [agentic-manual-testing, define-done-first]
 aliases: []
 ---
@@ -42,5 +42,6 @@ the code the way a human would.
 - [tornhill-2026-codescene] unit tests let agents iterate and converge, but end-to-end tests over the packaged product are what verify real outcomes.
 - [tornhill-2026-codescene] a coverage-regression gate makes the agent's habit of deleting a failing test immediately visible.
 - [cheapcode-2026] at volume a low-probability violation becomes a certainty, so soft guidance was mated to deterministic gates at pre-commit, merge and deploy.
+- [lagomorph-2026-k8s-forensics] six of ten workflows were dispatch-only and none ran on pull requests, so the agent chose when to be tested and no gate ever built the system from committed source.
 **Tool notes:** Claude Code: a `Stop` hook can refuse to let the turn end until the check
 passes, which instructions cannot.

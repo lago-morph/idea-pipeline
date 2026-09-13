@@ -385,8 +385,9 @@ row to `\_triage.md`; log.
 polish. This is the only workflow Jonathan is expected to trigger by habit.
 
 **lint** (cadence: after every ingest batch; otherwise monthly or at any major model
-release): empty `inbox.md` into patterns; merge duplicates; promote candidates with ≥ 2
-evidence lines to `adopted` (ask if unsure); flag pages whose `verified` is older than
+release): empty `inbox.md` into patterns; merge duplicates; promote a candidate to
+`adopted` once ≥ 2 *independent sources* back it, `\[own]` experience counting as
+one (ask if unsure; two lines from a single source is detail, not corroboration); flag pages whose `verified` is older than
 the latest model release; re-rate durability where a model change plausibly matters;
 regenerate `quickref.md`, `bibliography.md`, `skill/…/patterns-list.md` (§5.11 —
 authored triggers, then the §5.11.1 check), and the "recently changed" block in

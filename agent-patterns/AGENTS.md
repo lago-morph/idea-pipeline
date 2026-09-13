@@ -70,8 +70,11 @@ Full formats: [SPEC.md](SPEC.md) §5. Short version:
 
 ### lint (after every ingest batch; otherwise monthly or at a major model release)
 1. Empty `inbox.md` into patterns (new candidate, new evidence line, or discard).
-2. Merge duplicate patterns; promote candidates with ≥ 2 evidence lines to
-   `adopted` (ask if unsure).
+2. Merge duplicate patterns; promote a candidate to `adopted` once it has
+   evidence from **≥ 2 independent sources** (ask if unsure). Two evidence lines
+   drawn from the same source do not qualify — a second line is more detail on
+   one finding, not corroboration, and writing one to clear the bar is gaming it.
+   `[own]` experience counts as a source.
 3. Flag pages whose `verified` predates the latest model release; re-rate
    durability where a model change plausibly matters.
 4. Regenerate `quickref.md` (≤ 60 lines, adopted only, grouped before
