@@ -1,5 +1,14 @@
 # log
 
+## 2026-09-13 — `prefer-deterministic-controls` and `bloated-instruction-surface` paired
+
+- Jonathan: deterministic controls are not free, just a better trade than the
+  alternative. Both pages now say so and point at each other — two sides of one
+  problem, what to do with a failure you have seen before. A mechanism costs
+  design time and binds indiscriminately; prose costs context and binds nothing.
+  Prefer the mechanism because the trade is better, not because it is cheap.
+- Checkpoint reached: Jonathan gave the OK to merge to `main` (SPEC §8 `release`).
+
 ## 2026-09-13 — completed transcript folded in; `review-agent-diffs` deprecated; `capture-lessons` rewritten
 
 - The `2026-06-10-218` transcript is complete (3,426 → 8,914 words) and back in

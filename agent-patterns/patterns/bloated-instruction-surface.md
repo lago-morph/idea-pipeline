@@ -37,7 +37,12 @@ file feels like more control while buying less.
 **Don't / when not:** a short, earned file is not bloat — see
 [agents-md-hygiene](agents-md-hygiene.md) for the positive form. Note that
 splitting rules into detail files reduces what *loads*, not what *exists*; that
-helps context, but it is not a prune.
+helps context, but it is not a prune. And the alternative is not free either:
+this page and [prefer-deterministic-controls](prefer-deterministic-controls.md)
+are two sides of one problem — what to do with a failure you have seen before.
+A mechanism costs design time and binds indiscriminately; prose costs context
+and binds nothing. Prefer the mechanism because the trade is better, not because
+it is cheap.
 
 **Evidence:**
 - [lagomorph-2026-k8s-forensics] one project's instruction surface reached 748 lines plus 46 detail files and 21 skills totalling 5,415 lines — roughly 15,200 tokens loaded every session before any project code — while 8 of 12 tracked failure classes recurred after the rule meant to stop them already existed.

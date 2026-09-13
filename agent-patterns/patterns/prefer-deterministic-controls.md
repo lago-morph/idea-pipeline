@@ -32,7 +32,11 @@ failure you have seen more than once.
 
 **Why:** a written rule is probabilistic guidance. At the volume an agent produces, a
 rule followed most of the time is broken routinely, and the violations arrive faster
-than anyone reads them. A mechanism fails closed; a rule fails silently.
+than anyone reads them. A mechanism fails closed; a rule fails silently. This page
+and [bloated-instruction-surface](bloated-instruction-surface.md) are two sides of
+one problem — what to do with a failure you have seen before. Neither answer is
+free; mechanisms cost design time and bind indiscriminately, while prose costs
+context and binds nothing. The trade is worth making, not costless.
 
 **Don't, when not:** the failure is local, the mechanism costs more than the
 failures it prevents, or you can't yet state the rule precisely enough to encode
