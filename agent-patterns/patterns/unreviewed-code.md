@@ -2,19 +2,28 @@
 id: unreviewed-code
 title: Shipping unreviewed agent code
 type: anti-pattern
-status: adopted
-durability: structural
+status: deprecated
+durability: compensation
 scope: interactive
 tools: both
 category: anti-pattern
-verified: 2026-08-29
+verified: 2026-09-13
 models: [claude-5, gpt-5.6]
 confidence: medium
 sources: [willison-2026-aep, osmani-2026-agentic-engineering]
-related: [review-agent-diffs]
+related: [review-agent-diffs, prefer-deterministic-controls, tier-review-by-risk]
 aliases: []
 ---
 # Shipping unreviewed agent code
+
+> **Deprecated 2026-09-13 — kept for the record, do not apply.** Reading every line
+> an agent writes was necessary in 2025; against 2026 models it is not the working
+> norm, and the wiki owner's own practice is not to. Re-rated `compensation`: this
+> page was working around a model weakness that has eased. What survives is not
+> "read every diff" but "don't ship what nothing has checked" — that point now lives
+> in [prefer-deterministic-controls](prefer-deterministic-controls.md) and
+> [tier-review-by-risk](tier-review-by-risk.md). The evidence below predates the
+> judgement and is left unedited.
 
 **Use when:** you are at risk of this — the tests are green, the diff is large
 and tidy, the agent's PR description reads convincingly, and you are at the end

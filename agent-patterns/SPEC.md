@@ -270,12 +270,18 @@ and `\~/.codex/skills/`.
 
 The skill's router, and the only index an agent has when the full wiki is not
 reachable. Header line states the generation date. One row per pattern page —
-adopted *and* candidate, unlike `quickref.md`, which is adopted-only — sorted by
-id:
+*every* page, whatever its status, unlike `quickref.md`, which is adopted-only —
+sorted by id:
 
 ```
-- `<id>` — <type>[ (candidate)] — <title> — <trigger>
+- `<id>` — <type>[ (<status>)] — <title> — <trigger>
 ```
+
+The status is shown for anything that is not `adopted`: `(candidate)`,
+`(deprecated)`, `(absorbed)`. A page that is no longer to be applied still gets a
+row, because an agent meeting a reference to it elsewhere needs to learn that from
+the router; its trigger says so instead of naming a situation — e.g. "Deprecated;
+do not apply — see <id> instead.".
 
 The **trigger** is the working part of the row and the only part that is
 expensive to get right:

@@ -1,5 +1,29 @@
 # log
 
+## 2026-09-13 — `unreviewed-code` deprecated (owner's own experience)
+
+- Jonathan rejected the anti-pattern outright: in 2026 very few people review all
+  the code an agent writes; that was necessary a year ago and is not now. He chose
+  deprecation over re-rating or a cluster rewrite. This is `[own]` experience and
+  under SPEC §6 it outranks the page's sources, all of which predate the judgement.
+- `patterns/unreviewed-code.md`: `status: deprecated`, `durability: structural` →
+  `compensation` (it was working around a model weakness that has eased),
+  `verified: 2026-09-13`, and a deprecation note at the top of the body. File kept
+  per the status legend; sources and evidence lines left unedited, since they still
+  record what those sources said.
+- Absorbed the surviving point into `prefer-deterministic-controls`: the failure is
+  not "nobody read it" but "nobody read it and nothing checked it" — before shipping
+  something you didn't read, name what did check it.
+- Removed from `quickref.md` (adopted-only), which is now 45 lines; skill copy
+  re-synced. `index.md` and the skill's `patterns-list.md` mark it deprecated.
+- SPEC §5.11 and AGENTS.md §2 extended: the patterns-list row label now shows any
+  non-adopted status — `(candidate)`, `(deprecated)`, `(absorbed)` — and a page
+  that is no longer to be applied keeps its row but says so in place of a trigger,
+  so an agent meeting a stale reference learns it from the router.
+- Still unresolved and raised with Jonathan: `review-agent-diffs` is `adopted` and
+  its quickref line still says to review every diff yourself, which is the same
+  claim he rejected. Left untouched — he chose deprecation, not the cluster rewrite.
+
 ## 2026-09-13 — orphan slugs resolved; Jonathan rejects the review anti-pattern
 
 - New page `prefer-deterministic-controls` (candidate, confidence low, single

@@ -41,4 +41,4 @@ advice read `quickref.md`; for the full page read `agent-patterns/patterns/<id>.
 - `subagents-for-context` — pattern — Use subagents to protect context — A step will generate output you will never re-read: a big search, noisy logs, fetched docs.
 - `test-the-failure-paths` — pattern — Test the failure paths — The change exposes a surface someone else can reach: an endpoint, a login, a payment, untrusted input.
 - `tier-review-by-risk` — pattern — Tier review depth by risk — Deciding how much of your attention a change deserves — which is every change, once diffs outrun you.
-- `unreviewed-code` — anti-pattern — Shipping unreviewed agent code — Tests are green, the diff is large and tidy, it is the end of a session, and you are inclined to merge.
+- `unreviewed-code` — anti-pattern (deprecated) — Shipping unreviewed agent code — Deprecated; do not apply — see prefer-deterministic-controls and tier-review-by-risk instead.

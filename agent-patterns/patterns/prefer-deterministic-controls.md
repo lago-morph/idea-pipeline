@@ -11,7 +11,7 @@ verified: 2026-09-13
 models: [claude-5, gpt-5.6]
 confidence: low
 sources: [cheapcode-2026]
-related: [capture-lessons, give-a-runnable-check, agents-md-hygiene]
+related: [capture-lessons, give-a-runnable-check, agents-md-hygiene, unreviewed-code]
 aliases: []
 ---
 # Prefer deterministic controls to prose rules
@@ -27,6 +27,8 @@ failure you have seen more than once.
 - Where you can't eliminate it, automate detection: a lint, a test, a check on the
   commit path, so it runs without anyone remembering to.
 - Keep the prose rule as a pointer to the mechanism, not as the enforcement.
+- Before shipping something you did not read, name what did check it. "Nobody read
+  it" is survivable; "nobody read it and nothing checked it" is the actual failure.
 
 **Why:** a written rule is probabilistic guidance. At the volume an agent produces, a
 rule followed most of the time is broken routinely, and the violations arrive faster

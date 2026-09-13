@@ -77,7 +77,7 @@
 - skill-authoring — skills as tested process with exit criteria, not prose
 
 ### anti-pattern
-- unreviewed-code — shipping agent output nobody read
+- unreviewed-code *(deprecated 2026-09-13)* — kept for the record; reviewing every line is no longer the working norm
 - cognitive-surrender — accepting because it sounds right
 - comprehension-debt — a system nobody on the team understands anymore
 - stale-scaffolding — prompts/skills tuned for last year's model
@@ -92,6 +92,10 @@ do this automatically.
 
 ## Recently changed
 
+- 2026-09-13 — `unreviewed-code` deprecated on the owner's own experience: reading
+  every line an agent writes is no longer the 2026 norm. Re-rated `compensation`;
+  its surviving point (ship nothing that *nothing* has checked) absorbed into
+  `prefer-deterministic-controls`. Removed from `quickref.md`.
 - 2026-09-13 — new candidate `prefer-deterministic-controls` from `cheapcode-2026`;
   folded "a failed delegation is under-framing" into `fresh-context-reset`.
 - 2026-09-13 — re-ingested the three arXiv sources that had been distilled from

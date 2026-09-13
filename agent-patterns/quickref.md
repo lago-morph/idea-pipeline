@@ -1,4 +1,4 @@
-# quickref — generated 2026-08-29 · verified against: claude-5, gpt-5.6
+# quickref — generated 2026-09-13 · verified against: claude-5, gpt-5.6
 
 GENERATED from adopted patterns by lint — edit `patterns/<id>.md`, not this file.
 
@@ -39,7 +39,6 @@ GENERATED from adopted patterns by lint — edit `patterns/<id>.md`, not this fi
 
 ## Watch out for
 
-- Shipping agent output nobody read. [unreviewed-code]
 - Accepting because it sounds right — polish is not correctness. [cognitive-surrender]
 - A codebase nobody on the team understands anymore. [comprehension-debt]
 - Prompts and skills tuned for last year's model quietly hurting this year's. [stale-scaffolding]
